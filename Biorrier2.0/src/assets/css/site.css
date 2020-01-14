@@ -1,0 +1,148 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin: 0;padding: 0;}
+body{font-family:"Microsoft Yahei";}
+img{border: none;}
+li{list-style: none;}
+input,select,textarea{outline: none;}
+textarea{resize: none;}
+a{text-decoration:none;}
+input:-webkit-autofill { 
+-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{-webkit-appearance: none !important;margin: 0;}
+label{cursor: pointer;}
+input[type="radio"],
+input[type="checkbox"],
+input[type="checkbox"]+i+i,
+input[type="checkbox"]:checked+i{display: none;}
+input[type="checkbox"]:checked+i+i{display: inline-block;}
+input,select,textarea{font-family:"Microsoft Yahei";}
+input[type="text"],input[type="password"]{cursor: pointer}
+body{background: #ebeef3;}
+#app {
+  font-family: 'Avenir', 'Microsoft Yahei', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 12px;
+  color: #686b7c;
+}
+i.icon_01{width: 17px; height: 16px; background-position: -7px -4px;}
+i.icon_02{width: 17px; height: 14px; background-position: -32px -4px;}
+i.icon_03{width: 17px; height: 10px; background-position: -61px -4px;}
+i.icon_04{width: 17px; height: 14px; background-position: -86px -4px;}
+i.icon_05{width: 17px; height: 16px; }
+i.icon_5{width: 20px; height: 20px; background-position: -116px -4px;}
+i.icon_6{width: 8px; height: 6px; background-position: -179px -96px;}
+i.icon_7{width: 9px; height: 8px; background-position: -12px -127px;}
+i.icon_8{width: 8px; height: 6px; background-position: -179px -112px;}
+i.icon_9{width: 7px; height: 10px; background-position: -74px -127px;}
+i.icon_10{width: 7px; height: 10px; background-position: -87px -127px;}
+i.icon_11{width: 10px; height: 7px; background-position: -52px -127px;}
+i.icon_12{width: 28px; height: 26px; background-position: -5px -28px;}
+i.icon_13{width: 28px; height: 26px; background-position: -44px -28px;}
+i.icon_14{width: 28px; height: 26px; background-position: -84px -28px;}
+i.icon_15{width: 29px; height: 26px; background-position: -127px -28px;}
+i.icon_16{width: 21px; height: 21px; background-position: -8px -96px;}
+i.icon_17{width: 18px; height: 18px; background-position: -87px -63px;}
+i.icon_18{width: 18px; height: 18px; background-position: -156px -63px;}
+i.icon_19{width: 20px; height: 20px; background-position: -46px -63px;}
+i.icon_20{width: 20px; height: 20px; background-position: -8px -63px;}
+i.icon_21{width: 15px; height: 15px; background-position: -46px -96px;}
+i.icon_22{width: 24px; height: 38px; background-position: -5px -142px;}
+i.icon_23{width: 23px; height: 38px; background-position: -49px -142px;}
+i.icon_24{width: 25px; height: 38px; background-position: -94px -142px;}
+i.icon_25{width: 21px; height: 38px; background-position: -141px -142px;}
+i.icon_26{width: 24px; height: 19px; background-position: -5px -187px;}
+i.icon_27{width: 20px; height: 19px; background-position: -49px -187px;}
+i.icon_28{width: 14px; height: 20px; background-position: -120px -96px;}
+i.icon_29{width: 14px; height: 20px; background-position: -152px -96px;}
+i.icon_30{width: 8px; height: 6px; background-position: -136px -127px;}
+i.icon_31{width: 15px; height: 15px; background-position: -85px -186px;}
+i.icon_32{width: 15px; height: 15px; background-position: -112px -186px;}
+i.icon_33{width: 15px; height: 15px; background-position: -146px -186px;}
+i.icon_34{width: 35px; height: 30px; background-position: -5px -208px;}
+i.icon_35{width: 34px; height: 32px; background-position: -57px -208px;}
+i.icon_36{width: 18px; height: 18px; background-position: -123px -63px;}
+i.icon_37{width: 7px; height: 7px; background-position: -32px -127px;}
+i.icon_38{width: 15px; height: 15px; background-position: -170px -186px;}
+
+
+/*APP.vue*/
+.content{}
+.content>*{overflow: hidden;}
+.contentMain{width: auto; /*overflow-x:scroll;*/}
+.contentMain>div{margin: 46px;background: #fff; border-radius: 20px;/* min-width: 1240px;*/}
+.contentMain>div .tabHead{height:66px; line-height: 66px; border-bottom: 1px solid #eeeeee;padding-left: 46px;}
+.contentMain>div .tabHead a{color: #696a7c; font-size: 14px; margin-right:40px; display: inline-block;height: 65px; line-height: 65px; border-bottom:1px solid rgba(200,200,200,0); margin-left:2px;}
+.contentMain>div .tabHead a.active{color: #696a7e; font-weight: bold; border-bottom:1px solid #dc0032;}
+.contentMain>div .tabCon{padding-left: 46px; padding-right: 46px;}
+
+
+/*listHead.vue*/
+.listHead input{height: 34px; line-height: 34px;padding: 0px;border-radius: 5px; text-indent: 10px;}
+.listHead .select input{padding-right: 25px; background: #f6f6f6;}
+.listHead .select .is-focus input{background: #fff;}
+.listHead .time>div>i{font-size: 0px; width: 10px;}
+.listHead .time>div>span{line-height: 34px;}
+.cooperativeDoctor .listHead .time>div>span{line-height: 30px;}
+.listHead .time input{width: 72px; background: #f6f6f6; border-radius: 0px; text-indent: 0px;}
+.listHead .time .is-active input{background: #fff;}
+.listHead .search input{width: 160px;}
+.listHead .area input{width: 160px; }
+.listHead .orderType input{width: 110px; }
+.listHead .searchRule input{width: 183px; }
+.listHead .ruleType input{width: 124px; }
+
+
+.editRuleH .ruleTime>div{overflow: hidden;}
+.editRuleH .ruleTime>div>*{float: left;}
+.editRuleH .ruleTime>div>i{font-size: 0px; width: 10px;}
+.editRuleH .ruleTime>div>span{line-height: 34px;}
+.editRuleH .ruleTime input{width: 130px;border-radius: 0px; text-indent: 0px; height: 36px; line-height: 36px;}
+.editRuleH .ruleName input{height: 34px; line-height: 34px;padding: 0px;border-radius: 5px; text-indent: 10px; width: 100%;}
+
+
+.servicingManagement .ysId input{width: 244px;}
+.servicingManagement .doctorLevel input{width: 149px;}
+.servicingManagement .doctorStatus input{width: 149px;}
+.servicingManagement .personnelDetails .year input{width: 149px; padding-right: 25px; background: #f6f6f6;}
+.servicingManagement .personnelDetails .is-focus input{background: #fff;}
+
+.memberId input{width: 244px;}
+.memberSource input{width: 149px;}
+
+
+/*pageBar.vue*/
+.pageBar>.sz input{width: 85px; height: 27px; border:1px solid #dcdcdc; border-radius: 4px;line-height: 27px; background: #f6f6f6; padding: 0px; text-indent: 10px;}
+.pageBar>.sz .is-focus input{background: #fff;}
+.pageBar>.sz .el-input--small .el-input__icon{line-height: 27px;}
+
+
+
+#storeMain .el-scrollbar__wrap,.editRuleWrap .goodBox .el-scrollbar__wrap{
+  overflow-x: hidden;
+}
+/*.editRuleWrap .popWrap table tbody td{height: 30px; overflow: hidden; font-size: 14px; color: #696a7c; border-bottom:1px solid #eee; padding: 0px 8px;}*/
+
+
+.cooperativeDoctor .col-7{width: 86px;}
+.editMessage ul li textarea{line-height: 24px;}
+
+
+
+/* fk */
+@keyframes fk
+{
+    0%   {opacity: 1;transform: scale(0);}
+    100% {opacity: 1;transform: scale(1);}
+}
+ 
+@-webkit-keyframes fk 
+{
+    0%   {opacity: 1;-webkit-transform: scale(0);}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+

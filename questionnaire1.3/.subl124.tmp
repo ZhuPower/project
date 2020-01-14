@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_709336_omj4k035p9p.css">
+		<link rel="stylesheet" type="text/css" href="css/site.css">
+		<script type="text/javascript" src="js/data.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<title>
+			The TFL ACLE 2019 booth
+		</title>
+	</head>
+	<body>
+		<div class="title">
+			<img src="images/logo.png">
+			<h2><span class="en">Welcome to TFL at the ACLE 2019</span><br/>欢迎来到2019 ACLE TFL 展台</h2>
+		</div>
+		<div id="page1">
+			<div class="content">
+				<p><span class="en">How well do you know TFL?</span><br/>您对TFL的了解程度如何？ </p>
+				<ul id="main1"></ul>
+				<a href="javascript:;" id="nextPage"><span class="en">NEXT PAGE</span><br/><span>下一页</span></a>
+			</div>
+		</div>
+		<div id="page2">
+			<div class="content">
+				<P><span class="en">Please complete the following information</span><br/>请完成以下资讯</P>
+				<ul id="main2"></ul>
+				<a href="javascript:;" id="aBtn"><span class="en">Submit</span><br/><span>提交</span></a>
+			</div>
+		</div>
+
+		<div id="popWrap">
+			<a href="javascript:;" id="cloaseBtn">X</a>
+			<div id="popMain">
+				<p id="ts_1"><span class="en">Thanks a lot for your participation</span><br/>谢谢！提交成功</p>
+				<p id="ts_2"><span class="en">Please answer all questions</span><br/>请回答所有问题</p>
+				<p id="ts_2_1"><span class="en">Please answer all questions</span><br/>请回答所有问题</p>
+				<p id="ts_2_2"><span class="en">Please complete the information</span><br/>请填写完整信息</p>
+				<div id="ts_3">
+					<p id="ts_3_0"></p>
+				</div>
+			</div>
+			<a href="javascript:;" id="okBtn"><span class="en">OK</span></a>
+		</div>
+	</body>
+</html>
