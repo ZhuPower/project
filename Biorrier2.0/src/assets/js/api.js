@@ -52,6 +52,10 @@ function getSign(obj){
 export function common(obj,str,pattern){
     let url = apiUrl + str 
     let params = new URLSearchParams()
+
+    let strObj = decodeURIComponent(JSON.stringify(obj))
+
+    obj = JSON.parse(strObj);
     
     if(sessionStorage.path == '/admin/login'){
         if(eval(sessionStorage.adminLogin)){
