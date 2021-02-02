@@ -1,0 +1,76 @@
+@font-face {  
+    font-family: 'Faktum-Regular'; 
+    src: url('Faktum-Regular.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'PingFangSC-Regular'; 
+    src: url('PingFangSC-Regular.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+@font-face {  
+    font-family: 'PingFangSC-Bold'; 
+    src: url('PingFangSC-Bold.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'PingFangSC-Light'; 
+    src: url('PingFangSC-Light.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'PingFangSC-Medium'; 
+    src: url('PingFangSC-Medium.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'PingFangSC-Semibold'; 
+    src: url('PingFangSC-Semibold.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'Faktum-Bold'; 
+    src: url('Faktum-Bold.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'Faktum-ExtraLight'; 
+    src: url('Faktum-ExtraLight.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'Faktum-Light'; 
+    src: url('Faktum-Light.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+@font-face {  
+    font-family: 'Faktum-Medium'; 
+    src: url('Faktum-Medium.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+
+@font-face {  
+    font-family: 'Faktum-Thin'; 
+    src: url('Faktum-Thin.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
