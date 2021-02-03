@@ -103,17 +103,92 @@
         <span>2 <i></i></span>
       </div>
     </div>
-    <div class="productBox"></div>
+    <div class="productBox">
+      <div class="h1">产品</div>
+      <div class="h2">Grotech<br />增长科技系统是什么?</div>
+      <div class="productList">
+        <div class="list-box list-box-1">
+          <div class="imgBox">
+            <img src="../assets/img2.png">
+          </div>
+          <div class="listBox">
+            <div class="title">
+              <div class="title-1">GDB</div>
+              <div class="title-2">Growth Data Bank<br />独树一帜的美至科技数据银行</div>
+            </div>
+            <div class="productInfo">集合海量的社交网络、智能手机、电商平台<br />、线下购物等数据, 结合行业特征, <br />利用AI算法搭建多种商业策略模型。</div>
+          </div>
+        </div>
+        <div class="list-box list-box-2">
+          <div class="imgBox">
+            <img src="../assets/img3.png">
+          </div>
+          <div class="listBox">
+            <div class="title">
+              <div class="title-1">GroPilot</div>
+              <div class="title-2">晶球创新的商业智能<br />决策系统</div>
+            </div>
+            <div class="productInfo">美至利用大数据+AI技术, <br />自研开发的商业增长智能系统。无论是<br />行业分析, 品类策略, 还是渠道战术, <br />竞争分析,
+              <br />GroPilot水晶球让决策者利用先进技术洞察先机。
+            </div>
+          </div>
+        </div>
+        <div class="list-box list-box-3">
+          <div class="imgBox">
+            <img src="../assets/img4.png">
+          </div>
+          <div class="listBox">
+            <div class="title">
+              <div class="title-1">AdBot</div>
+              <div class="title-2">精益化消费者资<br />产管理系统</div>
+            </div>
+            <div class="productInfo">精益化消费者资产管理系统:使用前沿分<br />析技术, 将消费者聚类分组, <br />实现“千人千面”的消费者价值维护。提升<br />消费者忠诚度,
+              从老客驱动业绩增长。<br />量化广告投放系统:美至将海量消费者行<br />为数据, <br />利用数据科学建立量化策略模型, <br />大幅度提高广告回报效果。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="innovativeService">
+      <div class="h1">创新服务与领域<br />专家的结合</div>
+      <div class="p1">
+        美至科技会考虑行业、消费者、企业资源等诸多因素，量体裁衣，提供个性化解决方案。美至的服务流程分为6个步骤：深入调研-数据洞察-制定方案-实施执行-方案复盘-持续改进。美至服务团队会由客户经理、商业分析师、数据科学家、领域专家组成，利用科学的a/b测试方法，为企业创新与增长持续服务。
+      </div>
+      <div class="bottomBox">
+        <span class="cur">1 <i></i></span>
+        <span>2 <i></i></span>
+      </div>
+    </div>
+    <div class="brand">
+      <div class="title">我们服务的品牌</div>
+      <div class="tabH">
+        <div class="list-h list-h-1 cur">消费零售</div>
+        <div class="list-h list-h-2">TMT科技/媒体/通信</div>
+        <div class="list-h list-h-3">投资机构</div>
+      </div>
+      <div class="tabC">
+        <div class="list-c">1</div>
+        <div class="list-c">2</div>
+        <div class="list-c">3</div>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="h1">免费获取我们与众不同的<br />商业洞察报告</div>
+      <div class="p1">随时联系我们的咨询团队，我们会根据您所在行业，提供一份见解独到的洞察报告。<br />请微信搜索gro-tech（代用名）关注我们的微信公众号，或者发送电邮至</div>
+      <a href="javascript:;" class="mailbox">hello@gro-tech.com</a>
+    </div>
+    <foot />
   </div>
 </template>
 
 <script>
 
   import topNav from "../components/topNav";
+  import foot from "../components/foot";
   export default {
     name: 'Home',
     components: {
-      topNav
+      topNav,
+      foot
     },
     created() { },
     computed: {},
@@ -493,6 +568,256 @@
   }
 
   .productBox {
-    margin:165px 80px 0px 80px
+    margin: 165px 80px 0px 80px;
+    min-height: 994px;
+  }
+
+  .productBox>.h1 {
+    color: #65ecaa;
+    font-family: "PingFangSC-Regular";
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  .productBox>.h2 {
+    color: #383a50;
+    font-family: "Faktum-Regular";
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 45px;
+    margin-top: 29px;
+  }
+
+  .productBox .productList {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 144px;
+  }
+
+  .productBox .productList .listBox:hover .productInfo,
+  .productBox .productList .imgBox:hover+.listBox>.productInfo {
+    display: block;
+  }
+
+  .productBox .productList .list-box-1 {
+    width: 396px;
+  }
+
+  .productBox .productList .list-box-2 {
+    width: 375px;
+  }
+
+  .productBox .productList .list-box-3 {
+    width: 373px;
+  }
+
+  .productBox .productList .list-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .productBox .productList .imgBox {
+    /* width: 100%; */
+    /* text-align: center; */
+    margin: 0px auto;
+    height: 223px;
+  }
+
+  .productBox .productList .listBox {
+    margin-top: 92px;
+  }
+
+  .productBox .productList .list-box-1 .listBox {
+    width: 286px;
+  }
+
+  .productBox .productList .list-box-2 .listBox {
+    width: 265px;
+  }
+
+  .productBox .productList .list-box-3 .listBox {
+    width: 272px;
+  }
+
+  .productBox .productList .title-1 {
+    opacity: 0.8;
+    color: #383a50;
+    font-family: "Faktum-Regular";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+
+  .productBox .productList .title-2 {
+    opacity: 0.6;
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 27px;
+    margin-top: 8px;
+  }
+
+  .productBox .productList .productInfo {
+    opacity: 0.6;
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0.00825px;
+    margin-top: 22px;
+    display: none;
+  }
+
+  .innovativeService {
+    margin: 35px 80px 0px 80px;
+    height: 672px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .innovativeService .h1 {
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 46px;
+    margin-top: 140px;
+  }
+
+  .innovativeService .p1 {
+    opacity: 0.6;
+    width: 1051px;
+    height: 126px;
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 42px;
+    margin-top: 58px;
+  }
+
+  .innovativeService .bottomBox {
+    position: absolute;
+    bottom: 79px;
+    text-align: center;
+    display: flex;
+    left: 50%;
+    margin-left: -25px;
+  }
+
+  .innovativeService .bottomBox span {
+    opacity: 0.35;
+    width: 11px;
+    height: 22px;
+    color: #383a50;
+    font-family: "PingFangSC-Medium";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.6px;
+    display: block;
+    margin-right: 28px;
+    position: relative;
+  }
+
+  .innovativeService .bottomBox span i {
+    opacity: 0.8;
+    width: 11px;
+    height: 2px;
+    background: #383a50;
+  }
+
+  .innovativeService .bottomBox span.cur i {
+    display: block;
+  }
+
+  .innovativeService .bottomBox span:last-child {
+    margin-right: 0px;
+  }
+
+  .innovativeService .bottomBox span.cur {
+    opacity: 0.8;
+  }
+
+  .brand {
+    margin: 132px 80px 0px 80px;
+    height: 335px;
+  }
+
+  .brand .title {
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 46px;
+  }
+
+  .brand .tabH {
+    font-family: "PingFangSC-Regular";
+    display: flex;
+    height: 25px;
+    align-items: center;
+    margin-top: 43px;
+  }
+
+  .brand .tabH .list-h {
+    opacity: 0.4;
+    color: #383a50;
+    font-size: 17px;
+    font-weight: 400;
+    height: 25px;
+  }
+
+  .brand .tabH .list-h-1 {
+    margin-right: 41px;
+  }
+
+  .brand .tabH .list-h-2 {
+    margin-right: 68px;
+  }
+
+  .brand .tabH .list-h.cur {
+    opacity: 0.8;
+    border-bottom: 1px solid #65ecaa;
+  }
+
+  .contact {
+    margin: 216px 80px 0px 80px;
+    height: 312px;
+    margin-bottom: 216px;
+  }
+
+  .contact .h1 {
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 46px;
+  }
+
+  .contact .p1 {
+    opacity: 0.6;
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 42px;
+    margin-top: 42px;
+  }
+
+  .contact .mailbox {
+    color: #7ccca5;
+    font-family: "Faktum-Regular";
+    font-size: 42px;
+    font-weight: 400;
+    height: 44px;
+    line-height: 44px;
+    display: inline-block;
+    border-bottom: 2px solid #7ccca5;
+    text-decoration: none;
+    margin-top: 41px;
   }
 </style>
