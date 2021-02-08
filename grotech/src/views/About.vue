@@ -210,6 +210,7 @@
     left: 42px;
     bottom: -171px;
     transition: all .6s;
+    -webkit-transition: all .6s;
   }
 
   .VisionValue>div .h1 {
@@ -223,6 +224,7 @@
   .VisionValue>div .bottom:hover {
     bottom: 0;
     transition: all .6s;
+    -webkit-transition: all .6s;
   }
 
   .VisionValue>div .h2 {
@@ -292,6 +294,7 @@
     float: left;
     position: relative;
     transition: width .6s;
+    -webkit-transition: width .6s;
     overflow: hidden;
   }
 
@@ -303,6 +306,7 @@
   .temBox .temImg.cur {
     width: 40%;
     transition: width .6s;
+    -webkit-transition: width .6s;
     z-index: 9;
   }
 
@@ -312,11 +316,13 @@
     margin-left: 80px;
     opacity: 0;
     transition: all .6s;
+    -webkit-transition: all .6s;
   }
 
   .temBox .temImg.cur .temInfo {
     opacity: 1;
     transition: all .6s;
+    -webkit-transition: all .6s;
   }
 
   .temBox .p1 {

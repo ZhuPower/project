@@ -19,6 +19,10 @@
     margin: 0;
   }
 
+  li {
+    list-style: none;
+  }
+
   @keyframes myfirst {
     from {
       margin-top: 5px;
