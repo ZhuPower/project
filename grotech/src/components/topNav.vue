@@ -19,24 +19,17 @@
       </div>
       <div class="menuList">
         <ul>
-          <li>
-            <div class="menu-box">
-              <div class="menuTxt" data-text="服务">服务</div>
+          <li v-for="(item,index) in menuList" @mouseleave="leave(index)">
+            <div class="menu-box" :class="{'cur':item.show}" @click="showChild(index)">
+              <div class="menuTxt" :data-text="item.name">{{item.name}}</div>
             </div>
-          </li>
-          <li>
-            <div class="menu-box">
-              <div class="menuTxt" data-text="产品">产品</div>
-            </div>
-          </li>
-          <li>
-            <div class="menu-box">
-              <div class="menuTxt" data-text="了解美至">了解美至</div>
-            </div>
-          </li>
-          <li>
-            <div class="menu-box">
-              <div class="menuTxt" data-text="加入我们">加入我们</div>
+            <div class="childList" v-if="item.child && item.child.length>0">
+              <div class="child-box" v-for="(item2,index2) in item.child">
+                <div class="menuTxt">
+                  <p v-html="item2.html"></p>
+                  <p v-html="item2.html"></p>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -57,11 +50,66 @@
       },
       closeMenu() {
         this.show = false
+      },
+      showChild(n) {
+        let obj = this.menuList[n];
+        if (obj.show == undefined) {
+          this.show = false
+          this.$router.push(obj.url)
+        } else {
+          obj.show = true
+        }
+      },
+      leave(n) {
+        let obj = this.menuList[n];
+        console.log(obj)
+        if (obj.show != undefined) {
+          obj.show = false
+        }
       }
     },
     data() {
       return {
-        show: false
+        show: false,
+        menuList: [
+          {
+            name: '服务',
+            url: '',
+            child: [
+              {
+                html: 'GaaS(Growth-as-a-Service)<br />聚焦大消费行业的一站式增长服务'
+              },
+              {
+                html: '大数据驱动，为投资机构<br />量身定制专属服务'
+              }
+            ],
+            show: false
+          },
+          {
+            name: '产品',
+            url: '',
+            child: [
+              {
+                html: 'GDB（Growth Data Bank）<br />独树一帜的美至科技<br />数据银行'
+              },
+              {
+                html: 'AdBot<br />数据科学驱动的<br />增长工具'
+              },
+              {
+                html: 'GroPilot <br />水晶球创新的商业<br />智能决策系统'
+              }
+            ],
+            show: false
+          },
+          {
+            name: '了解美至',
+            url: '/about'
+          },
+          {
+            name: '加入我们',
+            url: '/recruitment'
+          }
+        ]
       }
     }
   }
@@ -69,6 +117,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .navMain {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    background: #fff;
+  }
+
   .topNav {
     height: 64px;
     margin: 0px 80px;
@@ -122,12 +179,16 @@
     font-family: "PingFangSC-Medium";
     font-size: 42px;
     font-weight: 400;
-    width: 40.97%;
+    width: 40.972%;
     position: absolute;
     right: 0;
     top: -100%;
     transition: all .6s .6s;
     -webkit-transition: all .6s .6s;
+  }
+
+  .menuList li {
+    position: relative;
   }
 
   .menuList .menu-box {
@@ -167,5 +228,59 @@
     top: 110px;
     transition: all .6s .6s;
     -webkit-transition: all .6s .6s;
+  }
+
+  .menuList .childList {
+    width: 37.288%;
+    position: absolute;
+    top: 0;
+    right: 80px;
+    opacity: 0.6;
+    color: rgba(0, 0, 0, 0.7);
+    font-family: "Faktum-Regular";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    z-index: -1;
+    opacity: 0;
+    transition: all .6s;
+    -webkit-transition: all .6s;
+  }
+
+  .menuList .menu-box.cur+.childList {
+    z-index: 2;
+    opacity: 1;
+    transition: all .6s;
+    -webkit-transition: all .6s;
+  }
+
+  .menuList .childList .child-box {
+    height: 63px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .menuList .childList .child-box .menuTxt {
+    padding-right: 6px;
+    transform: translate(0px, -63px);
+    -webkit-transform: translate(0px, -63px);
+    transition: all .6s;
+    -webkit-transition: all .6s;
+    position: relative;
+  }
+
+  .menuList .childList .child-box:hover .menuTxt {
+    transform: translate(6px, 0px);
+    -webkit-transform: translate(6px, 0px);
+    transition: all .6s;
+    -webkit-transition: all .6s;
+  }
+
+  .menuList .childList .child-box .menuTxt p:last-child {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 63px;
   }
 </style>

@@ -71,20 +71,17 @@
 
       </div>
     </div>
-    <foot />
   </div>
 </template>
 
 <script>
 
   import topNav from "../components/topNav";
-  import foot from "../components/foot";
   import { isElementNotInViewport } from "@/utils/index.js";
   export default {
     name: 'Recruitment',
     components: {
-      topNav,
-      foot
+      topNav
     },
     created() { },
     computed: {},

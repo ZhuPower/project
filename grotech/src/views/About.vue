@@ -61,19 +61,16 @@
         </div>
       </div>
     </div>
-    <foot />
   </div>
 </template>
 
 <script>
 
   import topNav from "../components/topNav";
-  import foot from "../components/foot";
   export default {
     name: 'About',
     components: {
-      topNav,
-      foot
+      topNav
     },
     created() { },
     computed: {},

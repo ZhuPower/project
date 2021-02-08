@@ -1,12 +1,31 @@
 <template>
   <div id="app">
-    <div style="font-size: 12px;">
+    <div style="font-size: 12px;padding-top: 64px;">
       <router-view />
+      <foot />
     </div>
 
   </div>
 </template>
+<script>
+  import foot from "./components/foot";
+  export default {
+    name: 'About',
+    components: {
+      foot
+    },
+    created() { },
+    computed: {},
+    methods: {
+    },
+    data() {
+      return {
 
+      }
+    },
+    watch: {}
+  }
+</script>
 <style>
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,6 +40,13 @@
 
   li {
     list-style: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    background: #fff;
+    overflow: hidden;
   }
 
   @keyframes myfirst {

@@ -11,184 +11,183 @@
         <p class="p1">美至倡导的幸福力即更好地满足消费者需求，资源可持续利用，并坚守商业道德。</p>
       </div>
     </div>
-    <div class="homeVideo">
-      <img src="../assets/img1.png"
-        style="width:1440px;position: relative;left: 50%; margin-left: -720px; height: 816px;">
-      <div class="videoTxt">
-        <p class="p1">科技推动消费品创新与增长</p>
-        <p class="p2">Leveraging Technology for Innovation and Growth</p>
-      </div>
-    </div>
-    <div class="proMain">
-      <div class="pro-box pro-box-1">
-        <div class="left">
-          <div class="left-box">如何创造有“幸福力”<br />的消费品获得持续增长</div>
+    <div class="content">
+      <div class="homeVideo">
+        <img src="../assets/img1.png"
+          style="width:1440px;position: relative;left: 50%; margin-left: -720px; height: 816px;">
+        <div class="videoTxt">
+          <p class="p1">科技推动消费品创新与增长</p>
+          <p class="p2">Leveraging Technology for Innovation and Growth</p>
         </div>
-        <div class="right">
-          <div>
-            <div class="list list-1">
-              <h6>01</h6>
-              <p>利用大数据规划<br />企业竞争战略</p>
-            </div>
-            <div class="list list-1">
-              <h6>02</h6>
-              <p>以消费者为中心，<br />以产品创新驱动增长</p>
-            </div>
-            <div class="list list-1">
-              <h6>03</h6>
-              <p>整合全渠道竞争策略，<br />广告投放品效合一</p>
-            </div>
-            <div class="list list-1">
-              <h6>04</h6>
-              <p>精细化管理消费者资产，<br />提高客户生命价值</p>
+      </div>
+      <div class="proMain">
+        <div class="pro-box pro-box-1">
+          <div class="left">
+            <div class="left-box">如何创造有“幸福力”<br />的消费品获得持续增长</div>
+          </div>
+          <div class="right">
+            <div>
+              <div class="list list-1">
+                <h6>01</h6>
+                <p>利用大数据规划<br />企业竞争战略</p>
+              </div>
+              <div class="list list-1">
+                <h6>02</h6>
+                <p>以消费者为中心，<br />以产品创新驱动增长</p>
+              </div>
+              <div class="list list-1">
+                <h6>03</h6>
+                <p>整合全渠道竞争策略，<br />广告投放品效合一</p>
+              </div>
+              <div class="list list-1">
+                <h6>04</h6>
+                <p>精细化管理消费者资产，<br />提高客户生命价值</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="pro-box pro-box-2">
-        <div class="left">
-          <div class="left-box">创新的GaaS<br />增长即服务</div>
-          <p>Growth-as-a-Service</p>
+        <div class="pro-box pro-box-2">
+          <div class="left">
+            <div class="left-box">创新的GaaS<br />增长即服务</div>
+            <p>Growth-as-a-Service</p>
+          </div>
+          <div class="right">
+            <p class="right-p1">
+              我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。
+            </p>
+            <p class="right-p2">
+              美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>
+          </div>
         </div>
-        <div class="right">
-          <p class="right-p1">
-            我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。
-          </p>
-          <p class="right-p2">
-            美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>
-        </div>
-      </div>
-      <div class="pro-box pro-box-3">
-        <div class="left">
-          <div class="left-box">美至的<br />核心能力</div>
-        </div>
-        <div class="right">
-          <p class="right-p3">
-            自研的增长科技Grotech®系统，拥有亿级消费者及商品交易数据，应用前沿AI算法，制定企业发展策略。
-          </p>
-          <p class="right-p4">
-            来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，使命必达。</p>
+        <div class="pro-box pro-box-3">
+          <div class="left">
+            <div class="left-box">美至的<br />核心能力</div>
+          </div>
+          <div class="right">
+            <p class="right-p3">
+              自研的增长科技Grotech®系统，拥有亿级消费者及商品交易数据，应用前沿AI算法，制定企业发展策略。
+            </p>
+            <p class="right-p4">
+              来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，使命必达。</p>
 
-          <p class="right-p5">
-            拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>
+            <p class="right-p5">
+              拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="servicePhilosophy">
-      <div class="h1">服务理念</div>
-      <div class="h2">We begin with the end in mind put consumers first and value sustainability</div>
-      <div class="h3">以终为始，以消费者为中心，以可持续为价值基石。</div>
-    </div>
-    <div class="serviceBox">
-      <div class="item-box">
-        <div class="item-left"></div>
-        <div class="item-right">
-          <div class="h1">服务</div>
-          <div class="h2">大数据驱动，为投资机构量身<br />定制专属服务</div>
-          <div class="con">
-            <div class="c1">投后管理服务</div>
-            <div class="c2">对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。</div>
-          </div>
+      <div class="servicePhilosophy">
+        <div class="h1">服务理念</div>
+        <div class="h2">We begin with the end in mind put consumers first and value sustainability</div>
+        <div class="h3">以终为始，以消费者为中心，以可持续为价值基石。</div>
+      </div>
+      <div class="serviceBox">
+        <div class="item-box">
+          <div class="item-left"></div>
+          <div class="item-right">
+            <div class="h1">服务</div>
+            <div class="h2">大数据驱动，为投资机构量身<br />定制专属服务</div>
+            <div class="con">
+              <div class="c1">投后管理服务</div>
+              <div class="c2">对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。</div>
+            </div>
 
 
-        </div>
-      </div>
-      <div class="rightBox">
-        <span class="cur"></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="bottomBox">
-        <span class="cur">1 <i></i></span>
-        <span>2 <i></i></span>
-      </div>
-    </div>
-    <div class="productBox">
-      <div class="h1">产品</div>
-      <div class="h2">Grotech<br />增长科技系统是什么?</div>
-      <div class="productList">
-        <div class="list-box list-box-1">
-          <div class="imgBox">
-            <img src="../assets/img2.png">
-          </div>
-          <div class="listBox">
-            <div class="title">
-              <div class="title-1">GDB</div>
-              <div class="title-2">Growth Data Bank<br />独树一帜的美至科技数据银行</div>
-            </div>
-            <div class="productInfo">集合海量的社交网络、智能手机、电商平台<br />、线下购物等数据, 结合行业特征, <br />利用AI算法搭建多种商业策略模型。</div>
           </div>
         </div>
-        <div class="list-box list-box-2">
-          <div class="imgBox">
-            <img src="../assets/img3.png">
-          </div>
-          <div class="listBox">
-            <div class="title">
-              <div class="title-1">GroPilot</div>
-              <div class="title-2">晶球创新的商业智能<br />决策系统</div>
+        <div class="rightBox">
+          <span class="cur"></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="bottomBox">
+          <span class="cur">1 <i></i></span>
+          <span>2 <i></i></span>
+        </div>
+      </div>
+      <div class="productBox">
+        <div class="h1">产品</div>
+        <div class="h2">Grotech<br />增长科技系统是什么?</div>
+        <div class="productList">
+          <div class="list-box list-box-1">
+            <div class="imgBox">
+              <img src="../assets/img2.png">
             </div>
-            <div class="productInfo">美至利用大数据+AI技术, <br />自研开发的商业增长智能系统。无论是<br />行业分析, 品类策略, 还是渠道战术, <br />竞争分析,
-              <br />GroPilot水晶球让决策者利用先进技术洞察先机。
+            <div class="listBox">
+              <div class="title">
+                <div class="title-1">GDB</div>
+                <div class="title-2">Growth Data Bank<br />独树一帜的美至科技数据银行</div>
+              </div>
+              <div class="productInfo">集合海量的社交网络、智能手机、电商平台<br />、线下购物等数据, 结合行业特征, <br />利用AI算法搭建多种商业策略模型。</div>
+            </div>
+          </div>
+          <div class="list-box list-box-2">
+            <div class="imgBox">
+              <img src="../assets/img3.png">
+            </div>
+            <div class="listBox">
+              <div class="title">
+                <div class="title-1">GroPilot</div>
+                <div class="title-2">晶球创新的商业智能<br />决策系统</div>
+              </div>
+              <div class="productInfo">美至利用大数据+AI技术, <br />自研开发的商业增长智能系统。无论是<br />行业分析, 品类策略, 还是渠道战术, <br />竞争分析,
+                <br />GroPilot水晶球让决策者利用先进技术洞察先机。
+              </div>
+            </div>
+          </div>
+          <div class="list-box list-box-3">
+            <div class="imgBox">
+              <img src="../assets/img4.png">
+            </div>
+            <div class="listBox">
+              <div class="title">
+                <div class="title-1">AdBot</div>
+                <div class="title-2">精益化消费者资<br />产管理系统</div>
+              </div>
+              <div class="productInfo">精益化消费者资产管理系统:使用前沿分<br />析技术, 将消费者聚类分组, <br />实现“千人千面”的消费者价值维护。提升<br />消费者忠诚度,
+                从老客驱动业绩增长。<br />量化广告投放系统:美至将海量消费者行<br />为数据, <br />利用数据科学建立量化策略模型, <br />大幅度提高广告回报效果。</div>
             </div>
           </div>
         </div>
-        <div class="list-box list-box-3">
-          <div class="imgBox">
-            <img src="../assets/img4.png">
-          </div>
-          <div class="listBox">
-            <div class="title">
-              <div class="title-1">AdBot</div>
-              <div class="title-2">精益化消费者资<br />产管理系统</div>
-            </div>
-            <div class="productInfo">精益化消费者资产管理系统:使用前沿分<br />析技术, 将消费者聚类分组, <br />实现“千人千面”的消费者价值维护。提升<br />消费者忠诚度,
-              从老客驱动业绩增长。<br />量化广告投放系统:美至将海量消费者行<br />为数据, <br />利用数据科学建立量化策略模型, <br />大幅度提高广告回报效果。</div>
-          </div>
+      </div>
+      <div class="innovativeService">
+        <div class="h1">创新服务与领域<br />专家的结合</div>
+        <div class="p1">
+          美至科技会考虑行业、消费者、企业资源等诸多因素，量体裁衣，提供个性化解决方案。美至的服务流程分为6个步骤：深入调研-数据洞察-制定方案-实施执行-方案复盘-持续改进。美至服务团队会由客户经理、商业分析师、数据科学家、领域专家组成，利用科学的a/b测试方法，为企业创新与增长持续服务。
+        </div>
+        <div class="bottomBox">
+          <span class="cur">1 <i></i></span>
+          <span>2 <i></i></span>
         </div>
       </div>
-    </div>
-    <div class="innovativeService">
-      <div class="h1">创新服务与领域<br />专家的结合</div>
-      <div class="p1">
-        美至科技会考虑行业、消费者、企业资源等诸多因素，量体裁衣，提供个性化解决方案。美至的服务流程分为6个步骤：深入调研-数据洞察-制定方案-实施执行-方案复盘-持续改进。美至服务团队会由客户经理、商业分析师、数据科学家、领域专家组成，利用科学的a/b测试方法，为企业创新与增长持续服务。
+      <div class="brand">
+        <div class="title">我们服务的品牌</div>
+        <div class="tabH">
+          <div class="list-h list-h-1 cur">消费零售</div>
+          <div class="list-h list-h-2">TMT科技/媒体/通信</div>
+          <div class="list-h list-h-3">投资机构</div>
+        </div>
+        <div class="tabC">
+          <div class="list-c">1</div>
+          <div class="list-c">2</div>
+          <div class="list-c">3</div>
+        </div>
       </div>
-      <div class="bottomBox">
-        <span class="cur">1 <i></i></span>
-        <span>2 <i></i></span>
-      </div>
-    </div>
-    <div class="brand">
-      <div class="title">我们服务的品牌</div>
-      <div class="tabH">
-        <div class="list-h list-h-1 cur">消费零售</div>
-        <div class="list-h list-h-2">TMT科技/媒体/通信</div>
-        <div class="list-h list-h-3">投资机构</div>
-      </div>
-      <div class="tabC">
-        <div class="list-c">1</div>
-        <div class="list-c">2</div>
-        <div class="list-c">3</div>
+      <div class="contact">
+        <div class="h1">免费获取我们与众不同的<br />商业洞察报告</div>
+        <div class="p1">随时联系我们的咨询团队，我们会根据您所在行业，提供一份见解独到的洞察报告。<br />请微信搜索gro-tech（代用名）关注我们的微信公众号，或者发送电邮至</div>
+        <a href="javascript:;" class="mailbox">hello@gro-tech.com</a>
       </div>
     </div>
-    <div class="contact">
-      <div class="h1">免费获取我们与众不同的<br />商业洞察报告</div>
-      <div class="p1">随时联系我们的咨询团队，我们会根据您所在行业，提供一份见解独到的洞察报告。<br />请微信搜索gro-tech（代用名）关注我们的微信公众号，或者发送电邮至</div>
-      <a href="javascript:;" class="mailbox">hello@gro-tech.com</a>
-    </div>
-    <foot />
   </div>
 </template>
 
 <script>
 
   import topNav from "../components/topNav";
-  import foot from "../components/foot";
   export default {
     name: 'Home',
     components: {
-      topNav,
-      foot
+      topNav
     },
     created() { },
     computed: {},
@@ -204,9 +203,13 @@
 <style scoped>
   .Introduction {
     height: 737px;
-    margin: 0px 80px;
-    position: relative;
+    position: fixed;
     overflow: hidden;
+    box-sizing: border-box;
+    top: 64px;
+    left: 0px;
+    width: 100%;
+    padding: 0px 64px;
     box-sizing: border-box;
   }
 
@@ -259,6 +262,9 @@
     font-size: 21px;
     font-weight: 400;
     margin-top: 75px;
+  }
+  .content{
+    margin-top: 737px;
   }
 
   .homeVideo {
