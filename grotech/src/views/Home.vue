@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <topNav />
-    <div class="Introduction">
+    <div class="Introduction" ref="Introduction">
       <div class="left">
         <p class="p2">Keep Growing</p>
       </div>
@@ -21,9 +21,13 @@
         </div>
       </div>
       <div class="proMain">
-        <div class="pro-box pro-box-1">
+        <div class="pro-box pro-box-1" :class="{'cur':title[0].show}" ref="pro-box-1">
           <div class="left">
-            <div class="left-box">如何创造有“幸福力”<br />的消费品获得持续增长</div>
+            <div class="left-box">
+              <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
+                :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+              </div>
+            </div>
           </div>
           <div class="right">
             <div>
@@ -31,25 +35,28 @@
                 <h6>01</h6>
                 <p>利用大数据规划<br />企业竞争战略</p>
               </div>
-              <div class="list list-1">
+              <div class="list list-2">
                 <h6>02</h6>
                 <p>以消费者为中心，<br />以产品创新驱动增长</p>
               </div>
-              <div class="list list-1">
+              <div class="list list-3">
                 <h6>03</h6>
                 <p>整合全渠道竞争策略，<br />广告投放品效合一</p>
               </div>
-              <div class="list list-1">
+              <div class="list list-4">
                 <h6>04</h6>
                 <p>精细化管理消费者资产，<br />提高客户生命价值</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="pro-box pro-box-2">
+        <div class="pro-box pro-box-2" :class="{'cur':title[1].show}" ref="pro-box-2">
           <div class="left">
-            <div class="left-box">创新的GaaS<br />增长即服务</div>
-            <p>Growth-as-a-Service</p>
+            <div class="left-box">
+              <div v-for="(item,index) in title[1].txt" class="title" :class="['title_'+index]"
+                :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+              </div>
+            </div>
           </div>
           <div class="right">
             <p class="right-p1">
@@ -59,9 +66,13 @@
               美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>
           </div>
         </div>
-        <div class="pro-box pro-box-3">
+        <div class="pro-box pro-box-3" :class="{'cur':title[2].show}" ref="pro-box-3">
           <div class="left">
-            <div class="left-box">美至的<br />核心能力</div>
+            <div class="left-box">
+              <div v-for="(item,index) in title[2].txt" class="title" :class="['title_'+index]"
+                :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+              </div>
+            </div>
           </div>
           <div class="right">
             <p class="right-p3">
@@ -167,9 +178,25 @@
           <div class="list-h list-h-3">投资机构</div>
         </div>
         <div class="tabC">
-          <div class="list-c">1</div>
-          <div class="list-c">2</div>
-          <div class="list-c">3</div>
+          <div class="list-c" @mouseover="mouseOver" @mouseleave="mouseLeave">
+            <swiper ref="mySwiper" :options="swiperOptions">
+              <swiper-slide>
+                <img src="../assets/l1.png">
+              </swiper-slide>
+              <swiper-slide>
+                <img src="../assets/l2.png">
+              </swiper-slide>
+              <swiper-slide>
+                <img src="../assets/l3.png">
+              </swiper-slide>
+              <swiper-slide>
+                <img src="../assets/l4.png">
+              </swiper-slide>
+              <swiper-slide>
+                <img src="../assets/l5.png">
+              </swiper-slide>
+            </swiper>
+          </div>
         </div>
       </div>
       <div class="contact">
@@ -182,7 +209,7 @@
 </template>
 
 <script>
-
+  import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
   export default {
     name: 'Home',
@@ -190,14 +217,73 @@
       topNav
     },
     created() { },
-    computed: {},
-    methods: {},
-    data() {
-      return {
-
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.swiper
       }
     },
-    watch: {}
+    methods: {
+      mouseOver() {
+        this.swiper.stopAutoplay();
+      },
+      mouseLeave() {
+        this.swiper.startAutoplay();
+      },
+      handleScroll() {
+        let that = this
+        doSome('pro-box-1', 0)
+        doSome('pro-box-2', 1)
+        doSome('pro-box-3', 2)
+
+        function doSome(str, n) {
+          let _h = document.documentElement.clientHeight
+          let _h2 = that.$refs[str].offsetHeight
+          let _h3 = that.$refs.Introduction.offsetHeight
+          //获取滚动距顶部的距离，显示
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          let _top = that.$refs[str].offsetTop + _h3
+          let _top2 = that.$refs[str].offsetTop + _h3 + _h2
+
+          if (scrollTop >= _top && scrollTop < _top2) {
+            that.title[n].show = true;
+          }
+
+          if (isElementNotInViewport(that.$refs[str])) {
+            that.title[n].show = false;
+          }
+        }
+      }
+    },
+    data() {
+      return {
+        title: [
+          {
+            txt: ['如何创造有“幸福力”', '的消费品获得持续增长'],
+            show: false
+          },
+          {
+            txt: ['创新的GaaS', '增长即服务', 'Growth-as-a-Service'],
+            show: false
+          },
+          {
+            txt: ['美至的', '核心能力'],
+            show: false
+          }
+        ],
+        swiperOptions: {
+          slidesPerView: 5,
+          autoplay: 1500,//可选选项，自动滑动
+          loop: true,//可选选项，开启循环
+        }
+      }
+    },
+    watch: {},
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll); //离开页面需要移除这个监听的事件
+    }
   }
 </script>
 <style scoped>
@@ -263,7 +349,8 @@
     font-weight: 400;
     margin-top: 75px;
   }
-  .content{
+
+  .content {
     margin-top: 737px;
   }
 
@@ -309,6 +396,7 @@
     border-top: 1px solid #979797;
     display: flex;
     overflow: hidden;
+    position: relative;
   }
 
   .proMain .pro-box-1 {
@@ -324,6 +412,24 @@
     min-height: 584px;
   }
 
+  .proMain .pro-box-2 .right,
+  .proMain .pro-box-3 .right {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    right: 0;
+  }
+
+  .proMain .pro-box-2.cur .right,
+  .proMain .pro-box-3.cur .right {
+    top: 0%;
+    opacity: 1;
+    transition: all .6s .4s;
+    -moz-transition: all .6s .4s;
+    -webkit-transition: all .6s .4s;
+    -o-transition: all .6s .4s;
+  }
+
   .proMain .pro-box .left {
     color: #383a50;
     font-family: "PingFangSC-Regular";
@@ -334,7 +440,7 @@
     width: 42.96875%;
   }
 
-  .proMain .pro-box .left p {
+  .proMain .pro-box .left .title_2 {
     opacity: 0.25;
     color: #383a50;
     font-family: "Faktum-Regular";
@@ -398,6 +504,133 @@
 
   .proMain .pro-box-3 .right {
     margin-top: 79px;
+  }
+
+  .proMain .left .left-box .title {
+    width: 0%;
+    overflow: hidden;
+    height: 56.67px;
+  }
+
+  .proMain .pro-box.cur .left .left-box .title {
+    transition-property: width;
+    -moz-transition-property: width;
+    /* Firefox 4 */
+    -webkit-transition-property: width;
+    /* Safari 和 Chrome */
+    -o-transition-property: width;
+    /* Opera */
+
+    transition-duration: .6s;
+    -moz-transition-duration: .6s;
+    /* Firefox 4 */
+    -webkit-transition-duration: .6s;
+    /* Safari 和 Chrome */
+    -o-transition-duration: .6s;
+    /* Opera */
+    width: 100%;
+  }
+
+  .proMain .pro-box-1 .list {
+    height: 126.67px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proMain .pro-box-1 .list h6 {
+    opacity: 0;
+  }
+
+  .proMain .pro-box-1.cur .list h6 {
+    transition-property: opacity;
+    -moz-transition-property: opacity;
+    /* Firefox 4 */
+    -webkit-transition-property: opacity;
+    /* Safari 和 Chrome */
+    -o-transition-property: opacity;
+    /* Opera */
+
+    transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    /* Firefox 4 */
+    -webkit-transition-duration: .2s;
+    /* Safari 和 Chrome */
+    -o-transition-duration: .2s;
+    /* Opera */
+
+    opacity: 1;
+  }
+
+  .proMain .pro-box-1 .list p {
+    position: absolute;
+    bottom: -100%;
+    opacity: 0;
+  }
+
+  .proMain .pro-box-1.cur .list p {
+    transition-property: all;
+    -moz-transition-property: all;
+    /* Firefox 4 */
+    -webkit-transition-property: all;
+    /* Safari 和 Chrome */
+    -o-transition-property: all;
+    /* Opera */
+
+    transition-duration: .6s;
+    -moz-transition-duration: .6s;
+    /* Firefox 4 */
+    -webkit-transition-duration: .6s;
+    /* Safari 和 Chrome */
+    -o-transition-duration: .6s;
+    /* Opera */
+    bottom: 0%;
+    opacity: 1;
+  }
+
+  .proMain .pro-box-1.cur .list-1 h6,
+  .proMain .pro-box-1.cur .list-1 p {
+    transition-delay: .2s;
+    -moz-transition-delay: .2s;
+    /* Firefox 4 */
+    -webkit-transition-delay: .2s;
+    /* Safari 和 Chrome */
+    -o-transition-delay: .2s;
+    /* Opera */
+  }
+
+  .proMain .pro-box-1.cur .list-2 h6,
+  .proMain .pro-box-1.cur .list-2 p {
+    transition-delay: .4s;
+    -moz-transition-delay: .4s;
+    /* Firefox 4 */
+    -webkit-transition-delay: .4s;
+    /* Safari 和 Chrome */
+    -o-transition-delay: .4;
+    /* Opera */
+  }
+
+
+  .proMain .pro-box-1.cur .list-3 h6,
+  .proMain .pro-box-1.cur .list-3 p {
+    transition-delay: .6s;
+    -moz-transition-delay: .6s;
+    /* Firefox 4 */
+    -webkit-transition-delay: .6s;
+    /* Safari 和 Chrome */
+    -o-transition-delay: .6s;
+    /* Opera */
+  }
+
+
+  .proMain .pro-box-1.cur .list-4 h6,
+  .proMain .pro-box-1.cur .list-4 p {
+    transition-delay: .8s;
+    -moz-transition-delay: .8s;
+    /* Firefox 4 */
+    -webkit-transition-delay: .8s;
+    /* Safari 和 Chrome */
+    -o-transition-delay: .8s;
+    /* Opera */
   }
 
   .servicePhilosophy {
