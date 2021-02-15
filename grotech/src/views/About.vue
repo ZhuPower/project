@@ -2,16 +2,21 @@
   <div class="About">
     <topNav />
     <div class="bannerVideo">
-      <img src="../assets/img5.png"
-        style="width:1440px;position: relative;left: 50%; margin-left: -720px; height: 737px;">
+      <video src="../assets/header3.mp4" autoplay="autoplay" loop="loop">
+        您的浏览器不支持 video 标签。
+      </video>
       <div class="videoTxt">
         <p class="p1">美至致力于以独创的GaaS(Growth as a Service)<br />服务模式,与合作伙伴一起,源源不断地创造让<br />消费者喜爱的流行产品</p>
       </div>
     </div>
     <div class="proMain">
-      <div class="pro-box pro-box-1">
+      <div class="pro-box pro-box-1" :class="{'cur':title[0].show}" ref="pro-box-1">
         <div class="left">
-          公司介绍
+          <div class="left-box">
+            <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
+              :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+            </div>
+          </div>
         </div>
         <div class="right">
           美至科技成立于2015年，总部位于上海，在北京与广州设有分支公司。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，致力于以独创的GaaS
@@ -19,9 +24,13 @@
           Service)服务模式，与产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。美至科技已为宜家家居、奈雪の茶、资生堂、李子柒、中国联通等数十家企业提供了服务。美至科技也为一流的投资机构提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。
         </div>
       </div>
-      <div class="pro-box pro-box-2">
+      <div class="pro-box pro-box-2" :class="{'cur':title[1].show}" ref="pro-box-2">
         <div class="left">
-          团队介绍
+          <div class="left-box">
+            <div v-for="(item,index) in title[1].txt" class="title" :class="['title_'+index]"
+              :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+            </div>
+          </div>
         </div>
         <div class="right">
           我们深刻理解，要应对新消费时代的变革，需要一支融合贯通的专家团队。我们有来自斯坦福、沃顿商学院的技术专家，来自字节跳动的增长黑客，来自摩根斯坦利的数据科学家与分析师，也有来自宝洁、联合利华的行业专家。
@@ -65,7 +74,7 @@
 </template>
 
 <script>
-
+  import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
   export default {
     name: 'About',
@@ -77,6 +86,38 @@
     methods: {
       getTemCur(n) {
         this.temCur = n
+      },
+      handleScroll() {
+        let that = this
+        doSome('pro-box-1', function () {
+          that.title[0].show = true;
+        }, function () {
+          that.title[0].show = false;
+        })
+        doSome('pro-box-2', function () {
+          that.title[1].show = true;
+        }, function () {
+          that.title[1].show = false;
+        })
+
+
+        function doSome(str, endFn, endFn2) {
+          let _h = document.documentElement.clientHeight
+          let _h2 = that.$refs[str].offsetHeight
+          //获取滚动距顶部的距离，显示
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          let _top = that.$refs[str].offsetTop
+          let _top2 = that.$refs[str].offsetTop + _h2
+
+          if (scrollTop >= _top && scrollTop < _top2) {
+            endFn && endFn()
+
+          }
+
+          if (isElementNotInViewport(that.$refs[str])) {
+            endFn2 && endFn2()
+          }
+        }
       }
     },
     data() {
@@ -100,10 +141,26 @@
             name: '杨文军',
             info: '联合创始人'
           }
-        ]
+        ],
+        title: [
+          {
+            txt: ['公司介绍'],
+            show: false
+          },
+          {
+            txt: ['团队介绍'],
+            show: false
+          }
+        ],
       }
     },
-    watch: {}
+    watch: {},
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll); //离开页面需要移除这个监听的事件
+    }
   }
 </script>
 <style scoped>
@@ -136,6 +193,7 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    position: relative;
   }
 
   .proMain .pro-box-1 {
@@ -164,6 +222,31 @@
     letter-spacing: 2.5px;
   }
 
+  .proMain .left .left-box .title {
+    width: 0%;
+    overflow: hidden;
+    height: 57px;
+  }
+
+  .proMain .pro-box.cur .left .left-box .title {
+    transition-property: width;
+    -moz-transition-property: width;
+    /* Firefox 4 */
+    -webkit-transition-property: width;
+    /* Safari 和 Chrome */
+    -o-transition-property: width;
+    /* Opera */
+
+    transition-duration: .6s;
+    -moz-transition-duration: .6s;
+    /* Firefox 4 */
+    -webkit-transition-duration: .6s;
+    /* Safari 和 Chrome */
+    -o-transition-duration: .6s;
+    /* Opera */
+    width: 100%;
+  }
+
   .proMain .pro-box .right {
     width: 65.625%;
     opacity: 0.6;
@@ -173,6 +256,24 @@
     font-weight: 400;
     line-height: 42px;
     letter-spacing: 0.65625px;
+  }
+
+  .proMain .pro-box-1 .right,
+  .proMain .pro-box-2 .right {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    right: 0;
+  }
+
+  .proMain .pro-box-1.cur .right,
+  .proMain .pro-box-2.cur .right {
+    top: 0%;
+    opacity: 1;
+    transition: all .6s .4s;
+    -moz-transition: all .6s .4s;
+    -webkit-transition: all .6s .4s;
+    -o-transition: all .6s .4s;
   }
 
   .VisionValue {

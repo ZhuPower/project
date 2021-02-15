@@ -198,14 +198,24 @@
           </div>
         </div>
       </div>
-      <div class="innovativeService">
-        <div class="h1">创新服务与领域<br />专家的结合</div>
-        <div class="p1">
-          美至科技会考虑行业、消费者、企业资源等诸多因素，量体裁衣，提供个性化解决方案。美至的服务流程分为6个步骤：深入调研-数据洞察-制定方案-实施执行-方案复盘-持续改进。美至服务团队会由客户经理、商业分析师、数据科学家、领域专家组成，利用科学的a/b测试方法，为企业创新与增长持续服务。
-        </div>
+      <div class="innovativeService" ref="innovativeService">
+        <swiper ref="mySwiper2" :options="swiperOptions2">
+          <swiper-slide>
+            <div class="h1">创新服务与领域<br />专家的结合</div>
+            <div class="p1">
+              美至科技会考虑行业、消费者、企业资源等诸多因素，量体裁衣，提供个性化解决方案。美至的服务流程分为6个<br />步骤：深入调研-数据洞察-制定方案-实施执行-方案复盘-持续改进。美至服务团队会由客户经理、商业分析师、<br />数据科学家、领域专家组成，利用科学的a/b测试方法，为企业创新与增长持续服务。
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="h1">严苛标准<br />全面保障数据安全 </div>
+            <div class="p1">
+              企业数据经过美国国家安全局认可的不可逆散列加密算法SHA-512加密存储，确保商业信息安全。<br />美至科技同时是中国央企与世界500强外企的服务伙伴，经受过严格的体系安全认证，<br />并通过了欧盟GDPR规范审查。
+            </div>
+          </swiper-slide>
+        </swiper>
         <div class="bottomBox">
-          <span class="cur">1 <i></i></span>
-          <span>2 <i></i></span>
+          <span :class="{'cur':swiper2.activeIndex ==0}">1 <i></i></span>
+          <span :class="{'cur':swiper2.activeIndex ==1}">2 <i></i></span>
         </div>
       </div>
       <div class="brand">
@@ -254,7 +264,8 @@
     components: {
       topNav
     },
-    created() { },
+    created() {
+    },
     computed: {
       swiper() {
         return this.$refs.mySwiper.swiper
@@ -303,6 +314,10 @@
           that.sCur2 = false;
         })
 
+        doSome('innovativeService', function () {
+          that.swiper2.slideTo(0);
+        })
+
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
           let _h2 = that.$refs[str].offsetHeight
@@ -318,11 +333,9 @@
           }
 
           if (isElementNotInViewport(that.$refs[str])) {
-            endFn && endFn2()
+            endFn2 && endFn2()
           }
         }
-
-
       }
     },
     data() {
@@ -346,6 +359,13 @@
           autoplay: 1500,//可选选项，自动滑动
           loop: true,//可选选项，开启循环
         },
+        swiperOptions2: {
+          mousewheelControl: true,
+          // loop: true,
+          onSlideChangeStart: function (swiper) {
+
+          }
+        },
         serviceTxt: [
           ['基于大数据与AI的策略服务', '企业竞争战略：由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。', '产品创新：我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。', '全渠道增长策略：从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。'],
           ['精益化营销服务', '整合营销服务：利用美至科技Grotech技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（ROI）。', '数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。'],
@@ -359,11 +379,15 @@
         nTab1: 0,
         nTab2: 0,
         sCur1: false,
-        sCur2: false
+        sCur2: false,
+        swiper2: {
+          activeIndex: 0
+        }
       }
     },
     watch: {},
     mounted() {
+      this.swiper2 = this.$refs.mySwiper2.swiper
       window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
     },
     destroyed() {
@@ -594,7 +618,7 @@
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: 56.67px;
+    height: 57px;
   }
 
   .proMain .pro-box.cur .left .left-box .title {
@@ -1127,6 +1151,22 @@
 
   .innovativeService .bottomBox span.cur {
     opacity: 0.8;
+  }
+
+  .innovativeService .swiper-slide {
+    opacity: 0;
+    transition: all 2s;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+  }
+
+  .innovativeService .swiper-slide-active {
+    opacity: 1;
+    transition: all 2s;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
   }
 
   .brand {
