@@ -17,6 +17,11 @@
           <img src="../assets/closeMenu.png">
         </div>
       </div>
+      <div class="logoBox" :class="{'cur':!logonShow}">
+        <img src="../assets/logo-animation.gif" class="logo-animation" v-if="logonShow">
+        <img src="../assets/logotype.png" class="logotype">
+      </div>
+
       <div class="menuList">
         <ul>
           <li v-for="(item,index) in menuList" @mouseleave="leave(index)">
@@ -26,7 +31,6 @@
             <div class="childList" v-if="item.child && item.child.length>0">
               <div class="child-box" v-for="(item2,index2) in item.child">
                 <div class="menuTxt">
-                  <p v-html="item2.html"></p>
                   <p v-html="item2.html"></p>
                 </div>
               </div>
@@ -47,6 +51,10 @@
     methods: {
       showMenu() {
         this.show = true
+        this.logonShow = true
+        setTimeout(() => {
+          this.logonShow = false
+        }, 2500)
       },
       closeMenu() {
         this.show = false
@@ -109,7 +117,8 @@
             name: '加入我们',
             url: '/recruitment'
           }
-        ]
+        ],
+        logonShow: false
       }
     }
   }
@@ -117,6 +126,39 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .logoBox {
+    position: absolute;
+    top: 34%;
+    margin: 0px 18%;
+  }
+
+
+  .logo-animation {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .logotype {
+    width: 100%;
+    display: block;
+    opacity: 0;
+  }
+
+  .logoBox.cur {
+    top: calc(100% - 85px);
+    transition: all .6s;
+    -webkit-transition: all .6s;
+    left: 0;
+    margin-left: 80px;
+    width: 221px;
+    height: 49px;
+  }
+
+  .logoBox.cur .logotype {
+    opacity: 1;
+  }
+
   .navMain {
     width: 100%;
     position: fixed;
@@ -226,8 +268,8 @@
 
   .navMain.cur .menuList {
     top: 110px;
-    transition: all .6s .6s;
-    -webkit-transition: all .6s .6s;
+    transition: all .6s 3.1s;
+    -webkit-transition: all .6s 3.1s;
   }
 
   .menuList .childList {
@@ -262,25 +304,22 @@
   }
 
   .menuList .childList .child-box .menuTxt {
-    padding-right: 6px;
-    transform: translate(0px, -63px);
-    -webkit-transform: translate(0px, -63px);
+    opacity: 0.6;
+    color: rgba(0, 0, 0, 0.7);
+    font-family: "Faktum-Regular";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    position: relative;
     transition: all .6s;
     -webkit-transition: all .6s;
-    position: relative;
   }
 
   .menuList .childList .child-box:hover .menuTxt {
-    transform: translate(6px, 0px);
-    -webkit-transform: translate(6px, 0px);
+    font-weight: bold;
+    color: 1;
+    color: rgba(0, 0, 0, 1);
     transition: all .6s;
     -webkit-transition: all .6s;
-  }
-
-  .menuList .childList .child-box .menuTxt p:last-child {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 63px;
   }
 </style>

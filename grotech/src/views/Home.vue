@@ -13,8 +13,9 @@
     </div>
     <div class="content">
       <div class="homeVideo">
-        <img src="../assets/img1.png"
-          style="width:1440px;position: relative;left: 50%; margin-left: -720px; height: 816px;">
+        <video src="../assets/header1.mp4" autoplay="autoplay" loop="loop">
+          您的浏览器不支持 video 标签。
+        </video>
         <div class="videoTxt">
           <p class="p1">科技推动消费品创新与增长</p>
           <p class="p2">Leveraging Technology for Innovation and Growth</p>
@@ -91,28 +92,65 @@
         <div class="h2">We begin with the end in mind put consumers first and value sustainability</div>
         <div class="h3">以终为始，以消费者为中心，以可持续为价值基石。</div>
       </div>
-      <div class="serviceBox">
+      <div class="serviceBox" :class="{'cur':sCur1}" ref="serviceBox1">
         <div class="item-box">
-          <div class="item-left"></div>
           <div class="item-right">
             <div class="h1">服务</div>
-            <div class="h2">大数据驱动，为投资机构量身<br />定制专属服务</div>
-            <div class="con">
-              <div class="c1">投后管理服务</div>
-              <div class="c2">对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。</div>
+            <div class="h2">
+              <p>聚焦大消费行业的一站式增长服务</p>
+              <p class="p2">Gaas（Growth as a Service）</p>
             </div>
-
-
+            <div class="con">
+              <div :class="{'c1':index ==0,'c2':index>0}" v-for="(item,index) in serviceTxt[nTab1]" v-html="item"></div>
+            </div>
+          </div>
+          <div class="item-left">
+            <div class="sphere">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
           </div>
         </div>
         <div class="rightBox">
-          <span class="cur"></span>
-          <span></span>
-          <span></span>
+          <span :class="{'cur':nTab1==index}" v-for="(item,index) in serviceTxt" @click="pickThing(index)"></span>
         </div>
-        <div class="bottomBox">
-          <span class="cur">1 <i></i></span>
-          <span>2 <i></i></span>
+      </div>
+      <div class="serviceBox serviceBox2" :class="{'cur':sCur2}" ref="serviceBox2">
+        <div class="item-box">
+          <div class="item-left">
+            <div class="sphere2">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </div>
+          <div class="item-right">
+            <div class="h2">
+              <p>大数据驱动，为投资机构量身<br />定制专属服务</p>
+            </div>
+            <div class="con">
+              <div :class="{'c1':index ==0,'c2':index>0}" v-for="(item,index) in serviceTxt2[nTab2]" v-html="item">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rightBox">
+          <span :class="{'cur':nTab2==index}" v-for="(item,index) in serviceTxt2" @click="pickThing2(index)"></span>
         </div>
       </div>
       <div class="productBox">
@@ -121,7 +159,7 @@
         <div class="productList">
           <div class="list-box list-box-1">
             <div class="imgBox">
-              <img src="../assets/img2.png">
+              <img src="../assets/GDB.gif">
             </div>
             <div class="listBox">
               <div class="title">
@@ -133,7 +171,7 @@
           </div>
           <div class="list-box list-box-2">
             <div class="imgBox">
-              <img src="../assets/img3.png">
+              <img src="../assets/Gropilot-gray.gif">
             </div>
             <div class="listBox">
               <div class="title">
@@ -147,7 +185,7 @@
           </div>
           <div class="list-box list-box-3">
             <div class="imgBox">
-              <img src="../assets/img4.png">
+              <img src="../assets/Adbot.gif">
             </div>
             <div class="listBox">
               <div class="title">
@@ -229,13 +267,43 @@
       mouseLeave() {
         this.swiper.startAutoplay();
       },
+      pickThing(n) {
+        this.nTab1 = n
+      },
+      pickThing2(n) {
+        this.nTab2 = n
+      },
       handleScroll() {
         let that = this
-        doSome('pro-box-1', 0)
-        doSome('pro-box-2', 1)
-        doSome('pro-box-3', 2)
+        doSome('pro-box-1', function () {
+          that.title[0].show = true;
+        }, function () {
+          that.title[0].show = false;
+        })
+        doSome('pro-box-2', function () {
+          that.title[1].show = true;
+        }, function () {
+          that.title[1].show = false;
+        })
+        doSome('pro-box-3', function () {
+          that.title[2].show = true;
+        }, function () {
+          that.title[2].show = false;
+        })
 
-        function doSome(str, n) {
+        doSome('serviceBox1', function () {
+          that.sCur1 = true;
+        }, function () {
+          that.sCur1 = false;
+        })
+
+        doSome('serviceBox2', function () {
+          that.sCur2 = true;
+        }, function () {
+          that.sCur2 = false;
+        })
+
+        function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
           let _h2 = that.$refs[str].offsetHeight
           let _h3 = that.$refs.Introduction.offsetHeight
@@ -245,13 +313,16 @@
           let _top2 = that.$refs[str].offsetTop + _h3 + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
-            that.title[n].show = true;
+            endFn && endFn()
+
           }
 
           if (isElementNotInViewport(that.$refs[str])) {
-            that.title[n].show = false;
+            endFn && endFn2()
           }
         }
+
+
       }
     },
     data() {
@@ -274,7 +345,21 @@
           slidesPerView: 5,
           autoplay: 1500,//可选选项，自动滑动
           loop: true,//可选选项，开启循环
-        }
+        },
+        serviceTxt: [
+          ['基于大数据与AI的策略服务', '企业竞争战略：由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。', '产品创新：我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。', '全渠道增长策略：从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。'],
+          ['精益化营销服务', '整合营销服务：利用美至科技Grotech技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（ROI）。', '数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。'],
+          ['ADAPT™品牌孵化服务', 'A-InnovAtion,D-Deep insight, A-All dimensions P-Partnership T-Technology.ADAPT在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。']
+        ],
+        serviceTxt2: [
+          ['行业研究', '和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。', '美至科技投资雷达：美至科技通过建立消费品细分行业模型，结合投资机构的个性化需求，更早更准确地挖掘投资标的。'],
+          ['大数据尽职调查', '传统的投资尽职调查偏向于小样本访谈与研究，缺乏大数据支撑。美至科技利用技术能力结合经验丰富的行业专家，提供科学全面的尽职调查服务。'],
+          ['投后管理服务', '对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。']
+        ],
+        nTab1: 0,
+        nTab2: 0,
+        sCur1: false,
+        sCur2: false
       }
     },
     watch: {},
@@ -355,7 +440,7 @@
   }
 
   .homeVideo {
-    height: 816px;
+    height: 817px;
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -673,26 +758,57 @@
 
   .serviceBox {
     margin: 215px 80px 0px 80px;
-    height: 698px;
+    height: 745px;
     position: relative;
+  }
+
+  .serviceBox2 {
+    height: 580px;
+    margin-top: 263px;
   }
 
   .serviceBox .item-box {
     display: flex;
-    height: 698px;
-    align-items: center;
+    height: 745px;
+    justify-content: space-between;
+  }
+
+  .serviceBox2 .item-box {
+    height: 580px;
   }
 
   .serviceBox .item-left {
     width: 440px;
     height: 419px;
-    background: #d8d8d8;
-    margin-right: 110px;
+    position: relative;
+    margin-top: 152px;
   }
 
-  .serviceBox .item-right {
-    height: 698px;
+  .serviceBox .item-left,
+  .serviceBox .item-right .con,
+  .serviceBox .rightBox {
+    opacity: 0;
+    transition: all .6s .4s;
+    -moz-transition: all .6s .4s;
+    -webkit-transition: all .6s .4s;
+    -o-transition: all .6s .4s;
   }
+
+  .serviceBox.cur .item-left,
+  .serviceBox.cur .item-right .con,
+  .serviceBox.cur .rightBox {
+    opacity: 1;
+    transition: all .6s .4s;
+    -moz-transition: all .6s .4s;
+    -webkit-transition: all .6s .4s;
+    -o-transition: all .6s .4s;
+  }
+
+  .serviceBox2 .item-left {
+    margin-top: 0px;
+  }
+
+  .serviceBox .item-right {}
 
   .serviceBox .item-right .h1 {
     color: #65ecaa;
@@ -709,6 +825,32 @@
     font-weight: 400;
     line-height: 46px;
     margin-top: 28px;
+    height: 92px;
+    box-sizing: border-box;
+    padding-top: 92px;
+    overflow: hidden;
+    transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -o-transition: all .6s;
+  }
+
+  .serviceBox.cur .item-right .h2 {
+    padding-top: 0px;
+    transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -o-transition: all .6s;
+  }
+
+  .serviceBox .item-right .h2 .p2 {
+    opacity: 0.25;
+    color: #383a50;
+    font-family: "Faktum-Regular";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 14.4px;
+    margin-top: 20px;
   }
 
   .serviceBox .item-right .con {
@@ -730,7 +872,7 @@
     font-family: "PingFangSC-Regular";
     font-size: 18px;
     font-weight: 400;
-    line-height: 27px;
+    line-height: 26px;
     letter-spacing: 0.0099px;
     margin-top: 24px;
     width: 542px;
@@ -738,12 +880,14 @@
 
   .serviceBox .rightBox {
     position: absolute;
-    right: 0;
-    top: 50%;
-    margin-top: -37px;
-    height: 74px;
-    width: 10px;
+    left: 0;
+    bottom: 0;
     z-index: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .serviceBox .rightBox span {
@@ -751,9 +895,10 @@
     width: 10px;
     height: 10px;
     background: #383a50;
-    margin-bottom: 22px;
+    margin-right: 22px;
     display: block;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   .serviceBox .rightBox span:last-child {
@@ -858,10 +1003,13 @@
   }
 
   .productBox .productList .imgBox {
-    /* width: 100%; */
-    /* text-align: center; */
     margin: 0px auto;
-    height: 223px;
+  }
+
+  .productBox .productList .imgBox img {
+    width: 230px;
+    display: block;
+    height: auto;
   }
 
   .productBox .productList .listBox {
