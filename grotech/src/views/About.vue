@@ -62,9 +62,8 @@
         <div class="txt">认识我们的团队</div>
       </div>
       <div class="temBox">
-        <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]">
-          <img src="../assets/team.png">
-        </div>
+        <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
+          :style="{backgroundImage:'url(https://image.yijiago.com/03/7b/98/158a56a67a528a4b8d1ab4ca01c11d82544b05a6.png)'}"></div>
       </div>
     </div>
   </div>
@@ -374,24 +373,24 @@
   }
 
   .temBox .temImg {
-    width: 20%;
+    width: calc(100% / 6);
     float: left;
     position: relative;
-    transition: width .6s;
-    -webkit-transition: width .6s;
     overflow: hidden;
+    height: 971px;
   }
 
-  .temBox .temImg img {
-    width: 665px;
-    height: 768px;
-  }
-
-  .temBox .temImg.cur {
-    width: 40%;
+  .temBox .temImg:first-child {
+    width: calc(100% / 3);
     transition: width .6s;
     -webkit-transition: width .6s;
-    z-index: 9;
+    z-index: 1;
+  }
+
+  .temBox.cur .temImg:first-child {
+    width: 100%;
+    transition: width .6s;
+    -webkit-transition: width .6s;
   }
 
   .temBox .temInfo {
