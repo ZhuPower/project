@@ -42,6 +42,10 @@
     list-style: none;
   }
 
+  video {
+    width: 100%;
+  }
+
   .content {
     position: relative;
     z-index: 3;

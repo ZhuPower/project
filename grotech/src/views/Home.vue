@@ -13,7 +13,7 @@
     </div>
     <div class="content">
       <div class="homeVideo">
-        <video src="../assets/header1.mp4" autoplay="autoplay" loop="loop">
+        <video src="../assets/header1.mp4" autoplay loop preload controls>
           您的浏览器不支持 video 标签。
         </video>
         <div class="videoTxt">

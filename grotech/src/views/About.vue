@@ -2,7 +2,7 @@
   <div class="About">
     <topNav />
     <div class="bannerVideo">
-      <video src="../assets/header3.mp4" autoplay="autoplay" loop="loop">
+      <video src="../assets/header2.mp4" autoplay loop preload controls>
         您的浏览器不支持 video 标签。
       </video>
       <div class="videoTxt">
@@ -38,8 +38,9 @@
       </div>
     </div>
     <div class="VisionValue">
-      <img src="../assets/img6.png"
-        style="width: 100%;display: block; height: 100%; position: absolute;left: 0;top:0" />
+      <video src="../assets/banner.mp4" autoplay loop preload controls>
+        您的浏览器不支持 video 标签。
+      </video>
       <div class="left">
         <div class="h1">Vision</div>
         <div class="bottom">
@@ -61,12 +62,8 @@
         <div class="txt">认识我们的团队</div>
       </div>
       <div class="temBox">
-        <div class="temImg" v-for="(item,index) in temList " :class="{'cur':temCur == index}" @click="getTemCur(index)">
-          <img src="../assets/img7.png">
-          <div class="temInfo">
-            <div class="p1">{{item.name}}</div>
-            <div class="p2" v-html="item.info"></div>
-          </div>
+        <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]">
+          <img src="../assets/team.png">
         </div>
       </div>
     </div>
@@ -122,26 +119,6 @@
     },
     data() {
       return {
-        _w: document.body.clientWidth,
-        temCur: 0,
-        temList: [
-          {
-            name: '陈勇',
-            info: '执行董事<br/>兼首席执行官'
-          },
-          {
-            name: '赵涛',
-            info: '首席财务官'
-          },
-          {
-            name: '陈英明',
-            info: '首席技术官'
-          },
-          {
-            name: '杨文军',
-            info: '联合创始人'
-          }
-        ],
         title: [
           {
             txt: ['公司介绍'],
@@ -196,7 +173,8 @@
     position: relative;
   }
 
-  .proMain .pro-box-1 {
+  .proMain .pro-box-1,
+  .proMain .pro-box-1 .right {
     height: 558px;
     padding-top: 95px;
     box-sizing: border-box;
@@ -206,7 +184,8 @@
     border-bottom: 1px solid #979797;
   }
 
-  .proMain .pro-box-2 {
+  .proMain .pro-box-2,
+  .proMain .pro-box-2 .right {
     height: 424px;
     padding-top: 87px;
     box-sizing: border-box;
@@ -258,6 +237,7 @@
     letter-spacing: 0.65625px;
   }
 
+
   .proMain .pro-box-1 .right,
   .proMain .pro-box-2 .right {
     position: absolute;
@@ -283,6 +263,12 @@
     overflow: hidden;
     position: relative;
     display: flex;
+  }
+
+  .VisionValue video {
+    position: absolute;
+    width: 100%;
+    height: 608px;
   }
 
   .VisionValue>div {
