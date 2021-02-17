@@ -46,6 +46,10 @@
     width: 100%;
   }
 
+  .home .homeVideo video {
+    height: calc(817vw/14.4);
+  }
+
   .content {
     position: relative;
     z-index: 3;
@@ -58,7 +62,7 @@
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    perspective: 440px;
+    perspective: calc(440vw/14.4);
     position: absolute;
   }
 
@@ -123,8 +127,8 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    -webkit-perspective: 4000px;
-    perspective: 4000px;
+    -webkit-perspective: calc(4000vw/14.4);
+    perspective: calc(4000vw/14.4);
     -webkit-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
@@ -138,8 +142,8 @@
     transform-style: preserve-3d;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    width: 500px;
-    height: 500px;
+    width: calc(500vw/14.4);
+    height: calc(500vw/14.4);
     position: absolute;
     border-radius: 100%;
     background: linear-gradient(rgba(56, 58, 82, 0.1), rgba(125, 128, 166, 0.1));
@@ -354,11 +358,11 @@
 
   @keyframes myfirst {
     from {
-      margin-top: 5px;
+      margin-top: calc(5vw/14.4);
     }
 
     to {
-      margin-top: 7px;
+      margin-top: calc(7vw/14.4);
     }
   }
 
@@ -367,11 +371,11 @@
   /* Firefox */
     {
     from {
-      margin-top: 5px;
+      margin-top: calc(5vw/14.4);
     }
 
     to {
-      margin-top: 76px;
+      margin-top: calc(76vw/14.4);
     }
   }
 
@@ -380,11 +384,11 @@
   /* Safari and Chrome */
     {
     from {
-      margin-top: 5px;
+      margin-top: calc(5vw/14.4);
     }
 
     to {
-      margin-top: 7px;
+      margin-top: calc(7vw/14.4);
     }
   }
 
@@ -393,11 +397,11 @@
   /* Opera */
     {
     from {
-      margin-top: 5px;
+      margin-top: calc(5vw/14.4);
     }
 
     to {
-      margin-top: 7px;
+      margin-top: calc(7vw/14.4);
     }
   }
 

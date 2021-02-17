@@ -2,11 +2,13 @@
   <div class="About">
     <topNav />
     <div class="bannerVideo">
-      <video src="../assets/header2.mp4" autoplay loop preload controls>
+      <!-- controls -->
+      <video src="../assets/header2.mp4" autoplay loop muted>
         您的浏览器不支持 video 标签。
       </video>
       <div class="videoTxt">
-        <p class="p1">美至致力于以独创的GaaS(Growth as a Service)<br />服务模式,与合作伙伴一起,源源不断地创造让<br />消费者喜爱的流行产品</p>
+        <p class="p1">美至致力于以独创的<span style="font-family:Faktum-Regular;">GaaS(Growth as a
+            Service)</span><br />服务模式,与合作伙伴一起,源源不断地创造让<br />消费者喜爱的流行产品</p>
       </div>
     </div>
     <div class="proMain">
@@ -19,9 +21,10 @@
           </div>
         </div>
         <div class="right">
-          美至科技成立于2015年，总部位于上海，在北京与广州设有分支公司。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，致力于以独创的GaaS
-          (Growth as a
-          Service)服务模式，与产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。美至科技已为宜家家居、奈雪の茶、资生堂、李子柒、中国联通等数十家企业提供了服务。美至科技也为一流的投资机构提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。
+          美至科技成立于2015年，总部位于上海，在北京与广州设有分支公司。美至科技基于领先的<span
+            style="font-family:Faktum-Regular;">Grotech®</span>大数据及AI技术，深入洞察行业与消费者，致力于以独创的<span
+            style="font-family:Faktum-Regular;">GaaS (Growth as
+            a<br />Service)</span>服务模式，与产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。美至科技已为宜家家居、奈雪の茶、资生堂、李子柒、中国联通等数十家企业提供了服务。美至科技也为一流的投资机构提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。
         </div>
       </div>
       <div class="pro-box pro-box-2" :class="{'cur':title[1].show}" ref="pro-box-2">
@@ -37,8 +40,27 @@
         </div>
       </div>
     </div>
+    <div class="team">
+      <!-- <div class="h1">
+        <div class="icon"><img src="../assets/icon_1.png"></div>
+        <div class="txt">认识我们的团队</div>
+      </div> -->
+      <div class="teamMain" ref="teamMain" :class="{'cur':isTem}">
+        <div class="temBox2" :style="{height:w*830/1440+'px'}">
+          <div class="temImg" v-for="(item,index) in 4 " :style="{width:w/6+'px',height:w*830/1440+'px'}">
+            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
+          </div>
+        </div>
+        <div class="temBox" :style="{height:w*830/1440+'px'}">
+          <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
+            :style="{width:(index!=0 ? (w/6+'px') : (w/3+'px')),height:w*830/1440+'px'}">
+            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="VisionValue">
-      <video src="../assets/banner.mp4" autoplay loop preload controls>
+      <video src="../assets/banner.mp4" autoplay loop muted>
         您的浏览器不支持 video 标签。
       </video>
       <div class="left">
@@ -53,25 +75,6 @@
         <div class="bottom">
           <div class="h2">幸福力定义</div>
           <div class="p2">更好地满足消费者需求，资源可持续利用，具备商业道德。</div>
-        </div>
-      </div>
-    </div>
-    <div class="team">
-      <div class="h1">
-        <div class="icon"><img src="../assets/icon_1.png"></div>
-        <div class="txt">认识我们的团队</div>
-      </div>
-      <div class="teamMain" ref="teamMain" :class="{'cur':isTem}">
-        <div class="temBox2" :style="{height:w*830/1440+'px'}">
-          <div class="temImg" v-for="(item,index) in 4 " :style="{width:w/6+'px',height:w*830/1440+'px'}">
-            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
-          </div>
-        </div>
-        <div class="temBox" :style="{height:w*830/1440+'px'}">
-          <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
-            :style="{width:(index!=0 ? (w/6+'px') : (w/3+'px')),height:w*830/1440+'px'}">
-            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
-          </div>
         </div>
       </div>
     </div>
@@ -114,18 +117,18 @@
 
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
-          let _h2 = that.$refs[str].offsetHeight
+          let _h2 = that.$refs[str] && that.$refs[str].offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top = that.$refs[str].offsetTop
-          let _top2 = that.$refs[str].offsetTop + _h2
+          let _top = that.$refs[str] && that.$refs[str].offsetTop || 0
+          let _top2 = _top + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
             endFn && endFn()
 
           }
 
-          if (isElementNotInViewport(that.$refs[str])) {
+          if (that.$refs[str] && isElementNotInViewport(that.$refs[str])) {
             endFn2 && endFn2()
           }
         }
@@ -159,7 +162,7 @@
 </script>
 <style scoped>
   .bannerVideo {
-    height: 737px;
+    height: calc(737vw/14.4);
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -167,20 +170,20 @@
 
   .bannerVideo .videoTxt {
     position: absolute;
-    left: 80px;
-    bottom: 171px;
+    left: calc(80vw/14.4);
+    bottom: calc(171vw/14.4);
   }
 
   .bannerVideo .videoTxt .p1 {
     color: #ffffff;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 54px;
+    line-height: calc(54vw/14.4);
   }
 
   .proMain {
-    margin: 0px 80px;
+    margin: 0px calc(80vw/14.4);
   }
 
   .proMain .pro-box {
@@ -192,8 +195,8 @@
 
   .proMain .pro-box-1,
   .proMain .pro-box-1 .right {
-    height: 558px;
-    padding-top: 95px;
+    height: calc(558vw/14.4);
+    padding-top: calc(95vw/14.4);
     box-sizing: border-box;
   }
 
@@ -203,8 +206,8 @@
 
   .proMain .pro-box-2,
   .proMain .pro-box-2 .right {
-    height: 424px;
-    padding-top: 87px;
+    height: calc(424vw/14.4);
+    padding-top: calc(87vw/14.4);
     box-sizing: border-box;
   }
 
@@ -212,16 +215,16 @@
     width: 34.375%;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 57px;
-    letter-spacing: 2.5px;
+    line-height: calc(57vw/14.4);
+    letter-spacing: calc(2.5vw/14.4);
   }
 
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: 57px;
+    height: calc(57vw/14.4);
   }
 
   .proMain .pro-box.cur .left .left-box .title {
@@ -248,10 +251,14 @@
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 42px;
-    letter-spacing: 0.65625px;
+    line-height: calc(42vw/14.4);
+    letter-spacing: calc(0.65625vw/14.4);
+  }
+
+  .proMain .pro-box-1 .right {
+    width: calc(842vw/14.4);
   }
 
 
@@ -274,42 +281,46 @@
   }
 
   .VisionValue {
-    margin: 0px 80px;
-    height: 608px;
-    border-radius: 28px;
+    margin: 0px auto;
+    width: calc(1275vw/14.4);
+    height: calc(608vw/14.4);
+    border-radius: calc(28vw/14.4);
     overflow: hidden;
     position: relative;
     display: flex;
+    margin-top: calc(284vw/14.4);
+    margin-bottom: calc(531vw/14.4);
   }
 
   .VisionValue video {
     position: absolute;
     width: 100%;
-    height: 608px;
+    left: 0;
+    top: 0;
   }
 
   .VisionValue>div {
     position: relative;
     width: 50%;
     box-sizing: border-box;
-    height: 608px;
+    height: calc(608vw/14.4);
   }
 
   .VisionValue .left {
     border-right: 1px solid #fff;
-    padding-left: 42px;
+    padding-left: calc(42vw/14.4);
   }
 
   .VisionValue .right {
-    padding-left: 39px;
+    padding-left: calc(39vw/14.4);
   }
 
   .VisionValue>div .bottom {
-    width: 334px;
-    height: 262px;
+    width: calc(334vw/14.4);
+    height: calc(262vw/14.4);
     position: absolute;
-    left: 42px;
-    bottom: -171px;
+    left: calc(42vw/14.4);
+    bottom: calc(-171vw/14.4);
     transition: all .6s;
     -webkit-transition: all .6s;
   }
@@ -317,9 +328,9 @@
   .VisionValue>div .h1 {
     color: rgba(249, 245, 245, 0.91);
     font-family: "Faktum-Regular";
-    font-size: 24px;
+    font-size: calc(24vw/14.4);
     font-weight: 400;
-    line-height: 72px;
+    line-height: calc(72vw/14.4);
   }
 
   .VisionValue>div .bottom:hover {
@@ -331,38 +342,35 @@
   .VisionValue>div .h2 {
     color: rgba(249, 245, 245, 0.91);
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 72px;
+    line-height: calc(72vw/14.4);
   }
 
   .VisionValue>div .p2 {
     color: rgba(255, 255, 255, 0.91);
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 36px;
-    margin-top: 27px;
+    line-height: calc(36vw/14.4);
+    margin-top: calc(27vw/14.4);
   }
 
-  .team {
-    margin-top: 215px;
-    margin-bottom: 205px;
-  }
+  .team {}
 
   .team .h1 {
-    margin-left: 80px;
+    margin-left: calc(80vw/14.4);
     display: flex;
     align-items: center;
-    height: 32px;
+    height: calc(32vw/14.4);
   }
 
   .team .h1 .icon {
-    width: 30px;
-    height: 30px;
+    width: calc(30vw/14.4);
+    height: calc(30vw/14.4);
     border: solid 1px #8765ed;
     border-radius: 50%;
-    margin-right: 38px;
+    margin-right: calc(38vw/14.4);
     text-align: center;
     overflow: hidden;
   }
@@ -380,13 +388,13 @@
   .team .h1 .txt {
     color: #8765ed;
     font-family: "PingFangSC-Regular";
-    font-size: 25px;
+    font-size: calc(25vw/14.4);
     font-weight: 400;
   }
 
   .team .teamMain {
     position: relative;
-    margin-top: 223px;
+    margin-top: calc(223vw/14.4);
     overflow: hidden;
     width: 100%;
   }

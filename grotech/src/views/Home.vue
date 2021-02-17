@@ -13,12 +13,13 @@
     </div>
     <div class="content">
       <div class="homeVideo">
-        <video src="../assets/header1.mp4" autoplay loop preload controls>
+        <!-- controls -->
+        <video src="../assets/header1.mp4" autoplay loop muted>
           您的浏览器不支持 video 标签。
         </video>
         <div class="videoTxt">
           <p class="p1">科技推动消费品创新与增长</p>
-          <p class="p2">Leveraging Technology for Innovation and Growth</p>
+          <p class="p2">Leveraging Technology <br />for Innovation and Growth</p>
         </div>
       </div>
       <div class="proMain">
@@ -26,7 +27,7 @@
           <div class="left">
             <div class="left-box">
               <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
-                :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+                :style="{transitionDelay:index*0.4+'s'}" v-html="item">
               </div>
             </div>
           </div>
@@ -55,13 +56,14 @@
           <div class="left">
             <div class="left-box">
               <div v-for="(item,index) in title[1].txt" class="title" :class="['title_'+index]"
-                :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+                :style="{transitionDelay:index*0.4+'s'}" v-html="item">
               </div>
             </div>
           </div>
           <div class="right">
             <p class="right-p1">
-              我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。
+              我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的<span
+                style="font-family:Faktum-Regular;">Grotech®</span>大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。
             </p>
             <p class="right-p2">
               美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>
@@ -71,16 +73,16 @@
           <div class="left">
             <div class="left-box">
               <div v-for="(item,index) in title[2].txt" class="title" :class="['title_'+index]"
-                :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+                :style="{transitionDelay:index*0.4+'s'}" v-html="item">
               </div>
             </div>
           </div>
           <div class="right">
             <p class="right-p3">
-              自研的增长科技Grotech®系统，拥有亿级消费者及商品交易数据，应用前沿AI算法，制定企业发展策略。
+              自研的增长科技<span style="font-family:Faktum-Regular;">Grotech®</span>系统，拥有亿级消费者及商品交易数据，<br />应用前沿AI算法，制定企业发展策略。
             </p>
             <p class="right-p4">
-              来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，使命必达。</p>
+              来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，<br />使命必达。</p>
 
             <p class="right-p5">
               拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>
@@ -319,19 +321,21 @@
 
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
-          let _h2 = that.$refs[str].offsetHeight
+          //console.log(str)
+          let _h2 = that.$refs[str] && that.$refs[str].offsetHeight || 0
           let _h3 = that.$refs.Introduction.offsetHeight
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top = that.$refs[str].offsetTop + _h3
-          let _top2 = that.$refs[str].offsetTop + _h3 + _h2
+          let _top0 = (that.$refs[str] && that.$refs[str].offsetTop) || 0
+          let _top = _top0 + _h3
+          let _top2 = _top0 + _h3 + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
             endFn && endFn()
 
           }
 
-          if (isElementNotInViewport(that.$refs[str])) {
+          if (that.$refs[str] && isElementNotInViewport(that.$refs[str])) {
             endFn2 && endFn2()
           }
         }
@@ -345,7 +349,7 @@
             show: false
           },
           {
-            txt: ['创新的GaaS', '增长即服务', 'Growth-as-a-Service'],
+            txt: ['创新的<span style="font-family:Faktum-Regular;">GaaS</span>', '增长即服务', 'Growth-as-a-Service'],
             show: false
           },
           {
@@ -367,8 +371,8 @@
         },
         serviceTxt: [
           ['基于大数据与AI的策略服务', '企业竞争战略：由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。', '产品创新：我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。', '全渠道增长策略：从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。'],
-          ['精益化营销服务', '整合营销服务：利用美至科技Grotech技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（ROI）。', '数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。'],
-          ['ADAPT™品牌孵化服务', 'A-InnovAtion,D-Deep insight, A-All dimensions P-Partnership T-Technology.ADAPT在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。']
+          ['精益化营销服务', '整合营销服务：利用美至科技<span style="font-family:Faktum-Regular;">Grotech</span>技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（<span style="font-family:Faktum-Regular;">ROI</span>）。', '数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。'],
+          ['<span style="font-family:Faktum-Regular;">ADAPT™</span>品牌孵化服务', '<span style="font-family:Faktum-Regular;">A-InnovAtion,D-Deep insight</span>, <span style="font-family:Faktum-Regular;">A-All dimensions P-Partnership T-Technology</span>.<span style="font-family:Faktum-Regular;">ADAPT</span>在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。']
         ],
         serviceTxt2: [
           ['行业研究', '和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。', '美至科技投资雷达：美至科技通过建立消费品细分行业模型，结合投资机构的个性化需求，更早更准确地挖掘投资标的。'],
@@ -402,11 +406,11 @@
 </script>
 <style scoped>
   .Introduction {
-    height: 735px;
+    height: calc(735vw/14.4);
     position: fixed;
     overflow: hidden;
     box-sizing: border-box;
-    top: 64px;
+    top: calc(64vw/14.4);
     left: 0px;
     width: calc(1140/1440*100%);
     box-sizing: border-box;
@@ -416,7 +420,7 @@
 
   .Introduction .left {
     width: calc(440/1140*100%);
-    height: 735px;
+    height: calc(735vw/14.4);
     overflow: hidden;
   }
 
@@ -427,49 +431,48 @@
   .Introduction .h3 {
     color: #8765ed;
     font-family: "Faktum-Regular";
-    font-size: 105px;
+    font-size: calc(105vw/14.4);
     font-weight: 400;
-    line-height: 88px;
-    margin-top: 70px;
+    line-height: calc(88vw/14.4);
+    margin-top: calc(70vw/14.4);
   }
 
   .Introduction .h2 {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 40px;
+    font-size: calc(40vw/14.4);
     font-weight: 400;
-    line-height: 80px;
-    letter-spacing: 2.5px;
-    margin-top: 8px;
+    line-height: calc(80vw/14.4);
+    letter-spacing: calc(2.5vw/14.4);
+    margin-top: calc(8vw/14.4);
   }
 
   .Introduction .p1 {
     opacity: 0.6;
-    height: 64px;
+    height: calc(64vw/14.4);
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 32px;
-    width: 376px;
-    margin-top: 130px;
+    line-height: calc(32vw/14.4);
+    width: calc(376vw/14.4);
+    margin-top: calc(130vw/14.4);
   }
 
   .Introduction .p2 {
     color: #383a50;
     font-family: "Faktum-Regular";
-    /* font-size: 21px; */
     font-weight: 400;
-    margin-top: 75px;
-    font-size: 2vw;
+    margin-top: calc(75vw/14.4);
+    font-size: calc(21vw/14.4);
   }
 
   .content {
-    margin-top: 735px;
+    margin-top: calc(735vw/14.4);
   }
 
   .homeVideo {
-    height: 817px;
+    height: calc(817vw/14.4);
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -477,53 +480,54 @@
 
   .homeVideo .videoTxt {
     position: absolute;
-    left: 80px;
-    bottom: 178px;
+    left: calc(80vw/14.4);
+    bottom: calc(178vw/14.4);
   }
 
   .homeVideo .videoTxt .p1 {
-    width: 384px;
-    height: 64px;
+    width: calc(384vw/14.4);
+    height: calc(64vw/14.4);
     color: #ffffff;
     font-family: "PingFangSC-Regular";
-    font-size: 32px;
+    font-size: calc(32vw/14.4);
     font-weight: 400;
-    line-height: 64px;
+    line-height: calc(64vw/14.4);
   }
 
   .homeVideo .videoTxt .p2 {
-    width: 1074px;
-    height: 145px;
+    width: calc(1074vw/14.4);
+    height: calc(145vw/14.4);
     color: #ffffff;
     font-family: "Faktum-Regular";
-    font-size: 72px;
+    font-size: calc(72vw/14.4);
     font-weight: 400;
-    line-height: 75px;
-    margin-top: 21px;
+    line-height: calc(75vw/14.4);
+    margin-top: calc(21vw/14.4);
   }
 
   .proMain {
-    margin: 0px 80px;
+    margin-left: calc(80vw/14.4);
+    width: calc(1283vw/14.4);
   }
 
   .proMain .pro-box {
-    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
     display: flex;
     overflow: hidden;
     position: relative;
   }
 
   .proMain .pro-box-1 {
-    border: 0;
-    min-height: 630px;
+    min-height: calc(630vw/14.4);
   }
 
   .proMain .pro-box-2 {
-    min-height: 656px;
+    min-height: calc(656vw/14.4);
   }
 
   .proMain .pro-box-3 {
-    min-height: 584px;
+    min-height: calc(584vw/14.4);
+    border: 0;
   }
 
   .proMain .pro-box-2 .right,
@@ -531,7 +535,7 @@
     position: absolute;
     top: 100%;
     opacity: 0;
-    right: 0;
+    left: calc(550/1283*100%);
   }
 
   .proMain .pro-box-2.cur .right,
@@ -547,42 +551,50 @@
   .proMain .pro-box .left {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 57px;
-    letter-spacing: 2.5px;
-    width: 42.96875%;
+    line-height: calc(57vw/14.4);
+    letter-spacing: calc(2.5vw/14.4);
+    width: calc(550/1283*100%);
   }
 
   .proMain .pro-box .left .title_2 {
     opacity: 0.25;
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 28px;
+    line-height: calc(28vw/14.4);
   }
 
   .proMain .pro-box .right {
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 42px;
-    width: 57.03125%;
+    line-height: calc(42vw/14.4);
+    width: calc(730/1283*100%);
+  }
+
+  .proMain .pro-box-2 .right {
+    width: calc(690/1283*100%);
+  }
+
+  .proMain .pro-box-3 .right {
+    width: calc(736/1283*100%);
   }
 
   .proMain .pro-box .right h6 {
     color: #d6d6f4;
     font-family: "Faktum-Regular";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 23px;
+    line-height: calc(23vw/14.4);
   }
 
   .proMain .pro-box-1 .right {
-    padding-top: 94px;
+    padding-top: calc(94vw/14.4);
   }
 
   .proMain .pro-box-1 .right>div {
@@ -593,37 +605,37 @@
 
   .proMain .pro-box .right .list {
     width: 40%;
-    margin-bottom: 71px;
+    margin-bottom: calc(71vw/14.4);
   }
 
   .proMain .pro-box .right .list p {
-    margin-top: 20px;
+    margin-top: calc(20vw/14.4);
   }
 
   .proMain .pro-box-1 .left {
-    margin-top: 94px;
+    margin-top: calc(94vw/14.4);
   }
 
   .proMain .pro-box-2>div {
-    margin-top: 70px;
+    margin-top: calc(70vw/14.4);
   }
 
   .proMain .pro-box .right>p {
-    margin-bottom: 40px;
+    margin-bottom: calc(40vw/14.4);
   }
 
   .proMain .pro-box-3 .left {
-    margin-top: 86px;
+    margin-top: calc(86vw/14.4);
   }
 
   .proMain .pro-box-3 .right {
-    margin-top: 79px;
+    margin-top: calc(79vw/14.4);
   }
 
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: 57px;
+    height: calc(57vw/14.4);
   }
 
   .proMain .pro-box.cur .left .left-box .title {
@@ -646,7 +658,7 @@
   }
 
   .proMain .pro-box-1 .list {
-    height: 126.67px;
+    height: calc(126.67vw/14.4);
     position: relative;
     overflow: hidden;
   }
@@ -748,8 +760,8 @@
   }
 
   .servicePhilosophy {
-    padding: 0px 80px;
-    height: 753px;
+    padding: 0px calc(80vw/14.4);
+    height: calc(753vw/14.4);
     background: #bdf0ee;
     overflow: hidden;
   }
@@ -757,60 +769,60 @@
   .servicePhilosophy .h1 {
     color: #214743;
     font-family: "PingFangSC-Medium";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 27px;
-    margin-top: 40px;
+    line-height: calc(27vw/14.4);
+    margin-top: calc(40vw/14.4);
   }
 
   .servicePhilosophy .h2 {
     color: #214743;
     font-family: "Faktum-Regular";
-    font-size: 84px;
+    font-size: calc(84vw/14.4);
     font-weight: 400;
-    line-height: 81.6px;
-    letter-spacing: 0.5px;
-    margin-top: 110px;
-    height: 445px;
+    line-height: calc(81.6vw/14.4);
+    letter-spacing: calc(0.5vw/14.4);
+    margin-top: calc(110vw/14.4);
+    height: calc(445vw/14.4);
     overflow: hidden;
   }
 
   .servicePhilosophy .h3 {
     color: #214743;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 40px;
-    letter-spacing: 2.5px;
-    margin-top: 0px;
+    line-height: calc(40vw/14.4);
+    letter-spacing: calc(2.5vw/14.4);
+    margin-top: calc(0vw/14.4);
   }
 
   .serviceBox {
-    margin: 215px 80px 0px 80px;
-    height: 745px;
+    margin: calc(215vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    height: calc(745vw/14.4);
     position: relative;
   }
 
   .serviceBox2 {
-    height: 580px;
-    margin-top: 263px;
+    height: calc(580vw/14.4);
+    margin-top: calc(263vw/14.4);
   }
 
   .serviceBox .item-box {
     display: flex;
-    height: 745px;
+    height: calc(745vw/14.4);
     justify-content: space-between;
   }
 
   .serviceBox2 .item-box {
-    height: 580px;
+    height: calc(580vw/14.4);
   }
 
   .serviceBox .item-left {
-    width: 440px;
-    height: 419px;
+    width: calc(440vw/14.4);
+    height: calc(419vw/14.4);
     position: relative;
-    margin-top: 152px;
+    margin-top: calc(152vw/14.4);
   }
 
   .serviceBox .item-left,
@@ -842,21 +854,21 @@
   .serviceBox .item-right .h1 {
     color: #65ecaa;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 27px;
+    line-height: calc(27vw/14.4);
   }
 
   .serviceBox .item-right .h2 {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 46px;
-    margin-top: 28px;
-    height: 92px;
+    line-height: calc(46vw/14.4);
+    margin-top: calc(28vw/14.4);
+    height: calc(92vw/14.4);
     box-sizing: border-box;
-    padding-top: 92px;
+    padding-top: calc(92vw/14.4);
     overflow: hidden;
     transition: all .6s;
     -moz-transition: all .6s;
@@ -876,35 +888,35 @@
     opacity: 0.25;
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 14.4px;
-    margin-top: 20px;
+    line-height: calc(14.4vw/14.4);
+    margin-top: calc(20vw/14.4);
   }
 
   .serviceBox .item-right .con {
-    margin-top: 58px;
+    margin-top: calc(58vw/14.4);
   }
 
   .serviceBox .item-right .c1 {
     opacity: 0.8;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 24px;
+    font-size: calc(24vw/14.4);
     font-weight: 400;
-    line-height: 30px;
+    line-height: calc(30vw/14.4);
   }
 
   .serviceBox .item-right .c2 {
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 26px;
-    letter-spacing: 0.0099px;
-    margin-top: 24px;
-    width: 542px;
+    line-height: calc(26vw/14.4);
+    letter-spacing: calc(0.0099vw/14.4);
+    margin-top: calc(24vw/14.4);
+    width: calc(542vw/14.4);
   }
 
   .serviceBox .rightBox {
@@ -921,17 +933,17 @@
 
   .serviceBox .rightBox span {
     opacity: 0.25;
-    width: 10px;
-    height: 10px;
+    width: calc(10vw/14.4);
+    height: calc(10vw/14.4);
     background: #383a50;
-    margin-right: 22px;
+    margin-right: calc(22vw/14.4);
     display: block;
     border-radius: 50%;
     cursor: pointer;
   }
 
   .serviceBox .rightBox span:last-child {
-    margin-bottom: 0px;
+    margin-bottom: calc(0vw/14.4);
   }
 
   .serviceBox .rightBox span.cur {
@@ -944,27 +956,27 @@
     text-align: center;
     display: flex;
     left: 50%;
-    margin-left: -25px;
+    margin-left: calc(-25vw/14.4);
   }
 
   .serviceBox .bottomBox span {
     opacity: 0.35;
-    width: 11px;
-    height: 22px;
+    width: calc(11vw/14.4);
+    height: calc(22vw/14.4);
     color: #383a50;
     font-family: "PingFangSC-Medium";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 21.6px;
+    line-height: calc(21.6vw/14.4);
     display: block;
-    margin-right: 28px;
+    margin-right: calc(28vw/14.4);
     position: relative;
   }
 
   .serviceBox .bottomBox span i {
     opacity: 0.8;
-    width: 11px;
-    height: 2px;
+    width: calc(11vw/14.4);
+    height: calc(2vw/14.4);
     background: #383a50;
   }
 
@@ -981,31 +993,31 @@
   }
 
   .productBox {
-    margin: 165px 80px 0px 80px;
-    min-height: 994px;
+    margin: calc(165vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    min-height: calc(994vw/14.4);
   }
 
   .productBox>.h1 {
     color: #65ecaa;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 27px;
+    line-height: calc(27vw/14.4);
   }
 
   .productBox>.h2 {
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 45px;
-    margin-top: 29px;
+    line-height: calc(45vw/14.4);
+    margin-top: calc(29vw/14.4);
   }
 
   .productBox .productList {
     display: flex;
     align-items: flex-start;
-    margin-top: 144px;
+    margin-top: calc(144vw/14.4);
   }
 
   .productBox .productList .listBox:hover .productInfo,
@@ -1014,15 +1026,15 @@
   }
 
   .productBox .productList .list-box-1 {
-    width: 396px;
+    width: calc(396vw/14.4);
   }
 
   .productBox .productList .list-box-2 {
-    width: 375px;
+    width: calc(375vw/14.4);
   }
 
   .productBox .productList .list-box-3 {
-    width: 373px;
+    width: calc(373vw/14.4);
   }
 
   .productBox .productList .list-box {
@@ -1036,61 +1048,61 @@
   }
 
   .productBox .productList .imgBox img {
-    width: 230px;
+    width: calc(230vw/14.4);
     display: block;
     height: auto;
   }
 
   .productBox .productList .listBox {
-    margin-top: 92px;
+    margin-top: calc(92vw/14.4);
   }
 
   .productBox .productList .list-box-1 .listBox {
-    width: 286px;
+    width: calc(286vw/14.4);
   }
 
   .productBox .productList .list-box-2 .listBox {
-    width: 265px;
+    width: calc(265vw/14.4);
   }
 
   .productBox .productList .list-box-3 .listBox {
-    width: 272px;
+    width: calc(272vw/14.4);
   }
 
   .productBox .productList .title-1 {
     opacity: 0.8;
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: 24px;
+    font-size: calc(24vw/14.4);
     font-weight: 400;
-    line-height: 30px;
+    line-height: calc(30vw/14.4);
   }
 
   .productBox .productList .title-2 {
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 27px;
-    margin-top: 8px;
+    line-height: calc(27vw/14.4);
+    margin-top: calc(8vw/14.4);
   }
 
   .productBox .productList .productInfo {
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 15px;
+    font-size: calc(15vw/14.4);
     font-weight: 400;
-    line-height: 27px;
-    letter-spacing: 0.00825px;
-    margin-top: 22px;
+    line-height: calc(27vw/14.4);
+    letter-spacing: calc(0.00825vw/14.4);
+    margin-top: calc(22vw/14.4);
     display: none;
   }
 
   .innovativeService {
-    margin: 35px 80px 0px 80px;
-    height: 672px;
+    margin: calc(35vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    height: calc(672vw/14.4);
     overflow: hidden;
     position: relative;
   }
@@ -1098,51 +1110,51 @@
   .innovativeService .h1 {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 46px;
-    margin-top: 140px;
+    line-height: calc(46vw/14.4);
+    margin-top: calc(140vw/14.4);
   }
 
   .innovativeService .p1 {
     opacity: 0.6;
-    width: 1051px;
-    height: 126px;
+    width: calc(1051vw/14.4);
+    height: calc(126vw/14.4);
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 42px;
-    margin-top: 58px;
+    line-height: calc(42vw/14.4);
+    margin-top: calc(58vw/14.4);
   }
 
   .innovativeService .bottomBox {
     position: absolute;
-    bottom: 79px;
+    bottom: calc(79vw/14.4);
     text-align: center;
     display: flex;
     left: 50%;
-    margin-left: -25px;
+    margin-left: calc(-25vw/14.4);
   }
 
   .innovativeService .bottomBox span {
     opacity: 0.35;
-    width: 11px;
-    height: 22px;
+    width: calc(11vw/14.4);
+    height: calc(22vw/14.4);
     color: #383a50;
     font-family: "PingFangSC-Medium";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 21.6px;
+    line-height: calc(21.6vw/14.4);
     display: block;
-    margin-right: 28px;
+    margin-right: calc(28vw/14.4);
     position: relative;
   }
 
   .innovativeService .bottomBox span i {
     opacity: 0.8;
-    width: 11px;
-    height: 2px;
+    width: calc(11vw/14.4);
+    height: calc(2vw/14.4);
     background: #383a50;
   }
 
@@ -1175,40 +1187,40 @@
   }
 
   .brand {
-    margin: 132px 80px 0px 80px;
-    height: 335px;
+    margin: calc(132vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    height: calc(335vw/14.4);
   }
 
   .brand .title {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 46px;
+    line-height: calc(46vw/14.4);
   }
 
   .brand .tabH {
     font-family: "PingFangSC-Regular";
     display: flex;
-    height: 25px;
+    height: calc(25vw/14.4);
     align-items: center;
-    margin-top: 43px;
+    margin-top: calc(43vw/14.4);
   }
 
   .brand .tabH .list-h {
     opacity: 0.4;
     color: #383a50;
-    font-size: 17px;
+    font-size: calc(17vw/14.4);
     font-weight: 400;
-    height: 25px;
+    height: calc(25vw/14.4);
   }
 
   .brand .tabH .list-h-1 {
-    margin-right: 41px;
+    margin-right: calc(41vw/14.4);
   }
 
   .brand .tabH .list-h-2 {
-    margin-right: 68px;
+    margin-right: calc(68vw/14.4);
   }
 
   .brand .tabH .list-h.cur {
@@ -1217,39 +1229,39 @@
   }
 
   .contact {
-    margin: 216px 80px 0px 80px;
-    height: 312px;
-    margin-bottom: 216px;
+    margin: calc(216vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    height: calc(312vw/14.4);
+    margin-bottom: calc(216vw/14.4);
   }
 
   .contact .h1 {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 46px;
+    line-height: calc(46vw/14.4);
   }
 
   .contact .p1 {
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 42px;
-    margin-top: 42px;
+    line-height: calc(42vw/14.4);
+    margin-top: calc(42vw/14.4);
   }
 
   .contact .mailbox {
     color: #7ccca5;
     font-family: "Faktum-Regular";
-    font-size: 42px;
+    font-size: calc(42vw/14.4);
     font-weight: 400;
-    height: 44px;
-    line-height: 44px;
+    height: calc(44vw/14.4);
+    line-height: calc(44vw/14.4);
     display: inline-block;
     border-bottom: 2px solid #7ccca5;
     text-decoration: none;
-    margin-top: 41px;
+    margin-top: calc(41vw/14.4);
   }
 </style>

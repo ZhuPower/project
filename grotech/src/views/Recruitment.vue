@@ -2,8 +2,9 @@
   <div class="Recruitment">
     <topNav />
     <div class="bannerVideo">
-      <img src="../assets/img5.png"
-        style="width:1440px;position: relative;left: 50%; margin-left: -720px; height: 736px;">
+      <video src="../assets/header3.mp4" autoplay loop muted>
+        您的浏览器不支持 video 标签。
+      </video>
       <div class="videoTxt">
         <p class="p1">如果你希望通过简单正确的事情重复做，<br />来提升人的幸福感，也让自己获得巨大成功，<br />欢迎你加入我们。</p>
         <div class="h1">
@@ -75,6 +76,7 @@
 
       </div>
     </div>
+    <div class="zp"></div>
   </div>
 </template>
 
@@ -98,20 +100,30 @@
           that.title[0].show = false;
         })
 
+
+        doSome('atGrotech', function () {
+          that.isActive = true;
+        }, function () {
+          that.isActive = false;
+        })
+
+
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
-          let _h2 = that.$refs[str].offsetHeight
+          //console.log(str)
+          let _h2 = that.$refs[str] && that.$refs[str].offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top = that.$refs[str].offsetTop
-          let _top2 = that.$refs[str].offsetTop + _h2
+
+          let _top = that.$refs[str] && that.$refs[str].offsetTop || 0
+          let _top2 = _top + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
             endFn && endFn()
 
           }
 
-          if (isElementNotInViewport(that.$refs[str])) {
+          if (that.$refs[str] && isElementNotInViewport(that.$refs[str])) {
             endFn2 && endFn2()
           }
         }
@@ -140,7 +152,7 @@
 </script>
 <style scoped>
   .bannerVideo {
-    height: 736px;
+    height: calc(737vw/14.4);
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -148,31 +160,31 @@
 
   .bannerVideo .videoTxt {
     position: absolute;
-    left: 80px;
-    bottom: 55px;
+    left: calc(80vw/14.4);
+    bottom: calc(55vw/14.4);
   }
 
   .bannerVideo .videoTxt .p1 {
     color: #ffffff;
     font-family: "PingFangSC-Light";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 63px;
+    line-height: calc(63vw/14.4);
   }
 
   .bannerVideo .videoTxt .h1 {
     display: flex;
     align-items: center;
-    height: 32px;
-    margin-top: 77px;
+    height: calc(32vw/14.4);
+    margin-top: calc(77vw/14.4);
   }
 
   .bannerVideo .videoTxt .h1 .icon {
-    width: 30px;
-    height: 30px;
+    width: calc(30vw/14.4);
+    height: calc(30vw/14.4);
     border: solid 1px #fff;
     border-radius: 50%;
-    margin-right: 38px;
+    margin-right: calc(38vw/14.4);
     text-align: center;
     overflow: hidden;
   }
@@ -190,21 +202,21 @@
   .bannerVideo .videoTxt .h1 .txt {
     color: #ffffff;
     font-family: "PingFangSC-Regular";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 24px;
+    line-height: calc(24vw/14.4);
   }
 
   .proMain {
-    margin: 0px 80px;
-    height: 520px;
+    margin: 0px calc(80vw/14.4);
+    height: calc(520vw/14.4);
   }
 
   .proMain .pro-box {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    padding-top: 96px;
+    padding-top: calc(96vw/14.4);
   }
 
 
@@ -212,34 +224,28 @@
     width: 34.375%;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 57px;
-    letter-spacing: 2.5px;
+    line-height: calc(57vw/14.4);
+    letter-spacing: calc(2.5vw/14.4);
   }
 
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: 57px;
+    height: calc(57vw/14.4);
   }
 
   .proMain .pro-box.cur .left .left-box .title {
     transition-property: width;
     -moz-transition-property: width;
-    /* Firefox 4 */
     -webkit-transition-property: width;
-    /* Safari 和 Chrome */
     -o-transition-property: width;
-    /* Opera */
 
     transition-duration: .6s;
     -moz-transition-duration: .6s;
-    /* Firefox 4 */
     -webkit-transition-duration: .6s;
-    /* Safari 和 Chrome */
     -o-transition-duration: .6s;
-    /* Opera */
     width: 100%;
   }
 
@@ -249,8 +255,8 @@
 
   .proMain .pro-box-1,
   .proMain .pro-box-1 .right {
-    height: 520px;
-    padding-top: 96px;
+    height: calc(520vw/14.4);
+    padding-top: calc(96vw/14.4);
     box-sizing: border-box;
   }
 
@@ -259,10 +265,10 @@
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 42px;
-    letter-spacing: 0.65625px;
+    line-height: calc(42vw/14.4);
+    letter-spacing: calc(0.65625vw/14.4);
   }
 
   .proMain .pro-box-1 .right {
@@ -282,34 +288,88 @@
   }
 
   .atGrotech {
-    height: 689px;
+    height: calc(689vw/14.4);
     overflow: hidden;
+    display: flex;
   }
 
   .atGrotech .atList {
     position: relative;
-    width: calc((100% - 550px)/4);
     overflow: hidden;
-    float: left;
-    height: 689px;
+    height: calc(689vw/14.4);
   }
 
-  .atGrotech .atList:first-child {
-    width: 550px;
+  .atGrotech .atList_0 {
+    width: calc(550vw/14.4);
+    z-index: 4;
+  }
+
+  .atGrotech .atList_1 {
+    width: calc(232vw/14.4);
+    margin-left: calc(-232vw/14.4);
+    z-index: 3;
+  }
+
+  .atGrotech .atList_2 {
+    width: calc(234vw/14.4);
+    margin-left: calc(-234vw/14.4);
+    z-index: 2;
+  }
+
+  .atGrotech .atList_3 {
+    width: calc(234vw/14.4);
+    margin-left: calc(-234vw/14.4);
+    z-index: 1;
+  }
+
+  .atGrotech .atList_4 {
+    width: calc(190vw/14.4);
+    margin-left: calc(-190vw/14.4);
   }
 
   .atGrotech .atList img {
-    width: 550px;
-    height: 689px;
+    width: calc(550vw/14.4);
+    height: calc(689vw/14.4);
     position: absolute;
     top: 0;
     right: 0;
   }
 
+
+  .atGrotech.cur .atList {
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    margin-left: 0px;
+  }
+
+
+  /* .atGrotech.cur .atList_1 {}
+
+  .atGrotech.cur .atList_2 {
+    transition-delay: 0.1s;
+    -moz-transition-delay: 0.1s;
+    -webkit-transition-delay: 0.1s;
+    -o-transition-delay: 0.1s;
+  }
+
+  .atGrotech.cur .atList_3 {
+    transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    -webkit-transition-delay: 0.2s;
+    -o-transition-delay: 0.2s;
+  }
+
+  .atGrotech.cur .atList_4 {
+    transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -webkit-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+  } */
+
   .atGrotech .atList .atInfo {
     position: relative;
-    height: 689px;
-    padding-left: 12px;
+    height: calc(689vw/14.4);
+    padding-left: calc(12vw/14.4);
     overflow: hidden;
     display: none;
   }
@@ -323,95 +383,99 @@
   }
 
   .atGrotech .atList_1 .atInfo {
-    animation: atList_1 .6s ease;
-    -moz-animation: atList_1 .6s ease;
+    animation: atList_1 .6s ease .8s both;
+    -moz-animation: atList_1 .6s ease .8s both;
     /* Firefox */
-    -webkit-animation: atList_1 .6s ease;
+    -webkit-animation: atList_1 .6s ease .8s both;
     /* Safari and Chrome */
-    -o-animation: atList_1 .6s ease;
+    -o-animation: atList_1 .6s ease .8s both;
     /* Opera */
   }
 
   .atGrotech .atList_2 .atInfo {
-    animation: atList_1 .6s ease .2s both;
-    -moz-animation: atList_1 .6s ease .2s both;
+    animation: atList_1 .6s ease 1s both;
+    -moz-animation: atList_1 .6s ease 1s both;
     /* Firefox */
-    -webkit-animation: atList_1 .6s ease .2s both;
+    -webkit-animation: atList_1 .6s ease 1s both;
     /* Safari and Chrome */
-    -o-animation: atList_1 .6s ease .2s both;
+    -o-animation: atList_1 .6s ease 1s both;
     /* Opera */
   }
 
   .atGrotech .atList_3 .atInfo {
-    animation: atList_1 .6s ease .4s both;
-    -moz-animation: atList_1 .6s ease .4s both;
+    animation: atList_1 .6s ease 1.2s both;
+    -moz-animation: atList_1 .6s ease 1.2s both;
     /* Firefox */
-    -webkit-animation: atList_1 .6s ease .4s both;
+    -webkit-animation: atList_1 .6s ease 1.2s both;
     /* Safari and Chrome */
-    -o-animation: atList_1 .6s ease .4s both;
+    -o-animation: atList_1 .6s ease 1.2s both;
     /* Opera */
   }
 
   .atGrotech .atList_4 .atInfo {
-    animation: atList_1 .6s ease .6s both;
-    -moz-animation: atList_1 .6s ease .6s both;
+    animation: atList_1 .6s ease 1.4s both;
+    -moz-animation: atList_1 .6s ease 1.4s both;
     /* Firefox */
-    -webkit-animation: atList_1 .6s ease .6s both;
+    -webkit-animation: atList_1 .6s ease 1.4s both;
     /* Safari and Chrome */
-    -o-animation: atList_1 .6s ease .6s both;
+    -o-animation: atList_1 .6s ease 1.4s both;
     /* Opera */
   }
 
   .atGrotech .atList:first-child .atInfo {
-    padding-left: 43px;
+    padding-left: calc(43vw/14.4);
   }
 
   .atGrotech .atList .atInfo .h1 {
     color: #ffffff;
     font-family: "Faktum-Regular";
-    font-size: 17px;
+    font-size: calc(17vw/14.4);
     font-weight: 500;
-    line-height: 25.5px;
-    letter-spacing: 0.53125px;
-    margin-top: 48px;
+    line-height: calc(25.5vw/14.4);
+    letter-spacing: calc(0.53125vw/14.4);
+    margin-top: calc(48vw/14.4);
   }
 
   .atGrotech .atList .atInfo .c1 {
     color: rgba(255, 255, 255, 0.91);
     font-family: "PingFangSC-Bold";
-    font-size: 36px;
+    font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: 62px;
-    margin-top: 102px;
+    line-height: calc(62vw/14.4);
+    margin-top: calc(102vw/14.4);
   }
 
   .atGrotech .atList .atInfo .b1 {
     color: #ffffff;
     font-family: "Faktum-Regular";
-    font-size: 17px;
+    font-size: calc(17vw/14.4);
     font-weight: 500;
-    line-height: 25.5px;
-    letter-spacing: 0.53125px;
+    line-height: calc(25.5vw/14.4);
+    letter-spacing: calc(0.53125vw/14.4);
     position: absolute;
-    bottom: 35px;
+    bottom: calc(35vw/14.4);
   }
 
   .atGrotech .atList .atInfo .x1 {
     color: #ffffff;
     font-family: "PingFangSC-Semibold";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 43px;
-    margin-top: 108px;
+    line-height: calc(43vw/14.4);
+    margin-top: calc(108vw/14.4);
   }
 
   .atGrotech .atList .atInfo .p1 {
     color: #ffffff;
     font-family: "PingFangSC-Semibold";
-    font-size: 18px;
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: 26px;
-    letter-spacing: 0.5625px;
-    margin-top: 31px;
+    line-height: calc(26vw/14.4);
+    letter-spacing: calc(0.5625vw/14.4);
+    margin-top: calc(31vw/14.4);
+  }
+
+  .zp {
+    height: calc(1606vw/14.4);
   }
 </style>

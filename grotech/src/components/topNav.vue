@@ -161,13 +161,13 @@
   }
 
   .logoBox.cur {
-    top: calc(100% - 85px);
+    top: calc(100% - 85vw/14.4);
     transition: all .6s;
     -webkit-transition: all .6s;
     left: 0;
-    margin-left: 80px;
-    width: 221px;
-    height: 49px;
+    margin-left: calc(80vw/14.4);
+    width: calc(221vw/14.4);
+    height: calc(49vw/14.4);
   }
 
   .logoBox.cur .logotype {
@@ -184,8 +184,8 @@
   }
 
   .topNav {
-    height: 64px;
-    margin: 0px 80px;
+    height: calc(64vw/14.4);
+    margin: 0px calc(80vw/14.4);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -197,18 +197,18 @@
 
   .topLeft {
     font-family: "PingFangSC-Regular";
-    font-size: 21px;
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: 28px;
+    line-height: calc(28vw/14.4);
     display: flex;
     align-items: center;
   }
 
   .topLeft i {
-    margin: 0px 16px;
+    margin: 0px calc(16vw/14.4);
     display: block;
-    height: 20px;
-    width: 1px;
+    height: calc(20vw/14.4);
+    width: calc(1vw/14.4);
     background: #000;
   }
 
@@ -234,7 +234,7 @@
   .menuList {
     color: #383a50;
     font-family: "PingFangSC-Medium";
-    font-size: 42px;
+    font-size: calc(42vw/14.4);
     font-weight: 400;
     width: 40.972%;
     position: absolute;
@@ -249,16 +249,16 @@
   }
 
   .menuList .menu-box {
-    height: 41px;
+    height: calc(41vw/14.4);
     overflow: hidden;
     cursor: pointer;
-    margin-bottom: 24px;
+    margin-bottom: calc(24vw/14.4);
     display: inline-block;
   }
 
   .menuList .menu-box>div {
-    margin-top: -9px;
-    padding-right: 10px;
+    margin-top: calc(-9vw/14.4);
+    padding-right: calc(10vw/14.4);
     transform: translate(0px, -59px);
     -webkit-transform: translate(0px, -59px);
     transition: all .6s;
@@ -282,7 +282,7 @@
   }
 
   .navMain.cur .menuList {
-    top: 110px;
+    top: calc(110vw/14.4);
     transition: all .6s 3.1s;
     -webkit-transition: all .6s 3.1s;
   }
@@ -291,13 +291,13 @@
     width: 37.288%;
     position: absolute;
     top: 0;
-    right: 80px;
+    right: calc(80vw/14.4);
     opacity: 0.6;
     color: rgba(0, 0, 0, 0.7);
     font-family: "Faktum-Regular";
-    font-size: 14px;
+    font-size: calc(14vw/14.4);
     font-weight: 400;
-    line-height: 21px;
+    line-height: calc(21vw/14.4);
     z-index: -1;
     opacity: 0;
     transition: all .6s;
@@ -312,9 +312,9 @@
   }
 
   .menuList .childList .child-box {
-    height: 63px;
+    height: calc(63vw/14.4);
     overflow: hidden;
-    margin-bottom: 16px;
+    margin-bottom: calc(16vw/14.4);
     display: inline-block;
   }
 
@@ -322,9 +322,9 @@
     opacity: 0.6;
     color: rgba(0, 0, 0, 0.7);
     font-family: "Faktum-Regular";
-    font-size: 14px;
+    font-size: calc(14vw/14.4);
     font-weight: 400;
-    line-height: 21px;
+    line-height: calc(21vw/14.4);
     position: relative;
     transition: all .6s;
     -webkit-transition: all .6s;
