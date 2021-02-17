@@ -61,9 +61,18 @@
         <div class="icon"><img src="../assets/icon_1.png"></div>
         <div class="txt">认识我们的团队</div>
       </div>
-      <div class="temBox">
-        <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
-          :style="{backgroundImage:'url(https://image.yijiago.com/03/7b/98/158a56a67a528a4b8d1ab4ca01c11d82544b05a6.png)'}"></div>
+      <div class="teamMain" ref="teamMain" :class="{'cur':isTem}">
+        <div class="temBox2" :style="{height:w*830/1440+'px'}">
+          <div class="temImg" v-for="(item,index) in 4 " :style="{width:w/6+'px',height:w*830/1440+'px'}">
+            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
+          </div>
+        </div>
+        <div class="temBox" :style="{height:w*830/1440+'px'}">
+          <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
+            :style="{width:(index!=0 ? (w/6+'px') : (w/3+'px')),height:w*830/1440+'px'}">
+            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -94,6 +103,12 @@
           that.title[1].show = true;
         }, function () {
           that.title[1].show = false;
+        })
+        doSome('teamMain', function () {
+          console.log(that.isTem)
+          that.isTem = true;
+        }, function () {
+          that.isTem = false;
         })
 
 
@@ -128,10 +143,13 @@
             show: false
           }
         ],
+        w: 0,
+        isTem: false
       }
     },
     watch: {},
     mounted() {
+      this.w = this.$refs.teamMain.offsetWidth
       window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
     },
     destroyed() {
@@ -366,63 +384,87 @@
     font-weight: 400;
   }
 
-  .team .temBox {
+  .team .teamMain {
+    position: relative;
     margin-top: 223px;
-    height: 971px;
     overflow: hidden;
+    width: 100%;
+  }
+
+  .team .temBox2 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .temBox2 .temImg {
+    overflow: hidden;
+  }
+
+  .team .temBox {
+    overflow: hidden;
+    position: relative;
+    display: flex;
   }
 
   .temBox .temImg {
-    width: calc(100% / 6);
-    float: left;
     position: relative;
     overflow: hidden;
-    height: 971px;
+    transition-property: all;
+    -moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
+
+    transition-duration: .4s;
+    -moz-transition-duration: .4s;
+    -webkit-transition-duration: .4s;
+    -o-transition-duration: .4s;
+    transition-delay: 0s;
+    margin-left: calc(-100%/6);
   }
 
-  .temBox .temImg:first-child {
-    width: calc(100% / 3);
-    transition: width .6s;
-    -webkit-transition: width .6s;
+  .temBox .temImg_0 {
+    margin-left: 0px;
+    z-index: 4;
+  }
+
+
+
+  .teamMain.cur .temBox .temImg_1 {
+    transition-delay: 0s;
+    z-index: 3;
+  }
+
+
+  .teamMain.cur .temBox .temImg_2 {
+    transition-delay: .6s;
+    z-index: 2;
+  }
+
+
+  .teamMain.cur .temBox .temImg_3 {
+    transition-delay: 1.2s;
     z-index: 1;
   }
 
-  .temBox.cur .temImg:first-child {
-    width: 100%;
-    transition: width .6s;
-    -webkit-transition: width .6s;
+
+  .teamMain.cur .temBox .temImg_4 {
+    transition-delay: 1.8s;
   }
 
-  .temBox .temInfo {
-    width: 50%;
-    margin-top: 37px;
-    margin-left: 80px;
-    opacity: 0;
-    transition: all .6s;
-    -webkit-transition: all .6s;
-  }
+  .teamMain.cur .temBox .temImg {
+    transition-property: all;
+    -moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
 
-  .temBox .temImg.cur .temInfo {
-    opacity: 1;
-    transition: all .6s;
-    -webkit-transition: all .6s;
-  }
-
-  .temBox .p1 {
-    color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: 26px;
-    font-weight: 400;
-    line-height: 72px;
-  }
-
-  .temBox .p2 {
-    opacity: 0.6;
-    color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: 21px;
-    font-weight: 400;
-    line-height: 31.5px;
-    margin-top: 9px;
+    transition-duration: .6s;
+    -moz-transition-duration: .6s;
+    -webkit-transition-duration: .6s;
+    -o-transition-duration: .6s;
+    margin-left: 0px;
   }
 </style>

@@ -25,12 +25,12 @@
       <div class="menuList">
         <ul>
           <li v-for="(item,index) in menuList" @mouseleave="leave(index)">
-            <div class="menu-box" :class="{'cur':item.show}" @click="showChild(index)">
+            <div class="menu-box" :class="{'cur':item.show}" @click.stop="showChild(index)">
               <div class="menuTxt" :data-text="item.name">{{item.name}}</div>
             </div>
             <div class="childList" v-if="item.child && item.child.length>0">
               <div class="child-box" v-for="(item2,index2) in item.child">
-                <div class="menuTxt">
+                <div class="menuTxt" @click.stop="goMenu(item2)">
                   <p v-html="item2.html"></p>
                 </div>
               </div>
@@ -74,7 +74,19 @@
         if (obj.show != undefined) {
           obj.show = false
         }
-      }
+      },
+      goMenu(obj) {
+        if (this.$route.name == 'Home') {
+          this.show = false
+          let id = obj.url.split('=')[1]
+          document.getElementById(id).scrollIntoView({
+            block: 'start',
+            behavior: 'smooth'
+          });
+        } else {
+          this.$router.push(obj.url)
+        }
+      },
     },
     data() {
       return {
@@ -82,29 +94,32 @@
         menuList: [
           {
             name: '服务',
-            url: '',
             child: [
               {
-                html: 'GaaS(Growth-as-a-Service)<br />聚焦大消费行业的一站式增长服务'
+                html: 'GaaS(Growth-as-a-Service)<br />聚焦大消费行业的一站式增长服务',
+                url: '/?id=serviceBox1'
               },
               {
-                html: '大数据驱动，为投资机构<br />量身定制专属服务'
+                html: '大数据驱动，为投资机构<br />量身定制专属服务',
+                url: '/?id=serviceBox2'
               }
             ],
             show: false
           },
           {
             name: '产品',
-            url: '',
             child: [
               {
-                html: 'GDB（Growth Data Bank）<br />独树一帜的美至科技<br />数据银行'
+                html: 'GDB（Growth Data Bank）<br />独树一帜的美至科技<br />数据银行',
+                url: '/?id=productBox'
               },
               {
-                html: 'AdBot<br />数据科学驱动的<br />增长工具'
+                html: 'AdBot<br />数据科学驱动的<br />增长工具',
+                url: '/?id=productBox'
               },
               {
-                html: 'GroPilot <br />水晶球创新的商业<br />智能决策系统'
+                html: 'GroPilot <br />水晶球创新的商业<br />智能决策系统',
+                url: '/?id=productBox'
               }
             ],
             show: false

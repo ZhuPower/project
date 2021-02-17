@@ -92,7 +92,7 @@
         <div class="h2">We begin with the end in mind put consumers first and value sustainability</div>
         <div class="h3">以终为始，以消费者为中心，以可持续为价值基石。</div>
       </div>
-      <div class="serviceBox" :class="{'cur':sCur1}" ref="serviceBox1">
+      <div class="serviceBox" :class="{'cur':sCur1}" ref="serviceBox1" id="serviceBox1">
         <div class="item-box">
           <div class="item-right">
             <div class="h1">服务</div>
@@ -123,7 +123,7 @@
           <span :class="{'cur':nTab1==index}" v-for="(item,index) in serviceTxt" @click="pickThing(index)"></span>
         </div>
       </div>
-      <div class="serviceBox serviceBox2" :class="{'cur':sCur2}" ref="serviceBox2">
+      <div class="serviceBox serviceBox2" :class="{'cur':sCur2}" ref="serviceBox2" id="serviceBox2">
         <div class="item-box">
           <div class="item-left">
             <div class="sphere2">
@@ -153,7 +153,7 @@
           <span :class="{'cur':nTab2==index}" v-for="(item,index) in serviceTxt2" @click="pickThing2(index)"></span>
         </div>
       </div>
-      <div class="productBox">
+      <div class="productBox" id="productBox">
         <div class="h1">产品</div>
         <div class="h2">Grotech<br />增长科技系统是什么?</div>
         <div class="productList">
@@ -264,8 +264,7 @@
     components: {
       topNav
     },
-    created() {
-    },
+    created() { },
     computed: {
       swiper() {
         return this.$refs.mySwiper.swiper
@@ -388,6 +387,12 @@
     watch: {},
     mounted() {
       this.swiper2 = this.$refs.mySwiper2.swiper
+      if (this.$route.query.id) {
+        document.getElementById(this.$route.query.id).scrollIntoView({
+          block: 'start',
+          behavior: 'smooth'
+        });
+      }
       window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
     },
     destroyed() {
@@ -397,26 +402,25 @@
 </script>
 <style scoped>
   .Introduction {
-    height: 737px;
+    height: 735px;
     position: fixed;
     overflow: hidden;
     box-sizing: border-box;
     top: 64px;
     left: 0px;
-    width: 100%;
-    padding: 0px 64px;
+    width: calc(1140/1440*100%);
     box-sizing: border-box;
+    margin-left: calc(161/1440*100%);
+    display: flex;
   }
 
   .Introduction .left {
-    width: 34.375%;
-    height: 737px;
-    float: left;
+    width: calc(440/1140*100%);
+    height: 735px;
     overflow: hidden;
   }
 
   .Introduction .right {
-    float: left;
     overflow: hidden;
   }
 
@@ -454,13 +458,14 @@
   .Introduction .p2 {
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: 21px;
+    /* font-size: 21px; */
     font-weight: 400;
     margin-top: 75px;
+    font-size: 2vw;
   }
 
   .content {
-    margin-top: 737px;
+    margin-top: 735px;
   }
 
   .homeVideo {

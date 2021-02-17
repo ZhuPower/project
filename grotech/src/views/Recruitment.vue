@@ -13,9 +13,13 @@
       </div>
     </div>
     <div class="proMain">
-      <div class="pro-box pro-box-1">
+      <div class="pro-box pro-box-1" :class="{'cur':title[0].show}" ref="pro-box-1">
         <div class="left">
-          美至科技文化<br />与价值观
+          <div class="left-box">
+            <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
+              :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+            </div>
+          </div>
         </div>
         <div class="right">
           美至科技成立于2015年，总部位于上海，在北京与广州设有分支公司。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，致力于以独创的GaaS
@@ -87,28 +91,42 @@
     computed: {},
     methods: {
       handleScroll() {
-        let _h = document.documentElement.clientHeight
-        let _h2 = this.$refs.atGrotech.offsetHeight
-        //获取滚动距顶部的距离，显示
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        let _top = this.$refs.atGrotech.offsetTop - ((_h - _h2) / 2)
-        let _top2 = this.$refs.atGrotech.offsetTop + _h2
-        //let _top = this.$refs.atGrotech.offsetTop
-        console.log(scrollTop, _top, _h, _h2, (_h - _h2) / 2)
-        //console.log()
+        let that = this
+        doSome('pro-box-1', function () {
+          that.title[0].show = true;
+        }, function () {
+          that.title[0].show = false;
+        })
 
-        if (scrollTop >= _top && scrollTop < _top2) {
-          this.isActive = true;
+        function doSome(str, endFn, endFn2) {
+          let _h = document.documentElement.clientHeight
+          let _h2 = that.$refs[str].offsetHeight
+          //获取滚动距顶部的距离，显示
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          let _top = that.$refs[str].offsetTop
+          let _top2 = that.$refs[str].offsetTop + _h2
+
+          if (scrollTop >= _top && scrollTop < _top2) {
+            endFn && endFn()
+
+          }
+
+          if (isElementNotInViewport(that.$refs[str])) {
+            endFn2 && endFn2()
+          }
         }
 
-        if (isElementNotInViewport(this.$refs.atGrotech)) {
-          this.isActive = false;
-        }
       }
     },
     data() {
       return {
-        isActive: false
+        isActive: false,
+        title: [
+          {
+            txt: ['美至科技文化', '与价值观'],
+            show: false
+          }
+        ],
       }
     },
     watch: {},
@@ -200,6 +218,42 @@
     letter-spacing: 2.5px;
   }
 
+  .proMain .left .left-box .title {
+    width: 0%;
+    overflow: hidden;
+    height: 57px;
+  }
+
+  .proMain .pro-box.cur .left .left-box .title {
+    transition-property: width;
+    -moz-transition-property: width;
+    /* Firefox 4 */
+    -webkit-transition-property: width;
+    /* Safari 和 Chrome */
+    -o-transition-property: width;
+    /* Opera */
+
+    transition-duration: .6s;
+    -moz-transition-duration: .6s;
+    /* Firefox 4 */
+    -webkit-transition-duration: .6s;
+    /* Safari 和 Chrome */
+    -o-transition-duration: .6s;
+    /* Opera */
+    width: 100%;
+  }
+
+  .proMain .pro-box-1 {
+    position: relative;
+  }
+
+  .proMain .pro-box-1,
+  .proMain .pro-box-1 .right {
+    height: 520px;
+    padding-top: 96px;
+    box-sizing: border-box;
+  }
+
   .proMain .pro-box .right {
     width: 65.625%;
     opacity: 0.6;
@@ -209,6 +263,22 @@
     font-weight: 400;
     line-height: 42px;
     letter-spacing: 0.65625px;
+  }
+
+  .proMain .pro-box-1 .right {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    right: 0;
+  }
+
+  .proMain .pro-box-1.cur .right {
+    top: 0%;
+    opacity: 1;
+    transition: all .6s .4s;
+    -moz-transition: all .6s .4s;
+    -webkit-transition: all .6s .4s;
+    -o-transition: all .6s .4s;
   }
 
   .atGrotech {
