@@ -1,32 +1,29 @@
 <template>
   <div class="Recruitment">
     <topNav />
+    <!-- 视频 -->
     <div class="bannerVideo">
-      <video src="../assets/header3.mp4" autoplay loop muted>
-        您的浏览器不支持 video 标签。
-      </video>
+      <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
       <div class="videoTxt">
-        <p class="p1">如果你希望通过简单正确的事情重复做，<br />来提升人的幸福感，也让自己获得巨大成功，<br />欢迎你加入我们。</p>
+        <p class="p1" v-html="oData.bannerVideo.p1"></p>
         <div class="h1">
-          <div class="icon"><img src="../assets/icon_2.png"></div>
-          <div class="txt">了解更多岗位</div>
+          <div class="icon"><img :src="oData.bannerVideo.iconSrc"></div>
+          <div class="txt" v-html="oData.bannerVideo.h1"></div>
         </div>
       </div>
     </div>
+    <!-- 介绍 -->
     <div class="proMain">
-      <div class="pro-box pro-box-1" :class="{'cur':title[0].show}" ref="pro-box-1">
+      <div class="pro-box" v-for="(item,index) in oData.proMain" :class="{'cur':item.show,['pro-box-'+(index+1)]:true}"
+        :ref="('pro-box-'+(index+1))">
         <div class="left">
           <div class="left-box">
-            <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
-              :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+            <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]"
+              :style="{transitionDelay:index2*0.4+'s'}" v-html="item2">
             </div>
           </div>
         </div>
-        <div class="right">
-          美至科技成立于2015年，总部位于上海，在北京与广州设有分支公司。美至科技基于领先的Grotech®大数据及AI技术，深入洞察行业与消费者，致力于以独创的GaaS
-          (Growth as a
-          Service)服务模式，与产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。美至科技已为宜家家居、奈雪の茶、资生堂、李子柒、中国联通等数十家企业提供了服务。美至科技也为一流的投资机构提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。
-        </div>
+        <div class="right" v-html="item.content"></div>
       </div>
     </div>
     <div class="atGrotech" ref="atGrotech" :class="{'cur':isActive}">
@@ -81,7 +78,7 @@
 </template>
 
 <script>
-
+  import { oData } from "@/data/recruitment-data.js";
   import topNav from "../components/topNav";
   import { isElementNotInViewport } from "@/utils/index.js";
   export default {
@@ -89,15 +86,21 @@
     components: {
       topNav
     },
-    created() { },
+    created() {
+      this.oData = oData
+      this.oData.bannerVideo.src = require('../assets/header3.mp4')
+      this.oData.bannerVideo.iconSrc = require('../assets/icon_2.png')
+    },
     computed: {},
     methods: {
       handleScroll() {
         let that = this
-        doSome('pro-box-1', function () {
-          that.title[0].show = true;
-        }, function () {
-          that.title[0].show = false;
+        this.oData.proMain.forEach((item, index) => {
+          doSome('pro-box-' + (index + 1), function () {
+            that.oData.proMain[index].show = true;
+          }, function () {
+            that.oData.proMain[index].show = false;
+          })
         })
 
 
@@ -110,12 +113,15 @@
 
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
-          //console.log(str)
-          let _h2 = that.$refs[str] && that.$refs[str].offsetHeight || 0
+          let _dom = that.$refs[str] || null
+          if (_dom && _dom instanceof Array) {
+            _dom = _dom[0]
+          }
+          let _h2 = _dom && _dom.offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-          let _top = that.$refs[str] && that.$refs[str].offsetTop || 0
+          let _top = _dom && _dom.offsetTop || 0
           let _top2 = _top + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
@@ -123,7 +129,7 @@
 
           }
 
-          if (that.$refs[str] && isElementNotInViewport(that.$refs[str])) {
+          if (_dom && isElementNotInViewport(_dom)) {
             endFn2 && endFn2()
           }
         }
@@ -132,13 +138,8 @@
     },
     data() {
       return {
-        isActive: false,
-        title: [
-          {
-            txt: ['美至科技文化', '与价值观'],
-            show: false
-          }
-        ],
+        oData: null,
+        isActive: false
       }
     },
     watch: {},

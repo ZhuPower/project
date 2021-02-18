@@ -64,6 +64,7 @@
         if (obj.show == undefined) {
           this.show = false
           document.body.scrollTop = document.documentElement.scrollTop = 0
+          this.openScroll()
           this.$router.push(obj.url)
         } else {
           obj.show = true
@@ -87,8 +88,19 @@
           });
         } else {
           document.body.scrollTop = document.documentElement.scrollTop = 0
+          this.openScroll()
           this.$router.push(obj.url)
         }
+      },
+      stopScroll() {
+        var mo = function (e) { passive: false; };
+        document.body.style.overflow = 'hidden';
+        document.addEventListener("touchmove", mo, false);//禁止页面滑动
+      },
+      openScroll() {
+        var mo = function (e) { passive: false };
+        document.body.style.overflow = '';//出现滚动条
+        document.removeEventListener("touchmove", mo, false);
       },
     },
     data() {
@@ -137,6 +149,15 @@
           }
         ],
         logonShow: false
+      }
+    },
+    watch: {
+      show(val) {
+        if (val) {
+          this.stopScroll()
+        } else {
+          this.openScroll()
+        }
       }
     }
   }

@@ -1,80 +1,51 @@
 <template>
   <div class="About">
     <topNav />
+    <!-- 视频 -->
     <div class="bannerVideo">
-      <!-- controls -->
-      <video src="../assets/header2.mp4" autoplay loop muted>
-        您的浏览器不支持 video 标签。
-      </video>
+      <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
       <div class="videoTxt">
-        <p class="p1">美至致力于以独创的<span style="font-family:Faktum-Regular;">GaaS(Growth as a
-            Service)</span><br />服务模式,与合作伙伴一起,源源不断地创造让<br />消费者喜爱的流行产品</p>
+        <p class="p1" v-html="oData.bannerVideo.p1"></p>
       </div>
     </div>
+    <!-- 介绍 -->
     <div class="proMain">
-      <div class="pro-box pro-box-1" :class="{'cur':title[0].show}" ref="pro-box-1">
+      <div class="pro-box" v-for="(item,index) in oData.proMain" :class="{'cur':item.show,['pro-box-'+(index+1)]:true}"
+        :ref="('pro-box-'+(index+1))">
         <div class="left">
           <div class="left-box">
-            <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
-              :style="{transitionDelay:index*0.4+'s'}" v-text="item">
+            <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]"
+              :style="{transitionDelay:index2*0.4+'s'}" v-html="item2">
             </div>
           </div>
         </div>
-        <div class="right">
-          美至科技成立于2015年，总部位于上海，在北京与广州设有分支公司。美至科技基于领先的<span
-            style="font-family:Faktum-Regular;">Grotech®</span>大数据及AI技术，深入洞察行业与消费者，致力于以独创的<span
-            style="font-family:Faktum-Regular;">GaaS (Growth as
-            a<br />Service)</span>服务模式，与产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。美至科技已为宜家家居、奈雪の茶、资生堂、李子柒、中国联通等数十家企业提供了服务。美至科技也为一流的投资机构提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。
-        </div>
-      </div>
-      <div class="pro-box pro-box-2" :class="{'cur':title[1].show}" ref="pro-box-2">
-        <div class="left">
-          <div class="left-box">
-            <div v-for="(item,index) in title[1].txt" class="title" :class="['title_'+index]"
-              :style="{transitionDelay:index*0.4+'s'}" v-text="item">
-            </div>
-          </div>
-        </div>
-        <div class="right">
-          我们深刻理解，要应对新消费时代的变革，需要一支融合贯通的专家团队。我们有来自斯坦福、沃顿商学院的技术专家，来自字节跳动的增长黑客，来自摩根斯坦利的数据科学家与分析师，也有来自宝洁、联合利华的行业专家。
-        </div>
+        <div class="right" v-html="item.content"></div>
       </div>
     </div>
+    <!-- 认识团队 -->
     <div class="team">
-      <!-- <div class="h1">
-        <div class="icon"><img src="../assets/icon_1.png"></div>
-        <div class="txt">认识我们的团队</div>
-      </div> -->
       <div class="teamMain" ref="teamMain" :class="{'cur':isTem}">
         <div class="temBox2" :style="{height:w*830/1440+'px'}">
           <div class="temImg" v-for="(item,index) in 4 " :style="{width:w/6+'px',height:w*830/1440+'px'}">
-            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
+            <img :src="oData.team.src" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
           </div>
         </div>
         <div class="temBox" :style="{height:w*830/1440+'px'}">
           <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
             :style="{width:(index!=0 ? (w/6+'px') : (w/3+'px')),height:w*830/1440+'px'}">
-            <img src="../assets/team.png" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
+            <img :src="oData.team.src" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
           </div>
         </div>
       </div>
     </div>
+    <!-- 愿景 -->
     <div class="VisionValue">
-      <video src="../assets/banner.mp4" autoplay loop muted>
-        您的浏览器不支持 video 标签。
-      </video>
-      <div class="left">
-        <div class="h1">Vision</div>
+      <video :src="oData.visionValue.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
+      <div :class="{'left':index==0,'right':index==1}" v-for="(item,index) in oData.visionValue.list">
+        <div class="h1" v-html="item.h1"></div>
         <div class="bottom">
-          <div class="h2">我们的愿景</div>
-          <div class="p2">创造出更多有“幸福力”的产品，让尽可能多的消费者拥有它们，提升人的幸福感。</div>
-        </div>
-      </div>
-      <div class="right">
-        <div class="h1">Value</div>
-        <div class="bottom">
-          <div class="h2">幸福力定义</div>
-          <div class="p2">更好地满足消费者需求，资源可持续利用，具备商业道德。</div>
+          <div class="h2" v-html="item.h2"></div>
+          <div class="p2" v-html="item.p2"></div>
         </div>
       </div>
     </div>
@@ -82,6 +53,7 @@
 </template>
 
 <script>
+  import { oData } from "@/data/about-data.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
   export default {
@@ -89,7 +61,13 @@
     components: {
       topNav
     },
-    created() { },
+    created() {
+      this.oData = oData
+      this.oData.bannerVideo.src = require('../assets/header2.mp4')
+      this.oData.team.src = require('../assets/team.png')
+      this.oData.visionValue.src = require('../assets/banner.mp4')
+      console.log(oData)
+    },
     computed: {},
     methods: {
       getTemCur(n) {
@@ -97,18 +75,15 @@
       },
       handleScroll() {
         let that = this
-        doSome('pro-box-1', function () {
-          that.title[0].show = true;
-        }, function () {
-          that.title[0].show = false;
+        this.oData.proMain.forEach((item, index) => {
+          doSome('pro-box-' + (index + 1), function () {
+            that.oData.proMain[index].show = true;
+          }, function () {
+            that.oData.proMain[index].show = false;
+          })
         })
-        doSome('pro-box-2', function () {
-          that.title[1].show = true;
-        }, function () {
-          that.title[1].show = false;
-        })
+
         doSome('teamMain', function () {
-          console.log(that.isTem)
           that.isTem = true;
         }, function () {
           that.isTem = false;
@@ -117,10 +92,14 @@
 
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
-          let _h2 = that.$refs[str] && that.$refs[str].offsetHeight || 0
+          let _dom = that.$refs[str] || null
+          if (_dom && _dom instanceof Array) {
+            _dom = _dom[0]
+          }
+          let _h2 = _dom && _dom.offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top = that.$refs[str] && that.$refs[str].offsetTop || 0
+          let _top = _dom && _dom.offsetTop || 0
           let _top2 = _top + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
@@ -128,7 +107,7 @@
 
           }
 
-          if (that.$refs[str] && isElementNotInViewport(that.$refs[str])) {
+          if (_dom && isElementNotInViewport(_dom)) {
             endFn2 && endFn2()
           }
         }
@@ -136,16 +115,7 @@
     },
     data() {
       return {
-        title: [
-          {
-            txt: ['公司介绍'],
-            show: false
-          },
-          {
-            txt: ['团队介绍'],
-            show: false
-          }
-        ],
+        oData: null,
         w: 0,
         isTem: false
       }
