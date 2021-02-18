@@ -1147,6 +1147,10 @@
     border-bottom: 1px solid #65ecaa;
   }
 
+  .brand .tabC {
+    padding-top: 1px;
+  }
+
   .contact {
     margin: calc(216vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
     height: calc(312vw/14.4);

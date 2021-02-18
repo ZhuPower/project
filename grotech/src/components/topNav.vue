@@ -1,5 +1,5 @@
 <template>
-  <div class="navMain" :class="{'cur':show}">
+  <div class="navMain" :class="{'cur':show}" id="navMain">
     <div class="topNav">
       <img src="../assets/logo.png" class="logo">
       <div class="menu" @click="showMenu">
@@ -63,6 +63,7 @@
         let obj = this.menuList[n];
         if (obj.show == undefined) {
           this.show = false
+          document.body.scrollTop = document.documentElement.scrollTop = 0
           this.$router.push(obj.url)
         } else {
           obj.show = true
@@ -70,12 +71,13 @@
       },
       leave(n) {
         let obj = this.menuList[n];
-        console.log(obj)
+        // console.log(obj)
         if (obj.show != undefined) {
           obj.show = false
         }
       },
       goMenu(obj) {
+        console.log('aaaaaaaa')
         if (this.$route.name == 'Home') {
           this.show = false
           let id = obj.url.split('=')[1]
@@ -84,6 +86,7 @@
             behavior: 'smooth'
           });
         } else {
+          document.body.scrollTop = document.documentElement.scrollTop = 0
           this.$router.push(obj.url)
         }
       },
