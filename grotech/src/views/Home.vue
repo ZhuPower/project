@@ -203,11 +203,11 @@
     methods: {
       mouseOver(n) {
         let swiper = this.$refs['brandSwiper_' + n][0].swiper
-        swiper.stopAutoplay();
+        swiper.autoplay.stop();
       },
       mouseLeave(n) {
         let swiper = this.$refs['brandSwiper_' + n][0].swiper
-        swiper.startAutoplay();
+        swiper.autoplay.start();
       },
       pickThing(n, n2) {
         this.oData.serviceList[n].nTab = n2
@@ -215,9 +215,9 @@
       pickBrand(n) {
         this.oData.brand.nTab = n
         let swiper = this.$refs['brandSwiper_' + n][0].swiper
-        swiper.stopAutoplay();
+        swiper.autoplay.stop();
         setTimeout(() => {
-          swiper.startAutoplay();
+          swiper.autoplay.start();
         }, 200)
       },
       handleScroll() {
@@ -241,10 +241,8 @@
 
         doSome('innovativeService', function () {
           that.oData.innovativeService.show = true;
-          that.$refs.mySwiper2.swiper.enableMousewheelControl()
         }, function () {
           that.oData.innovativeService.show = false;
-          that.$refs.mySwiper2.swiper.disableMousewheelControl()
         })
 
         function doSome(str, endFn, endFn2) {
@@ -278,10 +276,15 @@
         oData: null,
         swiperOptions: {
           slidesPerView: 5,
-          autoplay: 1500,//可选选项，自动滑动
+          autoplay: {
+            delay: 1500,
+          },//可选选项，自动滑动
           loop: true,//可选选项，开启循环
         },
         swiperOptions2: {
+          mousewheel: {
+            releaseOnEdges: true
+          },
           // loop: true,
           onSlideChangeStart: function (swiper) {
             console.log(vm)

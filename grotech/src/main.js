@@ -5,7 +5,7 @@ import './common/font/font.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 // require styles
-import 'swiper/dist/css/swiper.css'
+import 'swiper/swiper-bundle.css'
 
 Vue.use(VueAwesomeSwiper)
 
