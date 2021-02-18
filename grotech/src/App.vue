@@ -58,7 +58,7 @@
   }
 
 
-  .sphere {
+  .sphere1 {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
@@ -66,7 +66,7 @@
     position: absolute;
   }
 
-  .sphere .circle {
+  .sphere1 .circle {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -77,47 +77,47 @@
     animation: rotate 8s linear infinite;
   }
 
-  .sphere .circle:nth-child(2) {
+  .sphere1 .circle:nth-child(2) {
     -webkit-animation-delay: .1s;
     animation-delay: .1s;
   }
 
-  .sphere .circle:nth-child(3) {
+  .sphere1 .circle:nth-child(3) {
     -webkit-animation-delay: .2s;
     animation-delay: .2s;
   }
 
-  .sphere .circle:nth-child(4) {
+  .sphere1 .circle:nth-child(4) {
     -webkit-animation-delay: .3s;
     animation-delay: .3s;
   }
 
-  .sphere .circle:nth-child(5) {
+  .sphere1 .circle:nth-child(5) {
     -webkit-animation-delay: .4s;
     animation-delay: .4s;
   }
 
-  .sphere .circle:nth-child(6) {
+  .sphere1 .circle:nth-child(6) {
     -webkit-animation-delay: .5s;
     animation-delay: .5s;
   }
 
-  .sphere .circle:nth-child(7) {
+  .sphere1 .circle:nth-child(7) {
     -webkit-animation-delay: .6s;
     animation-delay: .6s;
   }
 
-  .sphere .circle:nth-child(8) {
+  .sphere1 .circle:nth-child(8) {
     -webkit-animation-delay: .7s;
     animation-delay: .7s;
   }
 
-  .sphere .circle:nth-child(9) {
+  .sphere1 .circle:nth-child(9) {
     -webkit-animation-delay: .8s;
     animation-delay: .8s;
   }
 
-  .sphere .circle:nth-child(10) {
+  .sphere1 .circle:nth-child(10) {
     -webkit-animation-delay: .9s;
     animation-delay: .9s;
   }

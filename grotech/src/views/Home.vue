@@ -1,332 +1,263 @@
 <template>
   <div class="home">
     <topNav />
+    <!-- 简介 -->
     <div class="Introduction" ref="Introduction">
       <div class="left">
-        <p class="p2">Keep Growing</p>
+        <p class="p2" v-html="oData.Introduction.p2"></p>
       </div>
       <div class="right">
-        <div class="h3">When the <br />finest arrives</div>
-        <div class="h2">让美好如期而至</div>
-        <p class="p1">美至倡导的幸福力即更好地满足消费者需求，资源可持续利用，并坚守商业道德。</p>
+        <div class="h3" v-html="oData.Introduction.h3"></div>
+        <div class="h2" v-html="oData.Introduction.h2"></div>
+        <p class="p1" v-html="oData.Introduction.p1"></p>
       </div>
     </div>
     <div class="content">
+      <!-- 视频 -->
       <div class="homeVideo">
-        <!-- controls -->
-        <video src="../assets/header1.mp4" autoplay loop muted>
-          您的浏览器不支持 video 标签。
-        </video>
+        <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
         <div class="videoTxt">
-          <p class="p1">科技推动消费品创新与增长</p>
-          <p class="p2">Leveraging Technology <br />for Innovation and Growth</p>
+          <p class="p1" v-html="oData.bannerVideo.p1"></p>
+          <p class="p2" v-html="oData.bannerVideo.p2"></p>
         </div>
       </div>
       <div class="proMain">
-        <div class="pro-box pro-box-1" :class="{'cur':title[0].show}" ref="pro-box-1">
+        <!-- 介绍 -->
+        <div class="pro-box" v-for="(item,index) in oData.proMain"
+          :class="{'cur':item.show,['pro-box-'+(index+1)]:true}" :ref="('pro-box-'+(index+1))">
           <div class="left">
             <div class="left-box">
-              <div v-for="(item,index) in title[0].txt" class="title" :class="['title_'+index]"
-                :style="{transitionDelay:index*0.4+'s'}" v-html="item">
+              <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]"
+                :style="{transitionDelay:index2*0.4+'s'}" v-html="item2">
               </div>
             </div>
           </div>
-          <div class="right">
+          <div class="right" v-if="(item.content instanceof Array)">
             <div>
-              <div class="list list-1">
-                <h6>01</h6>
-                <p>利用大数据规划<br />企业竞争战略</p>
-              </div>
-              <div class="list list-2">
-                <h6>02</h6>
-                <p>以消费者为中心，<br />以产品创新驱动增长</p>
-              </div>
-              <div class="list list-3">
-                <h6>03</h6>
-                <p>整合全渠道竞争策略，<br />广告投放品效合一</p>
-              </div>
-              <div class="list list-4">
-                <h6>04</h6>
-                <p>精细化管理消费者资产，<br />提高客户生命价值</p>
+              <div class="list" :class="['list-'+(index3+1)]" v-for="(item3,index3) in item.content">
+                <h6>0{{index3+1}}</h6>
+                <p v-html="item3"></p>
               </div>
             </div>
           </div>
-        </div>
-        <div class="pro-box pro-box-2" :class="{'cur':title[1].show}" ref="pro-box-2">
-          <div class="left">
-            <div class="left-box">
-              <div v-for="(item,index) in title[1].txt" class="title" :class="['title_'+index]"
-                :style="{transitionDelay:index*0.4+'s'}" v-html="item">
-              </div>
-            </div>
-          </div>
-          <div class="right">
-            <p class="right-p1">
-              我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的<span
-                style="font-family:Faktum-Regular;">Grotech®</span>大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。
-            </p>
-            <p class="right-p2">
-              美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>
-          </div>
-        </div>
-        <div class="pro-box pro-box-3" :class="{'cur':title[2].show}" ref="pro-box-3">
-          <div class="left">
-            <div class="left-box">
-              <div v-for="(item,index) in title[2].txt" class="title" :class="['title_'+index]"
-                :style="{transitionDelay:index*0.4+'s'}" v-html="item">
-              </div>
-            </div>
-          </div>
-          <div class="right">
-            <p class="right-p3">
-              自研的增长科技<span style="font-family:Faktum-Regular;">Grotech®</span>系统，拥有亿级消费者及商品交易数据，<br />应用前沿AI算法，制定企业发展策略。
-            </p>
-            <p class="right-p4">
-              来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，<br />使命必达。</p>
-
-            <p class="right-p5">
-              拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>
+          <div class="right" v-html="item.content" v-else>
           </div>
         </div>
       </div>
+      <!-- 服务理念 -->
       <div class="servicePhilosophy">
-        <div class="h1">服务理念</div>
-        <div class="h2">We begin with the end in mind put consumers first and value sustainability</div>
-        <div class="h3">以终为始，以消费者为中心，以可持续为价值基石。</div>
+        <div class="h1" v-html="oData.servicePhilosophy.h1"></div>
+        <div class="h2" v-html="oData.servicePhilosophy.h2"></div>
+        <div class="h3" v-html="oData.servicePhilosophy.h3"></div>
       </div>
-      <div class="serviceBox" :class="{'cur':sCur1}" ref="serviceBox1" id="serviceBox1">
-        <div class="item-box">
+      <!-- 服务 -->
+      <div class="serviceBox" v-for="(item,index) in oData.serviceList" :id="'serviceBox'+(index+1)"
+        :class="{'cur':item.show,['serviceBox'+(index+1)]:true}" :ref="('serviceBox'+(index+1))">
+        <div class="item-box" v-if="index%2==0">
           <div class="item-right">
-            <div class="h1">服务</div>
+            <div class="h1" v-if="item.name" v-html="item.name"></div>
             <div class="h2">
-              <p>聚焦大消费行业的一站式增长服务</p>
-              <p class="p2">Gaas（Growth as a Service）</p>
+              <p v-html="item.p1"></p>
+              <p class="p2" v-if="item.p2" v-html="item.p2"></p>
             </div>
             <div class="con">
-              <div :class="{'c1':index ==0,'c2':index>0}" v-for="(item,index) in serviceTxt[nTab1]" v-html="item"></div>
+              <div :class="{'c1':index2 ==0,'c2':index2>0}" v-for="(item2,index2) in item.serviceTxt[item.nTab]"
+                v-html="item2"></div>
             </div>
           </div>
           <div class="item-left">
-            <div class="sphere">
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
+            <div :class="['sphere'+(index+1)]">
+              <div class="circle" v-for="item2 in 10"></div>
+            </div>
+          </div>
+        </div>
+        <div class="item-box" v-else>
+          <div class="item-left">
+            <div :class="['sphere'+(index+1)]">
+              <div class="circle" v-for="item2 in 10"></div>
+            </div>
+          </div>
+          <div class="item-right">
+            <div class="h1" v-if="item.name" v-html="item.name"></div>
+            <div class="h2">
+              <p v-html="item.p1"></p>
+              <p class="p2" v-if="item.p2" v-html="item.p2"></p>
+            </div>
+            <div class="con">
+              <div :class="{'c1':index2 ==0,'c2':index2>0}" v-for="(item2,index2) in item.serviceTxt[item.nTab]"
+                v-html="item2"></div>
             </div>
           </div>
         </div>
         <div class="rightBox">
-          <span :class="{'cur':nTab1==index}" v-for="(item,index) in serviceTxt" @click="pickThing(index)"></span>
+          <span :class="{'cur':item.nTab==index2}" v-for="(item2,index2) in item.serviceTxt"
+            @click="pickThing(index,index2)"></span>
         </div>
       </div>
-      <div class="serviceBox serviceBox2" :class="{'cur':sCur2}" ref="serviceBox2" id="serviceBox2">
-        <div class="item-box">
-          <div class="item-left">
-            <div class="sphere2">
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-            </div>
-          </div>
-          <div class="item-right">
-            <div class="h2">
-              <p>大数据驱动，为投资机构量身<br />定制专属服务</p>
-            </div>
-            <div class="con">
-              <div :class="{'c1':index ==0,'c2':index>0}" v-for="(item,index) in serviceTxt2[nTab2]" v-html="item">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="rightBox">
-          <span :class="{'cur':nTab2==index}" v-for="(item,index) in serviceTxt2" @click="pickThing2(index)"></span>
-        </div>
-      </div>
+      <!-- 产品 -->
       <div class="productBox" id="productBox">
-        <div class="h1">产品</div>
-        <div class="h2">Grotech<br />增长科技系统是什么?</div>
+        <div class="h1" v-html="oData.product.h1"></div>
+        <div class="h2" v-html="oData.product.h2"></div>
         <div class="productList">
-          <div class="list-box list-box-1">
+          <div class="list-box" v-for="(item,index) in oData.product.list" :class="['list-box-'+(index+1)]">
             <div class="imgBox">
-              <img src="../assets/GDB.gif">
+              <img :src="item.src">
             </div>
             <div class="listBox">
               <div class="title">
-                <div class="title-1">GDB</div>
-                <div class="title-2">Growth Data Bank<br />独树一帜的美至科技数据银行</div>
+                <div class="title-1" v-html="item.title1"></div>
+                <div class="title-2" v-html="item.title2"></div>
               </div>
-              <div class="productInfo">集合海量的社交网络、智能手机、电商平台<br />、线下购物等数据, 结合行业特征, <br />利用AI算法搭建多种商业策略模型。</div>
-            </div>
-          </div>
-          <div class="list-box list-box-2">
-            <div class="imgBox">
-              <img src="../assets/Gropilot-gray.gif">
-            </div>
-            <div class="listBox">
-              <div class="title">
-                <div class="title-1">GroPilot</div>
-                <div class="title-2">晶球创新的商业智能<br />决策系统</div>
-              </div>
-              <div class="productInfo">美至利用大数据+AI技术, <br />自研开发的商业增长智能系统。无论是<br />行业分析, 品类策略, 还是渠道战术, <br />竞争分析,
-                <br />GroPilot水晶球让决策者利用先进技术洞察先机。
-              </div>
-            </div>
-          </div>
-          <div class="list-box list-box-3">
-            <div class="imgBox">
-              <img src="../assets/Adbot.gif">
-            </div>
-            <div class="listBox">
-              <div class="title">
-                <div class="title-1">AdBot</div>
-                <div class="title-2">精益化消费者资<br />产管理系统</div>
-              </div>
-              <div class="productInfo">精益化消费者资产管理系统:使用前沿分<br />析技术, 将消费者聚类分组, <br />实现“千人千面”的消费者价值维护。提升<br />消费者忠诚度,
-                从老客驱动业绩增长。<br />量化广告投放系统:美至将海量消费者行<br />为数据, <br />利用数据科学建立量化策略模型, <br />大幅度提高广告回报效果。</div>
+              <div class="productInfo" v-html="item.productInfo"></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="innovativeService" ref="innovativeService">
+      <!-- 创新服务 -->
+      <div class="innovativeService" :class="{'cur':oData.innovativeService.show}" ref="innovativeService">
         <swiper ref="mySwiper2" :options="swiperOptions2">
-          <swiper-slide>
-            <div class="h1">创新服务与领域<br />专家的结合</div>
-            <div class="p1">
-              美至科技会考虑行业、消费者、企业资源等诸多因素，量体裁衣，提供个性化解决方案。美至的服务流程分为6个<br />步骤：深入调研-数据洞察-制定方案-实施执行-方案复盘-持续改进。美至服务团队会由客户经理、商业分析师、<br />数据科学家、领域专家组成，利用科学的a/b测试方法，为企业创新与增长持续服务。
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="h1">严苛标准<br />全面保障数据安全 </div>
-            <div class="p1">
-              企业数据经过美国国家安全局认可的不可逆散列加密算法SHA-512加密存储，确保商业信息安全。<br />美至科技同时是中国央企与世界500强外企的服务伙伴，经受过严格的体系安全认证，<br />并通过了欧盟GDPR规范审查。
-            </div>
+          <swiper-slide v-for="item in oData.innovativeService.list">
+            <div class="h1" v-html="item.h1"></div>
+            <div class="p1" v-html="item.p1"></div>
           </swiper-slide>
         </swiper>
         <div class="bottomBox">
-          <span :class="{'cur':swiper2.activeIndex ==0}">1 <i></i></span>
-          <span :class="{'cur':swiper2.activeIndex ==1}">2 <i></i></span>
+          <span v-for="(item,index) in oData.innovativeService.list"
+            :class="{'cur':swiper2.activeIndex ==index}">{{index+1}}<i></i></span>
         </div>
       </div>
+      <!-- 品牌 -->
       <div class="brand">
-        <div class="title">我们服务的品牌</div>
+        <div class="title" v-html="oData.brand.title"></div>
         <div class="tabH">
-          <div class="list-h list-h-1 cur">消费零售</div>
-          <div class="list-h list-h-2">TMT科技/媒体/通信</div>
-          <div class="list-h list-h-3">投资机构</div>
+          <div class="list-h" v-for="(item,index) in oData.brand.list" v-html="item.name"
+            :class="{'cur':oData.brand.nTab == index,['list-h-'+(index+1)]:true}" @click="pickBrand(index)"></div>
         </div>
         <div class="tabC">
-          <div class="list-c" @mouseover="mouseOver" @mouseleave="mouseLeave">
-            <swiper ref="mySwiper" :options="swiperOptions">
-              <swiper-slide>
-                <img src="../assets/l1.png">
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/l2.png">
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/l3.png">
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/l4.png">
-              </swiper-slide>
-              <swiper-slide>
-                <img src="../assets/l5.png">
+          <div class="list-c" @mouseover="mouseOver(index)" @mouseleave="mouseLeave(index)"
+            v-for="(item,index) in oData.brand.list" v-show="oData.brand.nTab == index">
+            <swiper :ref="'brandSwiper_'+index" :options="swiperOptions">
+              <swiper-slide v-for="item2 in item.img">
+                <img :src="item2">
               </swiper-slide>
             </swiper>
           </div>
         </div>
       </div>
+      <!-- 联系 -->
       <div class="contact">
-        <div class="h1">免费获取我们与众不同的<br />商业洞察报告</div>
-        <div class="p1">随时联系我们的咨询团队，我们会根据您所在行业，提供一份见解独到的洞察报告。<br />请微信搜索gro-tech（代用名）关注我们的微信公众号，或者发送电邮至</div>
-        <a href="javascript:;" class="mailbox">hello@gro-tech.com</a>
+        <div class="h1" v-html="oData.contact.h1"></div>
+        <div class="p1" v-html="oData.contact.p1"></div>
+        <a href="javascript:;" class="mailbox" v-html="oData.contact.mail"></a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { oData } from "@/data/index-data.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
+
   export default {
     name: 'Home',
     components: {
       topNav
     },
-    created() { },
-    computed: {
-      swiper() {
-        return this.$refs.mySwiper.swiper
-      }
+    created() {
+      let arr1 = [
+        require('../assets/l1.png'),
+        require('../assets/l2.png'),
+        require('../assets/l3.png'),
+        require('../assets/l4.png'),
+        require('../assets/l5.png')
+      ]
+      let arr2 = [
+        require('../assets/l2.png'),
+        require('../assets/l3.png'),
+        require('../assets/l2.png'),
+        require('../assets/l3.png'),
+        require('../assets/l2.png'),
+        require('../assets/l3.png')
+      ]
+      let arr3 = [
+        require('../assets/l4.png'),
+        require('../assets/l5.png'),
+        require('../assets/l4.png'),
+        require('../assets/l5.png'),
+        require('../assets/l4.png'),
+        require('../assets/l5.png')
+      ]
+      this.oData = oData
+      this.oData.bannerVideo.src = require('../assets/header1.mp4')
+      this.oData.product.list[0].src = require('../assets/GDB.gif')
+      this.oData.product.list[1].src = require('../assets/Gropilot-gray.gif')
+      this.oData.product.list[2].src = require('../assets/Adbot.gif')
+      this.oData.brand.list[0].img = arr1
+      this.oData.brand.list[1].img = arr2
+      this.oData.brand.list[2].img = arr3
+      console.log(oData)
+
     },
+    computed: {},
     methods: {
-      mouseOver() {
-        this.swiper.stopAutoplay();
+      mouseOver(n) {
+        let swiper = this.$refs['brandSwiper_' + n][0].swiper
+        swiper.stopAutoplay();
       },
-      mouseLeave() {
-        this.swiper.startAutoplay();
+      mouseLeave(n) {
+        let swiper = this.$refs['brandSwiper_' + n][0].swiper
+        swiper.startAutoplay();
       },
-      pickThing(n) {
-        this.nTab1 = n
+      pickThing(n, n2) {
+        this.oData.serviceList[n].nTab = n2
       },
-      pickThing2(n) {
-        this.nTab2 = n
+      pickBrand(n) {
+        this.oData.brand.nTab = n
+        let swiper = this.$refs['brandSwiper_' + n][0].swiper
+        swiper.stopAutoplay();
+        setTimeout(() => {
+          swiper.startAutoplay();
+        }, 200)
       },
       handleScroll() {
         let that = this
-        doSome('pro-box-1', function () {
-          that.title[0].show = true;
-        }, function () {
-          that.title[0].show = false;
-        })
-        doSome('pro-box-2', function () {
-          that.title[1].show = true;
-        }, function () {
-          that.title[1].show = false;
-        })
-        doSome('pro-box-3', function () {
-          that.title[2].show = true;
-        }, function () {
-          that.title[2].show = false;
+        this.oData.proMain.forEach((item, index) => {
+          doSome('pro-box-' + (index + 1), function () {
+            that.oData.proMain[index].show = true;
+          }, function () {
+            that.oData.proMain[index].show = false;
+          })
         })
 
-        doSome('serviceBox1', function () {
-          that.sCur1 = true;
-        }, function () {
-          that.sCur1 = false;
-        })
 
-        doSome('serviceBox2', function () {
-          that.sCur2 = true;
-        }, function () {
-          that.sCur2 = false;
+        this.oData.serviceList.forEach((item, index) => {
+          doSome('serviceBox' + (index + 1), function () {
+            that.oData.serviceList[index].show = true;
+          }, function () {
+            that.oData.serviceList[index].show = false;
+          })
         })
 
         doSome('innovativeService', function () {
-          that.swiper2.slideTo(0);
+          that.oData.innovativeService.show = true;
+          that.$refs.mySwiper2.swiper.enableMousewheelControl()
+        }, function () {
+          that.oData.innovativeService.show = false;
+          that.$refs.mySwiper2.swiper.disableMousewheelControl()
         })
 
         function doSome(str, endFn, endFn2) {
           let _h = document.documentElement.clientHeight
-          //console.log(str)
-          let _h2 = that.$refs[str] && that.$refs[str].offsetHeight || 0
-          let _h3 = that.$refs.Introduction.offsetHeight
+          let _dom = that.$refs[str] || null
+          if (_dom && _dom instanceof Array) {
+            _dom = _dom[0]
+          }
+          let _h2 = _dom && _dom.offsetHeight || 0
+          let _h3 = that.$refs.Introduction && that.$refs.Introduction.offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top0 = (that.$refs[str] && that.$refs[str].offsetTop) || 0
+          let _top0 = (_dom && _dom.offsetTop) || 0
           let _top = _top0 + _h3
           let _top2 = _top0 + _h3 + _h2
 
@@ -335,54 +266,27 @@
 
           }
 
-          if (that.$refs[str] && isElementNotInViewport(that.$refs[str])) {
+          if (_dom && isElementNotInViewport(_dom)) {
             endFn2 && endFn2()
           }
         }
       }
     },
     data() {
+      let vm = this;
       return {
-        title: [
-          {
-            txt: ['如何创造有“幸福力”', '的消费品获得持续增长'],
-            show: false
-          },
-          {
-            txt: ['创新的<span style="font-family:Faktum-Regular;">GaaS</span>', '增长即服务', 'Growth-as-a-Service'],
-            show: false
-          },
-          {
-            txt: ['美至的', '核心能力'],
-            show: false
-          }
-        ],
+        oData: null,
         swiperOptions: {
           slidesPerView: 5,
           autoplay: 1500,//可选选项，自动滑动
           loop: true,//可选选项，开启循环
         },
         swiperOptions2: {
-          mousewheelControl: true,
           // loop: true,
           onSlideChangeStart: function (swiper) {
-
+            console.log(vm)
           }
         },
-        serviceTxt: [
-          ['基于大数据与AI的策略服务', '企业竞争战略：由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。', '产品创新：我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。', '全渠道增长策略：从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。'],
-          ['精益化营销服务', '整合营销服务：利用美至科技<span style="font-family:Faktum-Regular;">Grotech</span>技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（<span style="font-family:Faktum-Regular;">ROI</span>）。', '数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。'],
-          ['<span style="font-family:Faktum-Regular;">ADAPT™</span>品牌孵化服务', '<span style="font-family:Faktum-Regular;">A-InnovAtion,D-Deep insight</span>, <span style="font-family:Faktum-Regular;">A-All dimensions P-Partnership T-Technology</span>.<span style="font-family:Faktum-Regular;">ADAPT</span>在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。']
-        ],
-        serviceTxt2: [
-          ['行业研究', '和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。', '美至科技投资雷达：美至科技通过建立消费品细分行业模型，结合投资机构的个性化需求，更早更准确地挖掘投资标的。'],
-          ['大数据尽职调查', '传统的投资尽职调查偏向于小样本访谈与研究，缺乏大数据支撑。美至科技利用技术能力结合经验丰富的行业专家，提供科学全面的尽职调查服务。'],
-          ['投后管理服务', '对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。']
-        ],
-        nTab1: 0,
-        nTab2: 0,
-        sCur1: false,
-        sCur2: false,
         swiper2: {
           activeIndex: 0
         }
@@ -1101,11 +1005,22 @@
   }
 
   .innovativeService {
-    margin: calc(35vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    margin-top: calc(35vw/14.4);
+    margin-right: calc(80vw/14.4);
+    margin-left: -100%;
     height: calc(672vw/14.4);
     overflow: hidden;
     position: relative;
+    transition: all .6s;
+    -webkit-transition: all .6s;
   }
+
+  .innovativeService.cur {
+    margin-left: calc(80vw/14.4);
+    transition: all .6s;
+    -webkit-transition: all .6s;
+  }
+
 
   .innovativeService .h1 {
     color: #383a50;
@@ -1172,18 +1087,18 @@
 
   .innovativeService .swiper-slide {
     opacity: 0;
-    transition: all 2s;
-    -moz-transition: all 2s;
-    -webkit-transition: all 2s;
-    -o-transition: all 2s;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
   }
 
-  .innovativeService .swiper-slide-active {
+  .innovativeService.cur .swiper-slide-active {
     opacity: 1;
-    transition: all 2s;
-    -moz-transition: all 2s;
-    -webkit-transition: all 2s;
-    -o-transition: all 2s;
+    transition: all 1s .3s;
+    -moz-transition: all 1s .3s;
+    -webkit-transition: all 1s .3s;
+    -o-transition: all 1s .3s;
   }
 
   .brand {
@@ -1213,6 +1128,7 @@
     font-size: calc(17vw/14.4);
     font-weight: 400;
     height: calc(25vw/14.4);
+    cursor: pointer;
   }
 
   .brand .tabH .list-h-1 {
