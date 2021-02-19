@@ -9,9 +9,9 @@
     <div class="menuBox">
       <div class="topNav">
         <div class="topLeft">
-          <span>中文</span>
+          <span @click="piakLg('CN')">中文</span>
           <i></i>
-          <span>EN</span>
+          <span @click="piakLg('EN')">EN</span>
         </div>
         <div class="menu" @click="closeMenu">
           <img src="../assets/closeMenu.png">
@@ -44,9 +44,99 @@
 </template>
 
 <script>
+  let enMenuList = [
+    {
+      name: 'Service',
+      child: [
+        {
+          html: 'GaaS(Growth-as-a-Service)<br />A Unique Data Bank <br /> by Grotech',
+          url: '/EN/home?id=serviceBox1'
+        },
+        {
+          html: 'Big-Data-Driven <br />Customized Service for Investors',
+          url: '/EN/home?id=serviceBox2'
+        }
+      ],
+      show: false
+    },
+    {
+      name: 'Product',
+      child: [
+        {
+          html: 'GDB（Growth Data Bank）<br />A Unique Data Bank <br />by Grotech',
+          url: '/EN/home?id=productBox'
+        },
+        {
+          html: 'GroPilot<br /> Crystal Ball: An <br />Innovative and Smart <br />Business <br />Decision-Making System',
+          url: '/EN/home?id=productBox'
+        },
+        {
+          html: 'AdBot<br />A Data- Driven<br />Growth Tool',
+          url: '/EN/home?id=productBox'
+        }
+      ],
+      show: false
+    },
+    {
+      name: 'About us',
+      url: '/EN/about'
+    },
+    {
+      name: 'Careers',
+      url: '/EN/recruitment'
+    }
+  ]
+  let cnMenuList = [
+    {
+      name: '服务',
+      child: [
+        {
+          html: 'GaaS(Growth-as-a-Service)<br />聚焦大消费行业的一站式增长服务',
+          url: '/CN/home?id=serviceBox1'
+        },
+        {
+          html: '大数据驱动，为投资机构<br />量身定制专属服务',
+          url: '/CN/home?id=serviceBox2'
+        }
+      ],
+      show: false
+    },
+    {
+      name: '产品',
+      child: [
+        {
+          html: 'GDB（Growth Data Bank）<br />独树一帜的美至科技<br />数据银行',
+          url: '/CN/home?id=productBox'
+        },
+        {
+          html: 'AdBot<br />数据科学驱动的<br />增长工具',
+          url: '/CN/home?id=productBox'
+        },
+        {
+          html: 'GroPilot <br />水晶球创新的商业<br />智能决策系统',
+          url: '/CN/home?id=productBox'
+        }
+      ],
+      show: false
+    },
+    {
+      name: '了解美至',
+      url: '/CN/about'
+    },
+    {
+      name: '加入我们',
+      url: '/CN/recruitment'
+    }
+  ]
   export default {
     props: {},
-    created() { },
+    created() {
+      if (this.$route.name.indexOf('en') == 0) {
+        this.menuList = enMenuList
+      } else {
+        this.menuList = cnMenuList
+      }
+    },
     computed: {},
     methods: {
       showMenu() {
@@ -78,8 +168,7 @@
         }
       },
       goMenu(obj) {
-        console.log('aaaaaaaa')
-        if (this.$route.name == 'Home') {
+        if (this.$route.name == 'cnHome' || this.$route.name == 'enHome') {
           this.show = false
           let id = obj.url.split('=')[1]
           document.getElementById(id).scrollIntoView({
@@ -102,52 +191,17 @@
         document.body.style.overflow = '';//出现滚动条
         document.removeEventListener("touchmove", mo, false);
       },
+      piakLg(str) {
+        let _fullPath = this.$route.fullPath.substring(3)
+        let url = `/${str}${_fullPath}`
+        //this.show = false
+        this.$router.push(url)
+      }
     },
     data() {
       return {
         show: false,
-        menuList: [
-          {
-            name: '服务',
-            child: [
-              {
-                html: 'GaaS(Growth-as-a-Service)<br />聚焦大消费行业的一站式增长服务',
-                url: '/?id=serviceBox1'
-              },
-              {
-                html: '大数据驱动，为投资机构<br />量身定制专属服务',
-                url: '/?id=serviceBox2'
-              }
-            ],
-            show: false
-          },
-          {
-            name: '产品',
-            child: [
-              {
-                html: 'GDB（Growth Data Bank）<br />独树一帜的美至科技<br />数据银行',
-                url: '/?id=productBox'
-              },
-              {
-                html: 'AdBot<br />数据科学驱动的<br />增长工具',
-                url: '/?id=productBox'
-              },
-              {
-                html: 'GroPilot <br />水晶球创新的商业<br />智能决策系统',
-                url: '/?id=productBox'
-              }
-            ],
-            show: false
-          },
-          {
-            name: '了解美至',
-            url: '/about'
-          },
-          {
-            name: '加入我们',
-            url: '/recruitment'
-          }
-        ],
+        menuList: cnMenuList,
         logonShow: false
       }
     },
@@ -157,6 +211,17 @@
           this.stopScroll()
         } else {
           this.openScroll()
+        }
+      },
+      '$route.name'(val, val2) {
+        let _s1 = val.substring(0, 2)
+        let _s2 = val2.substring(0, 2)
+        if (_s1 != _s2) {
+          if (val.indexOf('en') == 0) {
+            this.menuList = enMenuList
+          } else {
+            this.menuList = cnMenuList
+          }
         }
       }
     }
@@ -234,6 +299,10 @@
     height: calc(20vw/14.4);
     width: calc(1vw/14.4);
     background: #000;
+  }
+
+  .topLeft span {
+    cursor: pointer;
   }
 
   .menuBox {

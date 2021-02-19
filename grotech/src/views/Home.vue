@@ -17,7 +17,7 @@
       <div class="homeVideo">
         <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
         <div class="videoTxt">
-          <p class="p1" v-html="oData.bannerVideo.p1"></p>
+          <p class="p1" v-if="oData.bannerVideo.p1" v-html="oData.bannerVideo.p1"></p>
           <p class="p2" v-html="oData.bannerVideo.p2"></p>
         </div>
       </div>
@@ -156,11 +156,11 @@
 
 <script>
   import { oData } from "@/data/index-data.js";
+  import { oData2 } from "@/data/index-data2.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
 
   export default {
-    name: 'Home',
     components: {
       topNav
     },
@@ -188,7 +188,13 @@
         require('../assets/l4.png'),
         require('../assets/l5.png')
       ]
-      this.oData = oData
+ 
+      if (this.$route.name.indexOf('en') == 0) {
+        this.oData = oData2
+      } else {
+        this.oData = oData
+      }
+
       this.oData.bannerVideo.src = require('../assets/header1.mp4')
       this.oData.product.list[0].src = require('../assets/GDB.gif')
       this.oData.product.list[1].src = require('../assets/Gropilot-gray.gif')
@@ -295,7 +301,19 @@
         }
       }
     },
-    watch: {},
+    watch: {
+      '$route.name'(val, val2) {
+        let _s1 = val.substring(0, 2)
+        let _s2 = val2.substring(0, 2)
+        if (_s1 != _s2) {
+          if (val.indexOf('en') == 0) {
+            this.oData = oData2
+          } else {
+            this.oData = oData
+          }
+        }
+      }
+    },
     mounted() {
       this.swiper2 = this.$refs.mySwiper2.swiper
       if (this.$route.query.id) {

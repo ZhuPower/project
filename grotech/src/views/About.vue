@@ -54,15 +54,19 @@
 
 <script>
   import { oData } from "@/data/about-data.js";
+  import { oData2 } from "@/data/about-data2.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
   export default {
-    name: 'About',
     components: {
       topNav
     },
     created() {
-      this.oData = oData
+      if (this.$route.name.indexOf('en') == 0) {
+        this.oData = oData2
+      } else {
+        this.oData = oData
+      }
       this.oData.bannerVideo.src = require('../assets/header2.mp4')
       this.oData.team.src = require('../assets/team.png')
       this.oData.visionValue.src = require('../assets/banner.mp4')
@@ -120,7 +124,19 @@
         isTem: false
       }
     },
-    watch: {},
+    watch: {
+      '$route.name'(val, val2) {
+        let _s1 = val.substring(0, 2)
+        let _s2 = val2.substring(0, 2)
+        if (_s1 != _s2) {
+          if (val.indexOf('en') == 0) {
+            this.oData = oData2
+          } else {
+            this.oData = oData
+          }
+        }
+      }
+    },
     mounted() {
       this.w = this.$refs.teamMain.offsetWidth
       window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件

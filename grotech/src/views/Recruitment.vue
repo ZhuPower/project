@@ -26,51 +26,15 @@
         <div class="right" v-html="item.content"></div>
       </div>
     </div>
-    <div class="atGrotech" ref="atGrotech" :class="{'cur':isActive}">
-      <div class="atList atList_0">
+    <div class="atGrotech" ref="atGrotech" :class="{'cur':oData.atGrotech.show}">
+      <div class="atList" v-for="(item,index) in oData.atGrotech.list" :class="['atList_'+index]">
         <img src="../assets/img9.png">
         <div class="atInfo">
-          <div class="h1">At Grotech</div>
-          <div class="c1">在美至科技<br />我们特别珍视，雇佣<br />和晋升能够体现如下<br />特质的员工</div>
-          <div class="b1">Keep</div>
+          <div class="x1" v-if="index > 0">0{{index}}</div>
+          <div class="p1" v-if="item.p1" v-html="item.p1"></div>
+          <div class="c1" v-if="item.c1" v-html="item.c1"></div>
+          <div class="b1" v-html="item.b1"></div>
         </div>
-
-      </div>
-      <div class="atList atList_1">
-        <img src="../assets/img9.png">
-        <div class="atInfo">
-          <div class="x1">01</div>
-          <div class="p1">坦荡<br />真诚、无私、<br />有沟通力</div>
-          <div class="b1">Growing</div>
-        </div>
-
-      </div>
-      <div class="atList atList_2">
-        <img src="../assets/img9.png">
-        <div class="atInfo">
-          <div class="x1">02</div>
-          <div class="p1">敢为<br />有勇气，<br />永远向前一步</div>
-          <div class="b1">Growing</div>
-        </div>
-
-      </div>
-      <div class="atList atList_3">
-        <img src="../assets/img9.png">
-        <div class="atInfo">
-          <div class="x1">03</div>
-          <div class="p1">追求卓越<br />充满好奇心，<br />有判断力，<br />顶级绩效</div>
-          <div class="b1">Growing</div>
-        </div>
-
-      </div>
-      <div class="atList atList_4">
-        <img src="../assets/img9.png">
-        <div class="atInfo">
-          <div class="x1">04</div>
-          <div class="p1">做价值创造的源泉<br />渴望创新，<br />渴望影响力</div>
-          <div class="b1">Growing</div>
-        </div>
-
       </div>
     </div>
     <div class="zp"></div>
@@ -79,15 +43,19 @@
 
 <script>
   import { oData } from "@/data/recruitment-data.js";
+  import { oData2 } from "@/data/recruitment-data2.js";
   import topNav from "../components/topNav";
   import { isElementNotInViewport } from "@/utils/index.js";
   export default {
-    name: 'Recruitment',
     components: {
       topNav
     },
     created() {
-      this.oData = oData
+      if (this.$route.name.indexOf('en') == 0) {
+        this.oData = oData2
+      } else {
+        this.oData = oData
+      }
       this.oData.bannerVideo.src = require('../assets/header3.mp4')
       this.oData.bannerVideo.iconSrc = require('../assets/icon_2.png')
     },
@@ -105,9 +73,9 @@
 
 
         doSome('atGrotech', function () {
-          that.isActive = true;
+          that.oData.atGrotech.show = true;
         }, function () {
-          that.isActive = false;
+          that.oData.atGrotech.show = false;
         })
 
 
@@ -142,7 +110,19 @@
         isActive: false
       }
     },
-    watch: {},
+    watch: {
+      '$route.name'(val, val2) {
+        let _s1 = val.substring(0, 2)
+        let _s2 = val2.substring(0, 2)
+        if (_s1 != _s2) {
+          if (val.indexOf('en') == 0) {
+            this.oData = oData2
+          } else {
+            this.oData = oData
+          }
+        }
+      }
+    },
     mounted() {
       window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
     },

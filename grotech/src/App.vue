@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <div style="font-size: 10px;padding-top: 64px;">
+    <div class="mBox" v-if="$route.name.charAt(2) == 'M'">
+      <router-view />
+    </div>
+    <div class="pcBox" v-else>
       <router-view />
       <foot />
     </div>
@@ -44,6 +47,11 @@
 
   video {
     width: 100%;
+  }
+
+  .pcBox {
+    font-size: 10px;
+    padding-top: calc(64vw/14.4);
   }
 
   .home .homeVideo video {
