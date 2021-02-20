@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Recruitment from '../views/Recruitment.vue'
 import mHome from '../views/mHome.vue'
+import mAbout from '../views/mAbout.vue'
+import mRecruitment from '../views/mRecruitment.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +48,16 @@ const routes = [
     path: '/CN/mobile/home',
     name: 'cnMHome',
     component: mHome
+  },
+  {
+    path: '/CN/mobile/about',
+    name: 'cnMAbout',
+    component: mAbout
+  },
+  {
+    path: '/CN/mobile/recruitment',
+    name: 'cnMRecruitment',
+    component: mRecruitment
   }
 ]
 

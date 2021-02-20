@@ -50,7 +50,6 @@
   }
 
   .pcBox {
-    font-size: 10px;
     padding-top: calc(64vw/14.4);
   }
 

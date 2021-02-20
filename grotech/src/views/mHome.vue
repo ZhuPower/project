@@ -74,7 +74,150 @@
       </div>
       <!-- 服务 -->
       <div class="serviceBox">
-        
+        <div class="name">服务</div>
+        <div class="list">
+          <div class="list-box">
+            <div class="title">
+              聚焦大消费行业的一站式增长服务
+              <p class="p1">
+                Gaas（Growth as a Service）
+              </p>
+            </div>
+            <div class="li-box">
+              <div class="li-title">基于大数据与AI的策略服务</div>
+              <div class="li-tab">
+                <div class="li-h">
+                  <div class="li-h-box">企业竞争战略</div>
+                  <div class="li-h-box">产品创新</div>
+                  <div class="li-h-box">全渠道增长策略</div>
+                </div>
+                <div class="li-c">
+                  <div class="li-c-box">
+                    <p>由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。</p>
+                  </div>
+                  <div class="li-c-box">
+                    <p>我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。</p>
+                  </div>
+                  <div class="li-c-box">
+                    <p>从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="li-box">
+              <div class="li-title">精益化营销服务</div>
+              <div class="li-tab">
+                <div class="li-h">
+                  <div class="li-h-box">整合营销服务</div>
+                  <div class="li-h-box">数据科学投放</div>
+                </div>
+                <div class="li-c">
+                  <div class="li-c-box">
+                    <p>利用美至科技Grotech技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（ROI）。</p>
+                  </div>
+                  <div class="li-c-box">
+                    <p>通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="li-box">
+              <div class="li-title">ADAPT™品牌孵化服务</div>
+              <div class="li-tab">
+                <div class="li-c">
+                  <div class="li-c-box">
+                    <p>A-InnovAtion，D-Deep insight，A-All
+                      dimensions，P-Partnership，T-Technology。ADAPT在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list-box">
+            <div class="title">
+              大数据驱动，为投资机构量身定制专属服务
+            </div>
+            <div class="li-box">
+              <div class="li-title">行业研究
+                <p class="p2">
+                  和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。
+                </p>
+              </div>
+              <div class="li-tab">
+                <div class="li-h">
+                  <div class="li-h-box">美至科技投资雷达</div>
+                </div>
+                <div class="li-c">
+                  <div class="li-c-box">
+                    <p>和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="li-box">
+              <div class="li-title">大数据尽职调查</div>
+              <div class="li-tab">
+                <div class="li-c">
+                  <div class="li-c-box">
+                    <p>传统的投资尽职调查偏向于小样本访谈与研究，缺乏大数据支撑。美至科技利用技术能力结合经验丰富的行业专家，提供科学全面的尽职调查服务。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="li-box">
+              <div class="li-title">投资管理服务</div>
+              <div class="li-tab">
+                <div class="li-c">
+                  <div class="li-c-box">
+                    <p>对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 产品 -->
+      <div class="productBox">
+        <div class="name" v-html="oData.product.h1"></div>
+        <div class="h2" v-html="oData.product.h2"></div>
+      </div>
+      <!-- 创新服务 -->
+      <div class="innovativeService">
+        <swiper ref="mySwiper2" :options="swiperOptions2">
+          <swiper-slide v-for="item in oData.innovativeService.list">
+            <div class="h1" v-html="item.h1"></div>
+            <div class="p1" v-html="item.p1"></div>
+          </swiper-slide>
+        </swiper>
+        <div class="bottomBox">
+          <span v-for="(item,index) in oData.innovativeService.list"
+            :class="{'cur':swiper2.activeIndex ==index}">{{index+1}}<i></i></span>
+        </div>
+      </div>
+      <!-- 品牌 -->
+      <div class="brand">
+        <div class="title" v-html="oData.brand.title"></div>
+        <div class="tabH">
+          <div class="list-h" v-for="(item,index) in oData.brand.list" v-html="item.name"
+            :class="{'cur':oData.brand.nTab == index,['list-h-'+(index+1)]:true}" @click="pickBrand(index)"></div>
+        </div>
+        <div class="tabC">
+          <div class="list-c" v-for="(item,index) in oData.brand.list" v-show="oData.brand.nTab == index">
+            <div v-for="item2 in item.img">
+              <img :src="item2">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 联系 -->
+      <div class="contact">
+        <div class="h1" v-html="oData.contact.h1"></div>
+        <div class="p1" v-html="oData.contact.p1"></div>
+        <a href="javascript:;" class="mailbox" v-html="oData.contact.mail"></a>
       </div>
     </div>
   </div>
@@ -138,7 +281,15 @@
     data() {
       let vm = this;
       return {
-
+        swiperOptions2: {
+          // loop: true,
+          onSlideChangeStart: function (swiper) {
+            console.log(vm)
+          }
+        },
+        swiper2: {
+          activeIndex: 0
+        }
       }
     },
     watch: {
@@ -164,65 +315,65 @@
 </script>
 <style scoped>
   .Introduction {
-    height: 4.44rem;
+    height: calc(444vw/3.75);
     position: fixed;
-    top: .72rem;
+    top: calc(72vw/3.75);
     left: 0px;
     width: 100%;
-    padding-left: .23rem;
+    padding-left: calc(23vw/3.75);
     box-sizing: border-box;
   }
 
   .Introduction .h3 {
-    width: 2.87rem;
-    height: .72rem;
+    width: calc(287vw/3.75);
+    height: calc(72vw/3.75);
     color: #9999e4;
     font-family: "Faktum-Regular";
-    font-size: .42rem;
+    font-size: calc(42vw/3.75);
     font-weight: 400;
-    line-height: .36rem;
-    margin-top: 1.47rem;
+    line-height: calc(36vw/3.75);
+    margin-top: calc(147vw/3.75);
   }
 
   .Introduction .h2 {
-    width: 1.36rem;
-    height: .3175rem;
+    width: calc(136vw/3.75);
+    height: calc(31.75vw/3.75);
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: .16rem;
+    font-size: calc(16vw/3.75);
     font-weight: 400;
-    line-height: .3175331rem;
-    letter-spacing: 1px;
-    margin-top: .1rem;
+    line-height: calc(31.75331vw/3.75);
+    letter-spacing: calc(1vw/3.75);
+    margin-top: calc(10vw/3.75);
   }
 
   .Introduction .p2 {
-    width: .79rem;
-    height: .34rem;
+    width: calc(79vw/3.75);
+    height: calc(34vw/3.75);
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: .12rem;
+    font-size: calc(12vw/3.75);
     font-weight: 400;
-    line-height: .34rem;
-    margin-top: -.12rem;
+    line-height: calc(34vw/3.75);
+    margin-top: calc(-12vw/3.75);
   }
 
   .Introduction .p1 {
     opacity: 0.6;
-    width: 2.62rem;
-    height: .41rem;
+    width: calc(262vw/3.75);
+    height: calc(41vw/3.75);
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: .096rem;
+    font-size: calc(9.6vw/3.75);
     font-weight: 400;
-    line-height: .17rem;
-    margin-top: .39rem;
+    line-height: calc(17vw/3.75);
+    margin-top: calc(39vw/3.75);
   }
 
 
 
   .content {
-    margin-top: 4.44rem;
+    margin-top: calc(444vw/3.75);
   }
 
   .home .homeVideo {
@@ -234,138 +385,139 @@
   }
 
   .homeVideo .videoTxt {
-    padding-left: .23rem;
+    padding-left: calc(23vw/3.75);
     position: absolute;
     left: 0;
-    bottom: .57rem;
+    bottom: calc(57vw/3.75);
   }
 
   .homeVideo .videoTxt .p1 {
-    width: 1.96rem;
-    height: .24rem;
+    width: calc(196vw/3.75);
+    height: calc(24vw/3.75);
     color: #ffffff;
     font-family: "PingFangSC-Regular";
-    font-size: .14rem;
+    font-size: calc(14vw/3.75);
     font-weight: 400;
-    line-height: .1344rem;
+    line-height: calc(13.44vw/3.75);
   }
 
   .homeVideo .videoTxt .p2 {
-    width: 2.67rem;
-    height: 1.19rem;
+    width: calc(267vw/3.75);
+    height: calc(119vw/3.75);
     color: #ffffff;
     font-family: "Faktum-Regular";
-    font-size: .24rem;
+    font-size: calc(24vw/3.75);
     font-weight: 400;
-    line-height: .24rem;
+    line-height: calc(24vw/3.75);
   }
 
   .proMain .pro-box {
-    padding-left: .23rem;
+    padding-left: calc(23vw/3.75);
   }
 
   .proMain .pro-box .title {
-    width: 3.39rem;
-    height: .67rem;
+    width: calc(339vw/3.75);
+    height: calc(67vw/3.75);
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: .24rem;
+    font-size: calc(24vw/3.75);
     font-weight: 400;
-    line-height: .36rem;
-    margin-top: .43rem;
+    line-height: calc(36vw/3.75);
+    margin-top: calc(43vw/3.75);
   }
 
   .proMain .pro-box .title .p1 {
     opacity: 0.3;
     color: #383a50;
     font-family: "Faktum-Regular";
-    font-size: .14rem;
+    font-size: calc(14vw/3.75);
     font-weight: 500;
-    line-height: .18rem;
+    line-height: calc(18vw/3.75);
   }
 
   .proMain .pro-box .list {
-    margin-top: .34rem;
+    margin-top: calc(34vw/3.75);
   }
 
   .proMain .pro-box .listCon {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: .35rem;
+    height: calc(35vw/3.75);
+    ;
     border-bottom: 1px solid #999aa7;
-    margin-right: .24rem;
+    margin-right: calc(24vw/3.75);
   }
 
 
   .proMain .pro-box .listCon:first-child {
-    border-top: 1px solid #999aa7;
+    border-top: calc(1vw/3.75) solid #999aa7;
   }
 
   .proMain .pro-box .left {
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: .14rem;
+    font-size: calc(14vw/3.75);
     font-weight: 400;
-    line-height: .21rem;
+    line-height: calc(21vw/3.75);
   }
 
   .proMain .pro-box .right {
     color: #d6d6f4;
     font-family: "PingFangSC-Semibold";
-    font-size: .12rem;
+    font-size: calc(12vw/3.75);
     font-weight: 400;
-    line-height: .15rem;
+    line-height: calc(15vw/3.75);
   }
 
   .proMain .pro-box .bottom {
     opacity: 0.6;
     color: #33343e;
     font-family: "PingFangSC-Regular";
-    font-size: .13rem;
+    font-size: calc(13vw/3.75);
     font-weight: 400;
-    line-height: .24rem;
-    padding-right: .24rem;
+    line-height: calc(24vw/3.75);
+    padding-right: calc(24vw/3.75);
   }
 
   .servicePhilosophy {
     width: 100%;
-    height: 3rem;
+    height: calc(300vw/3.75);
     background: #bdf0ee;
-    padding: 0px .24rem 0px .23rem;
+    padding: 0px calc(24vw/3.75) 0px calc(23vw/3.75);
     overflow: hidden;
   }
 
   .servicePhilosophy .h1 {
     color: #214743;
     font-family: "PingFangSC-Regular";
-    font-size: .13rem;
+    font-size: calc(13vw/3.75);
     font-weight: 400;
-    line-height: .17rem;
-    margin-top: .21rem;
-    height: .22rem;
+    line-height: calc(17vw/3.75);
+    margin-top: calc(21vw/3.75);
+    height: calc(22vw/3.75);
   }
 
   .servicePhilosophy .h2 {
-    width: 3.13rem;
-    height: .95rem;
+    width: calc(313vw/3.75);
+    height: calc(95vw/3.75);
     color: #214743;
     font-family: "Faktum-Regular";
-    font-size: .24rem;
+    font-size: calc(24vw/3.75);
     font-weight: 400;
-    line-height: .30rem;
-    margin-top: .3rem;
+    line-height: calc(30vw/3.75);
+    margin-top: calc(30vw/3.75);
   }
 
   .servicePhilosophy .h3 {
-    width: 1.72rem;
-    height: .49rem;
+    width: calc(172vw/3.75);
+    height: calc(49vw/3.75);
     color: #214743;
     font-family: "PingFangSC-Regular";
-    font-size: .12rem;
+    font-size: calc(12vw/3.75);
     font-weight: 400;
-    line-height: .15rem;
-    margin-top: .72rem;
+    line-height: calc(15vw/3.75);
+    margin-top: calc(72vw/3.75);
   }
 </style>

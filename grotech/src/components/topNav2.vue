@@ -3,8 +3,13 @@
     <div class="topNav">
       <img src="../assets/mono.png" class="logo">
       <div class="menu" @click="showMenu">
-        <img src="../assets/menu.png">
+        <i class="i-1"></i>
+        <i class="i-2"></i>
+        <i class="i-3"></i>
       </div>
+    </div>
+    <div class="navCon">
+      <div class=""></div>
     </div>
   </div>
 
@@ -106,7 +111,9 @@
     },
     computed: {},
     methods: {
-      showMenu() { }
+      showMenu() {
+        this.show = !this.show
+      }
     },
     data() {
       return {
@@ -134,22 +141,71 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .topNav {
-    padding: 0px .24rem 0px .23rem;
-    height: .72rem;
+    padding: 0px calc(24vw/3.75) 0px calc(23vw/3.75);
+    height: calc(72vw/3.75);
     display: flex;
     width: 100%;
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
   }
-  .topNav .menu{
-    height: .72rem;
+
+  .topNav .menu {
+    width: calc(24vw/3.75);
+    height: calc(24vw/3.75);
+    position: relative;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .topNav .menu i {
+    background: #000;
+    width: 100%;
+    height: calc(2vw/3.75);
+    transition: all .3s .3s;
+    margin-left: calc(2vw/3.75);
+  }
+
+  .topNav .menu i.i-1,
+  .topNav .menu i.i-3 {
+    position: absolute;
+    left: 0;
+    transform-origin: 0% 50%;
+    transition: transform .3s;
+  }
+
+  .topNav .menu i.i-1 {
+    top: calc(2vw/3.75);
+  }
+
+  .topNav .menu i.i-3 {
+    bottom: calc(2vw/3.75);
+  }
+
+  .navMain.cur .topNav .menu i.i-2 {
+    transform: translateX(calc(-24vw/3.75));
+    transition: all .3s;
+  }
+
+  .navMain.cur .topNav .menu i.i-1 {
+    transform: rotate(45deg);
+    transition: transform .3s .3s;
+    top: calc(1vw/3.75);
+    width: calc(28.284vw/3.75);
+  }
+
+  .navMain.cur .topNav .menu i.i-3 {
+    bottom: calc(1vw/3.75);
+    transform: rotate(-45deg);
+    transition: transform .3s .3s;
+    width: calc(28.284vw/3.75);
   }
 
   .topNav .logo {
-    width: .52rem;
-    height: .48rem;
+    width: calc(52vw/3.75);
+    height: calc(48vw/3.75);
   }
 </style>
