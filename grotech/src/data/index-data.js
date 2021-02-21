@@ -63,10 +63,11 @@ let oData = {
   ],
   product: {
     h1: '产品',
-    h2: 'Grotech<br />增长科技系统是什么?',
+    h2: '<span style="font-family:Faktum-Regular;">Grotech</span><br />增长科技系统是什么?',
     list: [
       {
         title1: 'GDB',
+        title11: 'Growth Data Bank',
         title2: 'Growth Data Bank<br />独树一帜的美至科技数据银行',
         productInfo: '集合海量的社交网络、智能手机、电商平台<br />、线下购物等数据, 结合行业特征, <br />利用AI算法搭建多种商业策略模型。',
         src: ''

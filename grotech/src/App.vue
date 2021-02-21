@@ -2,6 +2,7 @@
   <div id="app">
     <div class="mBox" v-if="$route.name.charAt(2) == 'M'">
       <router-view />
+      <foot2 />
     </div>
     <div class="pcBox" v-else>
       <router-view />
@@ -12,10 +13,12 @@
 </template>
 <script>
   import foot from "./components/foot";
+  import foot2 from "./components/foot2";
   export default {
     name: 'About',
     components: {
-      foot
+      foot,
+      foot2
     },
     created() { },
     computed: {},
