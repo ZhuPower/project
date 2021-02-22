@@ -15,7 +15,10 @@
     <div class="content">
       <!-- 视频 -->
       <div class="homeVideo">
-        <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
+        <keep-alive>
+          <video :src="oData.bannerVideo.src" autoplay loop muted id="bannerVideo">您的浏览器不支持 video 标签。</video>
+        </keep-alive>
+
         <div class="videoTxt">
           <p class="p1" v-if="oData.bannerVideo.p1" v-html="oData.bannerVideo.p1"></p>
           <p class="p2" v-html="oData.bannerVideo.p2"></p>
@@ -319,6 +322,7 @@
     },
     mounted() {
       this.swiper2 = this.$refs.mySwiper2.swiper
+      document.getElementById('bannerVideo').play()
       if (this.$route.query.id) {
         document.getElementById(this.$route.query.id).scrollIntoView({
           block: 'start',

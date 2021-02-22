@@ -3,7 +3,9 @@
     <topNav />
     <!-- 视频 -->
     <div class="bannerVideo">
-      <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
+      <keep-alive>
+        <video :src="oData.bannerVideo.src" autoplay loop muted id="bannerVideo">您的浏览器不支持 video 标签。</video>
+      </keep-alive>
       <div class="videoTxt">
         <p class="p1" v-html="oData.bannerVideo.p1"></p>
         <div class="h1">
@@ -125,6 +127,7 @@
       }
     },
     mounted() {
+      document.getElementById('bannerVideo').play()
       window.addEventListener('scroll', this.handleScroll, true); // 监听（绑定）滚轮滚动事件
     },
     destroyed() {

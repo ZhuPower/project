@@ -3,7 +3,9 @@
     <topNav />
     <!-- 视频 -->
     <div class="bannerVideo">
-      <video :src="oData.bannerVideo.src" autoplay loop muted>您的浏览器不支持 video 标签。</video>
+      <keep-alive>
+        <video :src="oData.bannerVideo.src" autoplay loop muted id="bannerVideo">您的浏览器不支持 video 标签。</video>
+      </keep-alive>
       <div class="videoTxt">
         <p class="p1">加入我们</p>
       </div>
@@ -93,6 +95,7 @@
     },
     mounted() {
       this.swiper2 = this.$refs.mySwiper2.swiper
+      document.getElementById('bannerVideo').play()
     },
   }
 </script>

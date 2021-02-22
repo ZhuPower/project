@@ -1,11 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Recruitment from '../views/Recruitment.vue'
-import mHome from '../views/mHome.vue'
-import mAbout from '../views/mAbout.vue'
-import mRecruitment from '../views/mRecruitment.vue'
 
 Vue.use(VueRouter)
 
@@ -17,49 +11,53 @@ const routes = [
   {
     path: '/CN/home',
     name: 'cnHome',
-    component: Home
+    component: view('Home')
   },
   {
     path: '/CN/about',
     name: 'cnAbout',
-    component: About
+    component: view('About')
   },
   {
     path: '/CN/recruitment',
     name: 'cnRecruitment',
-    component: Recruitment
+    component: view('Recruitment')
   },
   {
     path: '/EN/home',
     name: 'enHome',
-    component: Home
+    component: view('Home')
   },
   {
     path: '/EN/about',
     name: 'enAbout',
-    component: About
+    component: view('About')
   },
   {
     path: '/EN/recruitment',
     name: 'enRecruitment',
-    component: Recruitment
+    component: view('Recruitment')
   },
   {
     path: '/CN/mobile/home',
     name: 'cnMHome',
-    component: mHome
+    component: view('mHome')
   },
   {
     path: '/CN/mobile/about',
     name: 'cnMAbout',
-    component: mAbout
+    component: view('mAbout')
   },
   {
     path: '/CN/mobile/recruitment',
     name: 'cnMRecruitment',
-    component: mRecruitment
+    component: view('mRecruitment')
   }
 ]
+
+function view(name) {
+  return resolve => require(['@/views/' + name], resolve);
+}
 
 const router = new VueRouter({
   // mode: 'history',
