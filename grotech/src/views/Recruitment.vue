@@ -80,6 +80,7 @@
 
 
         function doSome(str, endFn, endFn2) {
+          let _h0 = document.getElementById('navMain').offsetHeight
           let _h = document.documentElement.clientHeight
           let _dom = that.$refs[str] || null
           if (_dom && _dom instanceof Array) {
@@ -89,7 +90,7 @@
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-          let _top = _dom && _dom.offsetTop || 0
+          let _top = (_dom && _dom.offsetTop - _h / 3 - _h0) || 0
           let _top2 = _top + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {

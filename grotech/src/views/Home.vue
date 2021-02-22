@@ -51,8 +51,9 @@
         <div class="h3" v-html="oData.servicePhilosophy.h3"></div>
       </div>
       <!-- 服务 -->
-      <div class="serviceBox" v-for="(item,index) in oData.serviceList" :id="'serviceBox'+(index+1)"
+      <div class="serviceBox" v-for="(item,index) in oData.serviceList"
         :class="{'cur':item.show,['serviceBox'+(index+1)]:true}" :ref="('serviceBox'+(index+1))">
+        <div :id="'serviceBox'+(index+1)"></div>
         <div class="item-box" v-if="index%2==0">
           <div class="item-right">
             <div class="h1" v-if="item.name" v-html="item.name"></div>
@@ -95,13 +96,14 @@
         </div>
       </div>
       <!-- 产品 -->
-      <div class="productBox" id="productBox">
+      <div class="productBox">
+        <div id="productBox"></div>
         <div class="h1" v-html="oData.product.h1"></div>
         <div class="h2" v-html="oData.product.h2"></div>
         <div class="productList">
           <div class="list-box" v-for="(item,index) in oData.product.list" :class="['list-box-'+(index+1)]">
             <div class="imgBox">
-              <img :src="item.src">
+              <img v-lazy="item.src">
             </div>
             <div class="listBox">
               <div class="title">
@@ -138,7 +140,7 @@
             v-for="(item,index) in oData.brand.list" v-show="oData.brand.nTab == index">
             <swiper :ref="'brandSwiper_'+index" :options="swiperOptions">
               <swiper-slide v-for="item2 in item.img">
-                <img :src="item2">
+                <img v-lazy="item2">
               </swiper-slide>
             </swiper>
           </div>
@@ -188,7 +190,7 @@
         require('../assets/l4.png'),
         require('../assets/l5.png')
       ]
- 
+
       if (this.$route.name.indexOf('en') == 0) {
         this.oData = oData2
       } else {
@@ -252,6 +254,7 @@
         })
 
         function doSome(str, endFn, endFn2) {
+          let _h0 = document.getElementById('navMain').offsetHeight
           let _h = document.documentElement.clientHeight
           let _dom = that.$refs[str] || null
           if (_dom && _dom instanceof Array) {
@@ -261,7 +264,7 @@
           let _h3 = that.$refs.Introduction && that.$refs.Introduction.offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top0 = (_dom && _dom.offsetTop) || 0
+          let _top0 = (_dom && _dom.offsetTop - _h / 3 - _h0) || 0
           let _top = _top0 + _h3
           let _top2 = _top0 + _h3 + _h2
 
@@ -720,6 +723,16 @@
     line-height: calc(40vw/14.4);
     letter-spacing: calc(2.5vw/14.4);
     margin-top: calc(0vw/14.4);
+  }
+
+  #serviceBox1,
+  #serviceBox2,
+  #productBox {
+    position: relative;
+    top: calc(-64vw/14.4);
+    display: block;
+    height: 0;
+    overflow: hidden;
   }
 
   .serviceBox {

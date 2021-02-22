@@ -4,10 +4,15 @@
     font-weight: normal;  
     font-style: normal;  
 }
-
 @font-face {  
     font-family: 'PingFangSC-Regular'; 
     src: url('PingFangSC-Regular.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+}
+@font-face {  
+    font-family: 'PingFangSC-Medium'; 
+    src: url('PingFangSC-Medium.ttf'); 
     font-weight: normal;  
     font-style: normal;  
 }
@@ -25,13 +30,8 @@
     font-style: normal;  
 }
 
-@font-face {  
-    font-family: 'PingFangSC-Medium'; 
-    src: url('PingFangSC-Medium.ttf'); 
-    font-weight: normal;  
-    font-style: normal;  
-}
 
+/* 
 @font-face {  
     font-family: 'PingFangSC-Semibold'; 
     src: url('PingFangSC-Semibold.ttf'); 
@@ -73,4 +73,4 @@
     src: url('Faktum-Thin.otf'); 
     font-weight: normal;  
     font-style: normal;  
-}
+} */

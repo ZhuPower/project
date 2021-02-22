@@ -27,13 +27,13 @@
       <div class="teamMain" ref="teamMain" :class="{'cur':isTem}">
         <div class="temBox2" :style="{height:w*830/1440+'px'}">
           <div class="temImg" v-for="(item,index) in 4 " :style="{width:w/6+'px',height:w*830/1440+'px'}">
-            <img :src="oData.team.src" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
+            <img v-lazy="oData.team.src" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
           </div>
         </div>
         <div class="temBox" :style="{height:w*830/1440+'px'}">
           <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
             :style="{width:(index!=0 ? (w/6+'px') : (w/3+'px')),height:w*830/1440+'px'}">
-            <img :src="oData.team.src" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
+            <img v-lazy="oData.team.src" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
           </div>
         </div>
       </div>
@@ -95,6 +95,7 @@
 
 
         function doSome(str, endFn, endFn2) {
+          let _h0 = document.getElementById('navMain').offsetHeight
           let _h = document.documentElement.clientHeight
           let _dom = that.$refs[str] || null
           if (_dom && _dom instanceof Array) {
@@ -103,7 +104,7 @@
           let _h2 = _dom && _dom.offsetHeight || 0
           //获取滚动距顶部的距离，显示
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-          let _top = _dom && _dom.offsetTop || 0
+          let _top = (_dom && _dom.offsetTop - _h / 3 - _h0) || 0
           let _top2 = _top + _h2
 
           if (scrollTop >= _top && scrollTop < _top2) {
