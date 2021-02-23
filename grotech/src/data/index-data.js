@@ -3,7 +3,7 @@ let oData = {
     p2: 'Keep Growing',
     h3: 'When the <br />finest arrives',
     h2: '让美好如期而至',
-    p1: '美至倡导的幸福力即更好地满足消费者需求，资源可持续利用，并坚守商业道德。'
+    p1: '美至倡导的幸福力即更好地满足消费者需求，资源可持<br/>续利用，并坚守商业道德。'
   },
   bannerVideo: {
     src: '',

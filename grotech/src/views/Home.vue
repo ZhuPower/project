@@ -36,11 +36,9 @@
             </div>
           </div>
           <div class="right" v-if="(item.content instanceof Array)">
-            <div>
-              <div class="list" :class="['list-'+(index3+1)]" v-for="(item3,index3) in item.content">
-                <h6>0{{index3+1}}</h6>
-                <p v-html="item3"></p>
-              </div>
+            <div class="list" :class="['list-'+(index3+1)]" v-for="(item3,index3) in item.content">
+              <h6>0{{index3+1}}</h6>
+              <p v-html="item3"></p>
             </div>
           </div>
           <div class="right" v-html="item.content" v-else>
@@ -338,21 +336,20 @@
 </script>
 <style scoped>
   .Introduction {
-    height: calc(735vw/14.4);
+    height: calc(736vw/14.4);
     position: fixed;
     overflow: hidden;
     box-sizing: border-box;
     top: calc(64vw/14.4);
     left: 0px;
-    width: calc(1140/1440*100%);
-    box-sizing: border-box;
-    margin-left: calc(161/1440*100%);
+    width: 100%;
+    padding-left: calc(161vw/14.4);
     display: flex;
   }
 
   .Introduction .left {
     width: calc(440/1140*100%);
-    height: calc(735vw/14.4);
+    height: calc(736vw/14.4);
     overflow: hidden;
   }
 
@@ -366,7 +363,8 @@
     font-size: calc(105vw/14.4);
     font-weight: 400;
     line-height: calc(88vw/14.4);
-    margin-top: calc(70vw/14.4);
+    margin-top: calc(71vw/14.4);
+    height: calc(184vw/14.4);
   }
 
   .Introduction .h2 {
@@ -374,9 +372,9 @@
     font-family: "PingFangSC-Regular";
     font-size: calc(40vw/14.4);
     font-weight: 400;
-    line-height: calc(80vw/14.4);
+    line-height: calc(80.01834vw/14.4);
     letter-spacing: calc(2.5vw/14.4);
-    margin-top: calc(8vw/14.4);
+    height: calc(209vw/14.4);
   }
 
   .Introduction .p1 {
@@ -387,20 +385,20 @@
     font-size: calc(18vw/14.4);
     font-weight: 400;
     line-height: calc(32vw/14.4);
-    width: calc(376vw/14.4);
-    margin-top: calc(130vw/14.4);
+    height: calc(272vw/14.4);
   }
 
   .Introduction .p2 {
     color: #383a50;
     font-family: "Faktum-Regular";
     font-weight: 400;
-    margin-top: calc(75vw/14.4);
+    margin-top: calc(43vw/14.4);
     font-size: calc(21vw/14.4);
+    line-height: calc(90vw/14.4);
   }
 
   .content {
-    margin-top: calc(735vw/14.4);
+    margin-top: calc(736vw/14.4);
   }
 
   .homeVideo {
@@ -412,13 +410,14 @@
 
   .homeVideo .videoTxt {
     position: absolute;
-    left: calc(80vw/14.4);
-    bottom: calc(178vw/14.4);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: calc(79vw/14.4);
   }
 
   .homeVideo .videoTxt .p1 {
-    width: calc(384vw/14.4);
-    height: calc(64vw/14.4);
     color: #ffffff;
     font-family: "PingFangSC-Regular";
     font-size: calc(32vw/14.4);
@@ -427,13 +426,12 @@
   }
 
   .homeVideo .videoTxt .p2 {
-    width: calc(1074vw/14.4);
-    height: calc(145vw/14.4);
     color: #ffffff;
     font-family: "Faktum-Regular";
     font-size: calc(72vw/14.4);
     font-weight: 400;
     line-height: calc(75vw/14.4);
+    margin-bottom: calc(178vw/14.4);
     margin-top: calc(21vw/14.4);
   }
 
@@ -447,14 +445,17 @@
     display: flex;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
   }
 
   .proMain .pro-box-1 {
     min-height: calc(630vw/14.4);
+    padding-top: calc(92vw/14.4);
   }
 
   .proMain .pro-box-2 {
-    min-height: calc(656vw/14.4);
+    min-height: calc(655vw/14.4);
+    padding-top: calc(72vw/14.4);
   }
 
   .proMain .pro-box-3 {
@@ -487,7 +488,38 @@
     font-weight: 400;
     line-height: calc(57vw/14.4);
     letter-spacing: calc(2.5vw/14.4);
-    width: calc(550/1283*100%);
+    width: calc(550vw/14.4);
+  }
+
+  .proMain .pro-box-1 .right {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .proMain .pro-box-1 .right .list-1,
+  .proMain .pro-box-1 .right .list-3 {
+    width: calc(440vw/14.4);
+    height: calc(200vw/14.4);
+  }
+
+  .proMain .pro-box-1 .right .list-2,
+  .proMain .pro-box-1 .right .list-4 {
+    width: calc(291vw/14.4);
+    height: calc(200vw/14.4);
+  }
+
+  .proMain .pro-box .left .title {
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 54px;
+    letter-spacing: 2.5px;
+  }
+
+  .proMain .pro-box .left .title_1 {
+    margin-top: calc(-7vw/14.4);
   }
 
   .proMain .pro-box .left .title_2 {
@@ -497,6 +529,8 @@
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(28vw/14.4);
+    margin-top: calc(4vw/14.4);
+    letter-spacing: normal;
   }
 
   .proMain .pro-box .right {
@@ -506,7 +540,7 @@
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(42vw/14.4);
-    width: calc(730/1283*100%);
+    width: calc(733vw/14.4);
   }
 
   .proMain .pro-box-2 .right {
@@ -517,7 +551,7 @@
     width: calc(736/1283*100%);
   }
 
-  .proMain .pro-box .right h6 {
+  .proMain .pro-box-1 .right h6 {
     color: #d6d6f4;
     font-family: "Faktum-Regular";
     font-size: calc(18vw/14.4);
@@ -525,35 +559,14 @@
     line-height: calc(23vw/14.4);
   }
 
-  .proMain .pro-box-1 .right {
-    padding-top: calc(94vw/14.4);
-  }
-
-  .proMain .pro-box-1 .right>div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .proMain .pro-box .right .list {
-    width: 40%;
-    margin-bottom: calc(71vw/14.4);
-  }
-
-  .proMain .pro-box .right .list p {
-    margin-top: calc(20vw/14.4);
-  }
-
-  .proMain .pro-box-1 .left {
-    margin-top: calc(94vw/14.4);
-  }
+  .proMain .pro-box-1 .right .list p {}
 
   .proMain .pro-box-2>div {
     margin-top: calc(70vw/14.4);
   }
 
   .proMain .pro-box .right>p {
-    margin-bottom: calc(40vw/14.4);
+    /* margin-bottom: calc(40vw/14.4); */
   }
 
   .proMain .pro-box-3 .left {
@@ -590,7 +603,6 @@
   }
 
   .proMain .pro-box-1 .list {
-    height: calc(126.67vw/14.4);
     position: relative;
     overflow: hidden;
   }
@@ -641,7 +653,7 @@
     /* Safari 和 Chrome */
     -o-transition-duration: .6s;
     /* Opera */
-    bottom: 0%;
+    bottom: calc(74vw/14.4);
     opacity: 1;
   }
 

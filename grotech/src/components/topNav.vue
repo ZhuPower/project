@@ -232,8 +232,7 @@
 <style scoped>
   .logoBox {
     position: absolute;
-    top: 34%;
-    margin: 0px 18%;
+    margin: calc(410vw/14.4) calc(240vw/14.4);
   }
 
 

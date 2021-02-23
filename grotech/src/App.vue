@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="mBox" v-if="$route.name.charAt(2) == 'M'">
+    <div class="mBox" v-if="$route.name && ($route.name.charAt(2) == 'M')">
       <router-view />
       <foot2 />
     </div>
