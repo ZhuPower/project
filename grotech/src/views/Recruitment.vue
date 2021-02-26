@@ -194,7 +194,7 @@
 
   .proMain {
     margin: 0px calc(80vw/14.4);
-    height: calc(520vw/14.4);
+    height: calc(519vw/14.4);
   }
 
   .proMain .pro-box {
@@ -206,7 +206,7 @@
 
 
   .proMain .pro-box .left {
-    width: 34.375%;
+    width: calc(441vw/14.4);
     color: #383a50;
     font-family: "PingFangSC-Regular";
     font-size: calc(36vw/14.4);
@@ -240,13 +240,13 @@
 
   .proMain .pro-box-1,
   .proMain .pro-box-1 .right {
-    height: calc(520vw/14.4);
-    padding-top: calc(96vw/14.4);
+    height: calc(519vw/14.4);
+    padding-top: calc(95vw/14.4);
     box-sizing: border-box;
   }
 
   .proMain .pro-box .right {
-    width: 65.625%;
+    width: calc(919vw/14.4);
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
@@ -290,14 +290,14 @@
   }
 
   .atGrotech .atList_1 {
-    width: calc(232vw/14.4);
-    margin-left: calc(-232vw/14.4);
+    width: calc(233vw/14.4);
+    margin-left: calc(-233vw/14.4);
     z-index: 3;
   }
 
   .atGrotech .atList_2 {
-    width: calc(234vw/14.4);
-    margin-left: calc(-234vw/14.4);
+    width: calc(233vw/14.4);
+    margin-left: calc(-233vw/14.4);
     z-index: 2;
   }
 

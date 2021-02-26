@@ -46,13 +46,13 @@
         </div>
         <div class="pro-box">
           <div class="title">
-            创新的GaaS增长即服务
+            创新的<span style="font-family:Faktum-Regular;">GaaS</span>增长即服务
             <p class="p1">Growth-as-a-Service</p>
           </div>
           <div class="bottom">
-            <p>我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的Grotech®
+            <p>我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的<span style="font-family:Faktum-Regular;">Grotech®</span><br/>
               大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。</p>
-            <p style="margin-top: .24rem;">
+            <p style="margin-top:calc(23vw/3.75);">
               美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。
             </p>
           </div>
@@ -539,14 +539,13 @@
     justify-content: space-between;
     align-items: center;
     height: calc(35vw/3.75);
-    ;
     border-bottom: 1px solid #999aa7;
     margin-right: calc(24vw/3.75);
   }
 
 
   .proMain .pro-box .listCon:first-child {
-    border-top: calc(1vw/3.75) solid #999aa7;
+    border-top: 1px solid #999aa7;
   }
 
   .proMain .pro-box .left {
@@ -747,11 +746,11 @@
   }
 
   .serviceBox .list .list-box .li-box {
-    border-bottom: calc(1vw/3.75) solid #999aa7;
+    border-bottom: 1px solid #999aa7;
   }
 
   .serviceBox .list .list-box .li-box-0 {
-    border-top: calc(1vw/3.75) solid #999aa7;
+    border-top: 1px solid #999aa7;
   }
 
   .productBox {
@@ -784,7 +783,7 @@
     width: calc(185vw/3.75);
     height: calc(238vw/3.75);
     border-radius: calc(10vw/3.75);
-    border: solid calc(1vw/3.75) #e7e8f2;
+    border: solid 1px #e7e8f2;
     overflow: hidden;
     position: relative;
   }
@@ -866,7 +865,7 @@
   .productBox .bottomBox span i {
     opacity: 0.8;
     width: calc(7vw/3.75);
-    height: calc(1vw/3.75);
+    height: 1px;
     background: #383a50;
   }
 
@@ -913,13 +912,13 @@
 
   .productBox .fgx {
     width: calc(328vw/3.75);
-    border-bottom: calc(1vw/3.75) solid #999aa7;
+    border-bottom: 1px solid #999aa7;
     margin-left: calc(23vw/3.75);
   }
 
   .innovativeService {
     margin: 0px calc(24vw/3.75) 0px calc(23vw/3.75);
-    border-bottom: calc(1vw/3.75) solid #999aa7;
+    border-bottom: 1px solid #999aa7;
   }
 
   .innovativeService .h1 {
@@ -970,7 +969,7 @@
   .innovativeService .bottomBox span i {
     opacity: 0.8;
     width: calc(7vw/3.75);
-    height: calc(1vw/3.75);
+    height: 1px;
     background: #383a50;
   }
 
@@ -980,7 +979,7 @@
 
   .brand {
     margin: 0px calc(24vw/3.75) 0px calc(23vw/3.75);
-    border-bottom: calc(1vw/3.75) solid #999aa7;
+    border-bottom: 1px solid #999aa7;
     margin-top: calc(20vw/3.75);
   }
 

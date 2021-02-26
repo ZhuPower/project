@@ -28,15 +28,14 @@
     <!-- 认识团队 -->
     <div class="team">
       <div class="teamMain" ref="teamMain" :class="{'cur':isTem}">
-        <div class="temBox2" :style="{height:w*830/1440+'px'}">
-          <div class="temImg" v-for="(item,index) in 4 " :style="{width:w/6+'px',height:w*830/1440+'px'}">
-            <img v-lazy="oData.team.src" :style="{width:w+'px',marginLeft:-w/6+'px'}" />
+        <div class="temBox2">
+          <div class="temImg" v-for="(item,index) in 4 " :class="['temImg_'+(index+1)]">
+            <img v-lazy="oData.team.src" />
           </div>
         </div>
-        <div class="temBox" :style="{height:w*830/1440+'px'}">
-          <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]"
-            :style="{width:(index!=0 ? (w/6+'px') : (w/3+'px')),height:w*830/1440+'px'}">
-            <img v-lazy="oData.team.src" :style="{width:w+'px',marginLeft:index!=0?(-w/6*(index+1)+'px'):'0px'}" />
+        <div class="temBox">
+          <div class="temImg" v-for="(item,index) in 5 " :class="['temImg_'+index]">
+            <img v-lazy="oData.team.src" />
           </div>
         </div>
       </div>
@@ -165,7 +164,7 @@
   .bannerVideo .videoTxt {
     position: absolute;
     left: calc(80vw/14.4);
-    bottom: calc(171vw/14.4);
+    bottom: calc(168vw/14.4);
   }
 
   .bannerVideo .videoTxt .p1 {
@@ -177,19 +176,19 @@
   }
 
   .proMain {
-    margin: 0px calc(80vw/14.4);
+    margin-left: calc(80vw/14.4);
+    overflow: hidden;
   }
 
   .proMain .pro-box {
     display: flex;
-    justify-content: space-between;
     overflow: hidden;
     position: relative;
   }
 
   .proMain .pro-box-1,
   .proMain .pro-box-1 .right {
-    height: calc(558vw/14.4);
+    height: calc(559vw/14.4);
     padding-top: calc(95vw/14.4);
     box-sizing: border-box;
   }
@@ -201,12 +200,12 @@
   .proMain .pro-box-2,
   .proMain .pro-box-2 .right {
     height: calc(424vw/14.4);
-    padding-top: calc(87vw/14.4);
+    padding-top: calc(88vw/14.4);
     box-sizing: border-box;
   }
 
   .proMain .pro-box .left {
-    width: 34.375%;
+    width: calc(440vw/14.4);
     color: #383a50;
     font-family: "PingFangSC-Regular";
     font-size: calc(36vw/14.4);
@@ -241,7 +240,6 @@
   }
 
   .proMain .pro-box .right {
-    width: 65.625%;
     opacity: 0.6;
     color: #383a50;
     font-family: "PingFangSC-Regular";
@@ -261,7 +259,7 @@
     position: absolute;
     top: 100%;
     opacity: 0;
-    right: 0;
+    left: calc(440vw/14.4);
   }
 
   .proMain .pro-box-1.cur .right,
@@ -350,7 +348,10 @@
     margin-top: calc(27vw/14.4);
   }
 
-  .team {}
+  .team {
+    height: calc(830vw/14.4);
+    overflow: hidden;
+  }
 
   .team .h1 {
     margin-left: calc(80vw/14.4);
@@ -388,7 +389,6 @@
 
   .team .teamMain {
     position: relative;
-    margin-top: calc(223vw/14.4);
     overflow: hidden;
     width: 100%;
   }
@@ -409,7 +409,67 @@
   .team .temBox {
     overflow: hidden;
     position: relative;
-    display: flex;
+    width: calc(1440vw/14.4);
+  }
+
+  .team .temBox .temImg {
+    float: left;
+  }
+
+  .team .temBox2,
+  .team .temBox {
+    height: calc(830vw/14.4);
+  }
+
+  .temImg_0 {
+    width: calc(683vw/14.4);
+  }
+
+  .temImg_1,
+  .temImg_2,
+  .temImg_3 {
+    width: calc(200vw/14.4);
+  }
+
+  .temImg_4 {
+    width: calc(157vw/14.4);
+  }
+
+  .temImg img {
+    width: calc(1440vw/14.4);
+  }
+
+
+  .temBox2 .temImg_1 img {
+    margin-left: calc(-552vw/14.4);
+  }
+
+  .temBox2 .temImg_2 img {
+    margin-left: calc(-556vw/14.4);
+  }
+
+  .temBox2 .temImg_3 img {
+    margin-left: calc(-576vw/14.4);
+  }
+
+  .temBox2 .temImg_4 img {
+    margin-left: calc(-597vw/14.4);
+  }
+
+  .temBox .temImg_1 img {
+    margin-left: calc(-683vw/14.4);
+  }
+
+  .temBox .temImg_2 img {
+    margin-left: calc(-883vw/14.4);
+  }
+
+  .temBox .temImg_3 img {
+    margin-left: calc(-1083vw/14.4);
+  }
+
+  .temBox .temImg_4 img {
+    margin-left: calc(-1283vw/14.4);
   }
 
   .temBox .temImg {
@@ -419,13 +479,12 @@
     -moz-transition-property: all;
     -webkit-transition-property: all;
     -o-transition-property: all;
-
     transition-duration: .4s;
     -moz-transition-duration: .4s;
     -webkit-transition-duration: .4s;
     -o-transition-duration: .4s;
     transition-delay: 0s;
-    margin-left: calc(-100%/6);
+    margin-left: calc(-200vw/14.4);
   }
 
   .temBox .temImg_0 {
@@ -433,7 +492,9 @@
     z-index: 4;
   }
 
-
+  .temBox .temImg_4 {
+    margin-left: calc(-157vw/14.4);
+  }
 
   .teamMain.cur .temBox .temImg_1 {
     transition-delay: 0s;
@@ -462,7 +523,6 @@
     -moz-transition-property: all;
     -webkit-transition-property: all;
     -o-transition-property: all;
-
     transition-duration: .6s;
     -moz-transition-duration: .6s;
     -webkit-transition-duration: .6s;

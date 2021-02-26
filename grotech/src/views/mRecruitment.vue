@@ -21,7 +21,9 @@
             </div>
           </div>
         </div>
-        <div class="right" v-html="item.content"></div>
+        <div class="right">
+          我们只雇佣、奖励和包容渴望一起成功的伙伴，保证每一位加入的都是高绩效员工。我们希望成就彼此，而不是打一份工。我们并不寻求一直保持我们的文化，我们 希望能够改善它。我们每个人的智慧都会进一步塑造和发展这个文化。如果你希望通过简单正确的事情重复做，来提升人的幸福感，也让自己获得巨大成功，欢迎你 加入我们，KEEP GROWING!
+        </div>
       </div>
     </div>
     <div class="atGrotech" ref="atGrotech" :class="{'cur':oData.atGrotech.show}">

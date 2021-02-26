@@ -52,49 +52,39 @@
         <div class="h3" v-html="oData.servicePhilosophy.h3"></div>
       </div>
       <!-- 服务 -->
-      <div class="serviceBox" v-for="(item,index) in oData.serviceList"
+      <div class="serviceBox" v-for="(item,index) in oData.serviceList.list"
         :class="{'cur':item.show,['serviceBox'+(index+1)]:true}" :ref="('serviceBox'+(index+1))">
         <div :id="'serviceBox'+(index+1)"></div>
-        <div class="item-box" v-if="index%2==0">
+        <div class="h1" v-if="oData.serviceList.name && index == 0" v-html="oData.serviceList.name"></div>
+        <div class="item-box">
+          <div class="item-left">
+            <img :src="oData.serviceList.list[index].serviceTxt[serviceSwiper1.activeIndex].src" v-if="index==0">
+            <img :src="oData.serviceList.list[index].serviceTxt[serviceSwiper2.activeIndex].src" v-if="index==1">
+          </div>
           <div class="item-right">
-            <div class="h1" v-if="item.name" v-html="item.name"></div>
             <div class="h2">
               <p v-html="item.p1"></p>
               <p class="p2" v-if="item.p2" v-html="item.p2"></p>
             </div>
-            <div class="con">
-              <div :class="{'c1':index2 ==0,'c2':index2>0}" v-for="(item2,index2) in item.serviceTxt[item.nTab]"
-                v-html="item2"></div>
-            </div>
-          </div>
-          <div class="item-left">
-            <div :class="['sphere'+(index+1)]">
-              <div class="circle" v-for="item2 in 10"></div>
-            </div>
-          </div>
-        </div>
-        <div class="item-box" v-else>
-          <div class="item-left">
-            <div :class="['sphere'+(index+1)]">
-              <div class="circle" v-for="item2 in 10"></div>
-            </div>
-          </div>
-          <div class="item-right">
-            <div class="h1" v-if="item.name" v-html="item.name"></div>
-            <div class="h2">
-              <p v-html="item.p1"></p>
-              <p class="p2" v-if="item.p2" v-html="item.p2"></p>
-            </div>
-            <div class="con">
-              <div :class="{'c1':index2 ==0,'c2':index2>0}" v-for="(item2,index2) in item.serviceTxt[item.nTab]"
-                v-html="item2"></div>
-            </div>
+            <swiper ref="serviceSwiper1" :options="serviceOptions1" v-if="index==0">
+              <swiper-slide v-for="(item2,index2) in item.serviceTxt">
+                <div class="con">
+                  <div class="c1" v-html="item2.title"></div>
+                  <div class="c2" v-for="(item3,index3) in item2.con" v-html="item3"></div>
+                </div>
+              </swiper-slide>
+            </swiper>
+            <swiper ref="serviceSwiper2" :options="serviceOptions2" v-if="index==1">
+              <swiper-slide v-for="(item2,index2) in item.serviceTxt">
+                <div class="con">
+                  <div class="c1" v-html="item2.title"></div>
+                  <div class="c2" v-for="(item3,index3) in item2.con" v-html="item3"></div>
+                </div>
+              </swiper-slide>
+            </swiper>
           </div>
         </div>
-        <div class="rightBox">
-          <span :class="{'cur':item.nTab==index2}" v-for="(item2,index2) in item.serviceTxt"
-            @click="pickThing(index,index2)"></span>
-        </div>
+        <div class="rightBox" :class="['swiper-pagination'+(index+1)]"></div>
       </div>
       <!-- 产品 -->
       <div class="productBox">
@@ -199,6 +189,13 @@
       }
 
       this.oData.bannerVideo.src = require('../assets/header1.mp4')
+      this.oData.serviceList.list[0].serviceTxt[0].src = require('../assets/service-1-001.gif')
+      this.oData.serviceList.list[0].serviceTxt[1].src = require('../assets/service-1-002.gif')
+      this.oData.serviceList.list[0].serviceTxt[2].src = require('../assets/service-1-003.gif')
+      this.oData.serviceList.list[1].serviceTxt[0].src = require('../assets/service-2-001.gif')
+      this.oData.serviceList.list[1].serviceTxt[1].src = require('../assets/service-2-002.gif')
+      this.oData.serviceList.list[1].serviceTxt[2].src = require('../assets/service-2-003.gif')
+
       this.oData.product.list[0].src = require('../assets/GDB.gif')
       this.oData.product.list[1].src = require('../assets/Gropilot-gray.gif')
       this.oData.product.list[2].src = require('../assets/Adbot.gif')
@@ -219,7 +216,7 @@
         swiper.autoplay.start();
       },
       pickThing(n, n2) {
-        this.oData.serviceList[n].nTab = n2
+        this.oData.serviceList.list[n].nTab = n2
       },
       pickBrand(n) {
         this.oData.brand.nTab = n
@@ -240,11 +237,11 @@
         })
 
 
-        this.oData.serviceList.forEach((item, index) => {
+        this.oData.serviceList.list.forEach((item, index) => {
           doSome('serviceBox' + (index + 1), function () {
-            that.oData.serviceList[index].show = true;
+            that.oData.serviceList.list[index].show = true;
           }, function () {
-            that.oData.serviceList[index].show = false;
+            that.oData.serviceList.list[index].show = false;
           })
         })
 
@@ -302,6 +299,30 @@
         },
         swiper2: {
           activeIndex: 0
+        },
+        serviceSwiper1: {
+          activeIndex: 0
+        },
+        serviceSwiper2: {
+          activeIndex: 0
+        },
+        serviceOptions1: {
+          pagination: {
+            el: '.swiper-pagination1',
+          },
+          mousewheel: {
+            releaseOnEdges: true,
+            eventsTarged: '.serviceBox1',
+          }
+        },
+        serviceOptions2: {
+          pagination: {
+            el: '.swiper-pagination2',
+          },
+          mousewheel: {
+            releaseOnEdges: true,
+            eventsTarged: '.serviceBox2'
+          }
         }
       }
     },
@@ -320,6 +341,8 @@
     },
     mounted() {
       this.swiper2 = this.$refs.mySwiper2.swiper
+      this.serviceSwiper1 = this.$refs.serviceSwiper1[0].swiper
+      this.serviceSwiper2 = this.$refs.serviceSwiper2[0].swiper
       document.getElementById('bannerVideo').play()
       if (this.$route.query.id) {
         document.getElementById(this.$route.query.id).scrollIntoView({
@@ -459,8 +482,9 @@
   }
 
   .proMain .pro-box-3 {
-    min-height: calc(584vw/14.4);
+    min-height: calc(583vw/14.4);
     border: 0;
+    padding-top: calc(79vw/14.4);
   }
 
   .proMain .pro-box-2 .right,
@@ -468,13 +492,13 @@
     position: absolute;
     top: 100%;
     opacity: 0;
-    left: calc(550/1283*100%);
+    left: calc(550vw/14.4);
   }
 
   .proMain .pro-box-2.cur .right,
   .proMain .pro-box-3.cur .right {
-    top: 0%;
-    opacity: 1;
+    top: calc(72vw/14.4);
+    opacity: 0.6;
     transition: all .6s .4s;
     -moz-transition: all .6s .4s;
     -webkit-transition: all .6s .4s;
@@ -509,15 +533,6 @@
     height: calc(200vw/14.4);
   }
 
-  .proMain .pro-box .left .title {
-    color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: 36px;
-    font-weight: 400;
-    line-height: 54px;
-    letter-spacing: 2.5px;
-  }
-
   .proMain .pro-box .left .title_1 {
     margin-top: calc(-7vw/14.4);
   }
@@ -540,15 +555,7 @@
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(42vw/14.4);
-    width: calc(733vw/14.4);
-  }
-
-  .proMain .pro-box-2 .right {
-    width: calc(690/1283*100%);
-  }
-
-  .proMain .pro-box-3 .right {
-    width: calc(736/1283*100%);
+    width: calc(735vw/14.4);
   }
 
   .proMain .pro-box-1 .right h6 {
@@ -560,22 +567,6 @@
   }
 
   .proMain .pro-box-1 .right .list p {}
-
-  .proMain .pro-box-2>div {
-    margin-top: calc(70vw/14.4);
-  }
-
-  .proMain .pro-box .right>p {
-    /* margin-bottom: calc(40vw/14.4); */
-  }
-
-  .proMain .pro-box-3 .left {
-    margin-top: calc(86vw/14.4);
-  }
-
-  .proMain .pro-box-3 .right {
-    margin-top: calc(79vw/14.4);
-  }
 
   .proMain .left .left-box .title {
     width: 0%;
@@ -717,6 +708,7 @@
     font-weight: 400;
     line-height: calc(27vw/14.4);
     margin-top: calc(40vw/14.4);
+    height: calc(136vw/14.4)
   }
 
   .servicePhilosophy .h2 {
@@ -726,8 +718,7 @@
     font-weight: 400;
     line-height: calc(81.6vw/14.4);
     letter-spacing: calc(0.5vw/14.4);
-    margin-top: calc(110vw/14.4);
-    height: calc(445vw/14.4);
+    height: calc(448vw/14.4);
     overflow: hidden;
   }
 
@@ -738,7 +729,7 @@
     font-weight: 400;
     line-height: calc(40vw/14.4);
     letter-spacing: calc(2.5vw/14.4);
-    margin-top: calc(0vw/14.4);
+    margin-top: 0px;
   }
 
   #serviceBox1,
@@ -752,37 +743,98 @@
   }
 
   .serviceBox {
-    margin: calc(215vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
-    height: calc(745vw/14.4);
+    margin-left: calc(80vw/14.4);
+    position: relative;
+    width: calc(1182vw/14.4);
+  }
+
+  .serviceBox .swiper-container {
+    width: 100%;
+  }
+
+
+  .serviceBox>.h1 {
+    color: #65ecaa;
+    font-family: "PingFangSC-Regular";
+    font-size: calc(21vw/14.4);
+    font-weight: 400;
+    line-height: calc(27vw/14.4);
+    height: calc(56vw/14.4);
+  }
+
+
+  .serviceBox .item-box {
+    overflow: hidden;
     position: relative;
   }
 
+  .serviceBox .item-right .h2 {
+    height: calc(152vw/14.4);
+  }
+
+
+  .serviceBox1 {
+    margin-top: calc(215vw/14.4);
+    min-height: calc(745vw/14.4);
+  }
+
+  .serviceBox1 .item-left {
+    width: calc(522vw/14.4);
+    text-align: right;
+    float: right;
+    padding-top: calc(166vw/14.4);
+    box-sizing: border-box;
+  }
+
+  .serviceBox1 .item-right {
+    width: calc(660vw/14.4);
+  }
+
+  .serviceBox1 .swiper-container {
+    min-height: calc(527vw/14.4)
+  }
+
+
   .serviceBox2 {
-    height: calc(580vw/14.4);
+    min-height: calc(580vw/14.4);
     margin-top: calc(263vw/14.4);
   }
 
-  .serviceBox .item-box {
-    display: flex;
-    height: calc(745vw/14.4);
-    justify-content: space-between;
+  .serviceBox2 .item-left {
+    float: left;
   }
+
+  .serviceBox2 .item-right {
+    width: calc(632vw/14.4);
+    float: right;
+  }
+
+  .serviceBox2 .swiper-container {
+    min-height: calc(580vw/14.4);
+  }
+
 
   .serviceBox2 .item-box {
     height: calc(580vw/14.4);
   }
 
-  .serviceBox .item-left {
+  .serviceBox2 .item-left {
+    padding-top: calc(14vw/14.4);
+    box-sizing: border-box;
+  }
+
+
+
+
+  .serviceBox .item-left img {
     width: calc(440vw/14.4);
     height: calc(419vw/14.4);
-    position: relative;
-    margin-top: calc(152vw/14.4);
   }
 
   .serviceBox .item-left,
   .serviceBox .item-right .con,
   .serviceBox .rightBox {
-    opacity: 0;
+    opacity: 1;
     transition: all .6s .4s;
     -moz-transition: all .6s .4s;
     -webkit-transition: all .6s .4s;
@@ -799,19 +851,6 @@
     -o-transition: all .6s .4s;
   }
 
-  .serviceBox2 .item-left {
-    margin-top: 0px;
-  }
-
-  .serviceBox .item-right {}
-
-  .serviceBox .item-right .h1 {
-    color: #65ecaa;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(21vw/14.4);
-    font-weight: 400;
-    line-height: calc(27vw/14.4);
-  }
 
   .serviceBox .item-right .h2 {
     color: #383a50;
@@ -819,10 +858,7 @@
     font-size: calc(36vw/14.4);
     font-weight: 400;
     line-height: calc(46vw/14.4);
-    margin-top: calc(28vw/14.4);
-    height: calc(92vw/14.4);
     box-sizing: border-box;
-    padding-top: calc(92vw/14.4);
     overflow: hidden;
     transition: all .6s;
     -moz-transition: all .6s;
@@ -845,12 +881,9 @@
     font-size: calc(18vw/14.4);
     font-weight: 400;
     line-height: calc(14.4vw/14.4);
-    margin-top: calc(20vw/14.4);
+    margin-top: calc(17vw/14.4);
   }
 
-  .serviceBox .item-right .con {
-    margin-top: calc(58vw/14.4);
-  }
 
   .serviceBox .item-right .c1 {
     opacity: 0.8;
@@ -859,49 +892,18 @@
     font-size: calc(24vw/14.4);
     font-weight: 400;
     line-height: calc(30vw/14.4);
+    margin-bottom: calc(24vw/14.4);
   }
 
   .serviceBox .item-right .c2 {
-    opacity: 0.6;
+    opacity: 0.4;
     color: #383a50;
     font-family: "PingFangSC-Regular";
     font-size: calc(18vw/14.4);
-    font-weight: 400;
-    line-height: calc(26vw/14.4);
+    font-weight: 300;
+    line-height: calc(27vw/14.4);
     letter-spacing: calc(0.0099vw/14.4);
-    margin-top: calc(24vw/14.4);
-    width: calc(542vw/14.4);
-  }
-
-  .serviceBox .rightBox {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .serviceBox .rightBox span {
-    opacity: 0.25;
-    width: calc(10vw/14.4);
-    height: calc(10vw/14.4);
-    background: #383a50;
-    margin-right: calc(22vw/14.4);
-    display: block;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .serviceBox .rightBox span:last-child {
-    margin-bottom: calc(0vw/14.4);
-  }
-
-  .serviceBox .rightBox span.cur {
-    opacity: 0.7;
+    margin-top: calc(27vw/14.4);
   }
 
   .serviceBox .bottomBox {
@@ -947,8 +949,10 @@
   }
 
   .productBox {
-    margin: calc(165vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
+    margin-left: calc(80vw/14.4);
+    margin-top: calc(212vw/14.4);
     min-height: calc(994vw/14.4);
+    width: calc(1216vw/14.4);
   }
 
   .productBox>.h1 {
@@ -957,15 +961,15 @@
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(27vw/14.4);
+    height: calc(56vw/14.4);
   }
 
   .productBox>.h2 {
     color: #383a50;
-    font-family: "Faktum-Regular";
+    font-family: "PingFangSC-Regular";
     font-size: calc(36vw/14.4);
     font-weight: 400;
     line-height: calc(45vw/14.4);
-    margin-top: calc(29vw/14.4);
   }
 
   .productBox .productList {
@@ -1200,8 +1204,7 @@
 
   .contact {
     margin: calc(216vw/14.4) calc(80vw/14.4) 0px calc(80vw/14.4);
-    height: calc(312vw/14.4);
-    margin-bottom: calc(216vw/14.4);
+    height: calc(529vw/14.4);
   }
 
   .contact .h1 {
@@ -1223,15 +1226,44 @@
   }
 
   .contact .mailbox {
-    color: #7ccca5;
+    color: #65ecaa;
     font-family: "Faktum-Regular";
     font-size: calc(42vw/14.4);
     font-weight: 400;
     height: calc(44vw/14.4);
     line-height: calc(44vw/14.4);
     display: inline-block;
-    border-bottom: 2px solid #7ccca5;
+    border-bottom: 2px solid #65ecaa;;
     text-decoration: none;
     margin-top: calc(41vw/14.4);
+  }
+</style>
+
+<style>
+  .serviceBox .rightBox {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .serviceBox .rightBox span {
+    opacity: 0.25;
+    width: calc(10vw/14.4);
+    height: calc(10vw/14.4);
+    background: #383a50;
+    margin-right: calc(22vw/14.4);
+    display: block;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .serviceBox .rightBox span:last-child {
+    margin-right: calc(0vw/14.4);
+  }
+
+  .serviceBox .rightBox span.swiper-pagination-bullet-active {
+    opacity: 0.7;
   }
 </style>

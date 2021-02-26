@@ -6,8 +6,8 @@
 }
 @font-face {  
     font-family: 'PingFangSC-Regular'; 
-    src: url('PINGFANG REGULAR.TTF'); 
-    font-weight: normal;  
+    src: url('PingFang-Jian-ChangGuiTi-2.ttf'); 
+    font-weight: normal;
     font-style: normal;  
 }
 @font-face {  
@@ -29,6 +29,16 @@
     font-weight: normal;  
     font-style: normal;  
 }
+
+
+/* @font-face {  
+    font-family: 'PingFang-W6'; 
+    src: url('PingFang.ttc'); 
+    font-weight: normal;  
+    font-style: normal;  
+} */
+
+
 
 
 /* 

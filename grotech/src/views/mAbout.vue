@@ -43,7 +43,7 @@
 </template>
 
 <script>
-  import { oData } from "@/data/about-data.js";
+  import { oData } from "@/data/about-data3.js";
   import { oData2 } from "@/data/about-data2.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav2";
@@ -202,6 +202,7 @@
     font-weight: 400;
     line-height: calc(14vw/3.75);
     margin-top: calc(51vw/3.75);
+    width: calc(235vw/3.75);
   }
 
   .VisionValue .swiper-slide {

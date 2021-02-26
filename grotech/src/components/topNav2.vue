@@ -273,7 +273,7 @@
   }
 
   .menuBox.cur {
-    opacity: 1;
+    opacity: 0.6;
     transition: all .6s;
   }
 

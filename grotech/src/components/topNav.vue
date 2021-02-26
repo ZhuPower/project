@@ -232,7 +232,11 @@
 <style scoped>
   .logoBox {
     position: absolute;
-    margin: calc(410vw/14.4) calc(240vw/14.4);
+    left: calc(240vw/14.4);
+    width: calc(960vw/14.4);
+    height: calc(960vw*390/1800/14.4);
+    top: 50%;
+    margin-top: calc(-960vw*390/1800/28.8);
   }
 
 
@@ -256,6 +260,7 @@
     margin-left: calc(80vw/14.4);
     width: calc(221vw/14.4);
     height: calc(49vw/14.4);
+    margin-top: 0px;
   }
 
   .logoBox.cur .logotype {

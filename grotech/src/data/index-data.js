@@ -23,12 +23,12 @@ let oData = {
     },
     {
       title: ['创新的<span style="font-family:Faktum-Regular;">GaaS</span>', '增长即服务', 'Growth-as-a-Service'],
-      content: '<p class="right-p1">我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的<span style="font-family:Faktum-Regular;">Grotech®</span>大数据及AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。</p><p class="right-p2">美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>',
+      content: '<p>我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增<br/>长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给<br/>尽可能多的消费者）的完美结合。美至科技基于领先的<span style="font-family:Faktum-Regular;">Grotech®</span>大数据及<br/>AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，<br/>推动产品创新，落实增长。</p><p style="margin-top:calc(42vw/14.4)">美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜<br/>寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一<br/>起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>',
       show: false
     },
     {
       title: ['美至的', '核心能力'],
-      content: '<p class="right-p3">自研的增长科技<span style="font-family:Faktum-Regular;">Grotech®</span>系统，拥有亿级消费者及商品交易数据，<br/>应用前沿AI算法，制定企业发展策略。</p><p class="right-p4">来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，<br/>使命必达。</p><p class="right-p5">拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>',
+      content: '<p>自研的增长科技<span style="font-family:Faktum-Regular;">Grotech®</span>系统，拥有亿级消费者及商品交易数据，<br/>应用前沿AI算法，制定企业发展策略。</p><p style="margin-top:calc(42vw/14.4)">来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，<br/>使命必达。</p><p style="margin-top:calc(42vw/14.4)">拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>',
       show: false
     }
   ],
@@ -37,30 +37,65 @@ let oData = {
     h2: 'We begin with the end in mind put consumers first and value sustainability',
     h3: '以终为始，以消费者为中心，以可持续为价值基石。'
   },
-  serviceList: [
-    {
-      name: '服务',
+  serviceList: {
+    name: '服务',
+    list: [{
       p1: '聚焦大消费行业的一站式增长服务',
       p2: 'Gaas（Growth as a Service）',
       serviceTxt: [
-        ['基于大数据与AI的策略服务', '企业竞争战略：由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。', '产品创新：我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。', '全渠道增长策略：从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。'],
-        ['精益化营销服务', '整合营销服务：利用美至科技<span style="font-family:Faktum-Regular;">Grotech</span>技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（<span style="font-family:Faktum-Regular;">ROI</span>）。', '数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。'],
-        ['<span style="font-family:Faktum-Regular;">ADAPT™</span>品牌孵化服务', '<span style="font-family:Faktum-Regular;">A-InnovAtion,D-Deep insight</span>, <span style="font-family:Faktum-Regular;">A-All dimensions P-Partnership T-Technology</span>.<span style="font-family:Faktum-Regular;">ADAPT</span>在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。']
+        {
+          title: '基于大数据与AI的策略服务',
+          con: [
+            '<p>企业竞争战略：由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，<br/>从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准<br/>有效的竞争战略。', '产品创新：我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及<br/>供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。', '全渠道增长策略：从线上到线下，从一线城市到下沉市场，从直营到分销，结合<br/>人-货-场，我们帮助企业制定科学精准的全渠道增长策略。</p>'
+          ],
+          src: ''
+        },
+        {
+          title: '精益化营销服务',
+          con: [
+            '<p>整合营销服务：利用美至科技<span style="font-family:Faktum-Regular;">Grotech</span>技术，精确计算品牌推广与效果广告的整<br/>合模型，并结合个性化创意与文案提高广告投资回报比（<span style="font-family:Faktum-Regular;">ROI</span>）。</p>', '<p>数据科学投放：通过数据科学量化模型，结合千人千面创意文案，大幅提高企业<br/>在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。</p>'
+          ],
+          src: ''
+        },
+        {
+          title: '<span style="font-family:Faktum-Regular;">ADAPT™</span>品牌孵化服务',
+          con: [
+            '<span style="font-family:Faktum-Regular;">A-InnovAtion,D-Deep insight</span>, <span style="font-family:Faktum-Regular;">A-All dimensions P-Partnership<br/> T-Technology</span>.<br/><span style="font-family:Faktum-Regular;">ADAPT</span>在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。'
+          ],
+          src: ''
+        }
       ],
-      show: false,
-      nTab: 0
+      show: false
     },
     {
       p1: '大数据驱动，为投资机构量身<br />定制专属服务',
       serviceTxt: [
-        ['行业研究', '和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。', '美至科技投资雷达：美至科技通过建立消费品细分行业模型，结合投资机构的个性化需求，更早更准确地挖掘投资标的。'],
-        ['大数据尽职调查', '传统的投资尽职调查偏向于小样本访谈与研究，缺乏大数据支撑。美至科技利用技术能力结合经验丰富的行业专家，提供科学全面的尽职调查服务。'],
-        ['投后管理服务', '对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。']
+        {
+          title: '行业研究',
+          con: [
+            '<p>和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道<br/>出发研究行业发展历史，并对未来做出定性预测。</p>', '<p>美至科技投资雷达：美至科技通过建立消费品细分行业模型，结合投资机构的个<br/>性化需求，更早更准确地挖掘投资标的。</p>'
+          ],
+          src: ''
+        },
+        {
+          title: '大数据尽职调查',
+          con: [
+            '传统的投资尽职调查偏向于小样本访谈与研究，缺乏大数据支撑。<br/>美至科技利用技术能力结合经验丰富的行业专家，提供科学全面的<br/>尽职调查服务。'
+          ],
+          src: ''
+        },
+        {
+          title: '投后管理服务',
+          con: [
+            '对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，<br/>在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的<br/>问题或发展机遇。'
+          ],
+          src: ''
+        }
       ],
-      show: false,
-      nTab: 0
+      show: false
     }
-  ],
+    ]
+  },
   product: {
     h1: '产品',
     h2: '<span style="font-family:Faktum-Regular;">Grotech</span><br />增长科技系统是什么?',
@@ -81,7 +116,7 @@ let oData = {
       {
         title1: 'AdBot',
         title2: '精益化消费者资<br />产管理系统',
-        productInfo: '精益化消费者资产管理系统:使用前沿分<br />析技术, 将消费者聚类分组,<br />实现“千人千面”的消费者价值维护。提升<br />消费者忠诚度,从老客驱动业绩增长。<br />量化广告投放系统:美至将海量消费者行<br />为数据, <br />利用数据科学建立量化策略模型, <br />大幅度提高广告回报效果。',
+        productInfo: '精益化消费者资产管理系统:使用前沿分<br />析技术, 将消费者聚类分组,<br />实现“千人千面”的消费者价值维护。提<br />升消费者忠诚度,从老客驱动业绩增长。<br />量化广告投放系统:美至将海量消费者行<br />为数据, <br />利用数据科学建立量化策略模型, <br />大幅度提高广告回报效果。',
         src: ''
       }
     ]

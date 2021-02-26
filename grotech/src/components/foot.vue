@@ -6,15 +6,15 @@
     </div>
 
     <div class="address">
-      <div class="address-box">
+      <div class="address-box address-box-1">
         <div class="address-name">北京</div>
         <p>朝阳区霄云路35号5层<br />邮编：100000</p>
       </div>
-      <div class="address-box">
+      <div class="address-box address-box-2">
         <div class="address-name">上海</div>
         <p>浦东新区晶耀前滩<br />T5办公楼702&703单元<br />邮编：200002</p>
       </div>
-      <div class="address-box">
+      <div class="address-box address-box-3">
         <div class="address-name">广州</div>
         <p>天河区建中路59号天河<br />软件园西座柏朗奴大厦2<br />层 邮编：510665 </p>
       </div>
@@ -53,8 +53,10 @@
     background: #9999e4;
     position: relative;
     display: flex;
-    justify-content: space-between;
     overflow: hidden;
+    padding-top: calc(68vw/14.4);
+    box-sizing: border-box;
+    padding-left: calc(80vw/14.4);
   }
 
   .footMain .contact {
@@ -63,23 +65,13 @@
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(55.5vw/14.4);
-    width: 30.55%;
-    margin-left: calc(80vw/14.4);
-    margin-top: calc(72vw/14.4);
+    width: calc(440vw/14.4);
   }
-
-  .footMain .contact .p1 {}
-
-  .footMain .contact .p2 {}
-
 
 
   .footMain .address {
     display: flex;
-    width: 58.33%;
-    justify-content: space-between;
-    margin-right: calc(80vw/14.4);
-    margin-top: calc(70vw/14.4);
+    width: calc(920vw/14.4);
   }
 
   .footMain .address .address-name {
@@ -96,6 +88,15 @@
     font-size: calc(17vw/14.4);
     font-weight: 400;
     line-height: calc(27vw/14.4);
+  }
+
+  .footMain .address .address-box-1,
+  .footMain .address .address-box-2 {
+    width: calc(330vw/14.4);
+  }
+
+  .footMain .address .address-box-3 {
+    width: calc(260vw/14.4);
   }
 
   .footMain .foot-left {
