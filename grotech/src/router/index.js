@@ -26,17 +26,17 @@ const routes = [
   {
     path: '/EN/home',
     name: 'enHome',
-    component: view('Home')
+    component: view('eHome')
   },
   {
     path: '/EN/about',
     name: 'enAbout',
-    component: view('About')
+    component: view('eAbout')
   },
   {
     path: '/EN/recruitment',
     name: 'enRecruitment',
-    component: view('Recruitment')
+    component: view('eRecruitment')
   },
   {
     path: '/CN/mobile/home',
@@ -52,6 +52,21 @@ const routes = [
     path: '/CN/mobile/recruitment',
     name: 'cnMRecruitment',
     component: view('mRecruitment')
+  },
+  {
+    path: '/EN/mobile/home',
+    name: 'enMHome',
+    component: view('eMHome')
+  },
+  {
+    path: '/EN/mobile/about',
+    name: 'enMAbout',
+    component: view('eMAbout')
+  },
+  {
+    path: '/EN/mobile/recruitment',
+    name: 'enMRecruitment',
+    component: view('eMRecruitment')
   }
 ]
 

@@ -127,13 +127,14 @@
             :class="{'cur':oData.brand.nTab == index,['list-h-'+(index+1)]:true}" @click="pickBrand(index)"></div>
         </div>
         <div class="tabC">
-          <div class="list-c" @mouseover="mouseOver(index)" @mouseleave="mouseLeave(index)"
-            v-for="(item,index) in oData.brand.list" v-show="oData.brand.nTab == index">
+          <div class="list-c" v-for="(item,index) in oData.brand.list" v-show="oData.brand.nTab == index">
+            <div class="swiper-button-prev"></div>
             <swiper :ref="'brandSwiper_'+index" :options="swiperOptions">
               <swiper-slide v-for="item2 in item.img">
                 <img :src="item2">
               </swiper-slide>
             </swiper>
+            <div class="swiper-button-next"></div>
           </div>
         </div>
       </div>
@@ -149,10 +150,10 @@
 </template>
 
 <script>
-  import { oData } from "@/data/index-data.js";
+  import { oData2 } from "@/data/index-data2.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
-  import foot from "../components/foot";
+  import foot from "../components/efoot";
 
   export default {
     components: {
@@ -184,7 +185,8 @@
         require('../assets/l5.png')
       ]
 
-      this.oData = oData
+      this.oData = oData2
+      console.log(this.oData)
 
       this.oData.bannerVideo.src = require('../assets/header1.mp4')
       this.oData.serviceList.list[0].serviceTxt[0].src = require('../assets/service-1-001.gif')
@@ -204,24 +206,11 @@
     },
     computed: {},
     methods: {
-      mouseOver(n) {
-        let swiper = this.$refs['brandSwiper_' + n][0].swiper
-        swiper.autoplay.stop();
-      },
-      mouseLeave(n) {
-        let swiper = this.$refs['brandSwiper_' + n][0].swiper
-        swiper.autoplay.start();
-      },
       pickThing(n, n2) {
         this.oData.serviceList.list[n].nTab = n2
       },
       pickBrand(n) {
         this.oData.brand.nTab = n
-        let swiper = this.$refs['brandSwiper_' + n][0].swiper
-        swiper.autoplay.stop();
-        setTimeout(() => {
-          swiper.autoplay.start();
-        }, 200)
       },
       handleScroll() {
         let that = this
@@ -279,11 +268,12 @@
       return {
         oData: null,
         swiperOptions: {
-          slidesPerView: 5,
-          autoplay: {
-            delay: 1500,
-          },//可选选项，自动滑动
-          loop: true,//可选选项，开启循环
+          slidesPerView: 4,
+          autoplay: false,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
         },
         swiperOptions2: {
           mousewheel: {
@@ -387,9 +377,8 @@
 
   .Introduction .p1 {
     opacity: 0.6;
-    height: calc(64vw/14.4);
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(18vw/14.4);
     font-weight: 400;
     line-height: calc(32vw/14.4);
@@ -414,9 +403,6 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-  }
-  .bannerVideo video{
-    height: calc(817vw/14.4);
   }
 
   .homeVideo .videoTxt {
@@ -495,12 +481,11 @@
 
   .proMain .pro-box .left {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(57vw/14.4);
-    letter-spacing: calc(2.5vw/14.4);
+    line-height: calc(36vw/14.4);
     width: calc(550vw/14.4);
+    font-family: 'Faktum-Medium';
   }
 
   .proMain .pro-box-1 .right {
@@ -523,7 +508,7 @@
     margin-top: calc(-7vw/14.4);
   }
 
-  .proMain .pro-box .left .title_2 {
+  .proMain .pro-box-2 .left .title_1 {
     opacity: 0.25;
     color: #383a50;
     font-family: "Faktum-Regular";
@@ -537,10 +522,10 @@
   .proMain .pro-box .right {
     opacity: 0.6;
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(21vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: calc(42vw/14.4);
+    line-height: calc(28vw/14.4);
     width: calc(735vw/14.4);
   }
 
@@ -557,7 +542,7 @@
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: calc(57vw/14.4);
+    height: calc(36vw/14.4);
   }
 
   .proMain .pro-box.cur .left .left-box .title {
@@ -841,10 +826,10 @@
 
   .serviceBox .item-right .h2 {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
-    font-weight: 400;
-    line-height: calc(46vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
+    font-weight: 500;
+    line-height: calc(32vw/14.4);
     box-sizing: border-box;
     overflow: hidden;
     transition: all .6s;
@@ -876,9 +861,9 @@
     opacity: 0.8;
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: calc(24vw/14.4);
+    font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: calc(30vw/14.4);
+    line-height: calc(27vw/14.4);
     margin-bottom: calc(24vw/14.4);
   }
 
@@ -953,10 +938,10 @@
 
   .productBox>.h2 {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(45vw/14.4);
+    line-height: calc(35vw/14.4);
   }
 
   .productBox .productList {
@@ -971,15 +956,15 @@
   }
 
   .productBox .productList .list-box-1 {
-    width: calc(400vw/14.4);
+    width: calc(401vw/14.4);
   }
 
   .productBox .productList .list-box-2 {
-    width: calc(414vw/14.4);
+    width: calc(426vw/14.4);
   }
 
   .productBox .productList .list-box-3 {
-    width: calc(402vw/14.4);
+    width: calc(380vw/14.4);
   }
 
   .productBox .productList .list-box {
@@ -1007,11 +992,11 @@
   }
 
   .productBox .productList .list-box-2 .listBox {
-    width: calc(303vw/14.4);
+    width: calc(315vw/14.4);
   }
 
   .productBox .productList .list-box-3 .listBox {
-    width: calc(302vw/14.4);
+    width: calc(291vw/14.4);
   }
 
   .productBox .productList .title-1 {
@@ -1026,22 +1011,22 @@
   .productBox .productList .title-2 {
     opacity: 0.6;
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(21vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: calc(27vw/14.4);
-    margin-top: calc(8vw/14.4);
+    line-height: calc(24vw/14.4);
+    margin-top: calc(16vw/14.4);
   }
 
   .productBox .productList .productInfo {
     opacity: 0.6;
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(15vw/14.4);
     font-weight: 400;
-    line-height: calc(27vw/14.4);
+    line-height: calc(24vw/14.4);
     letter-spacing: calc(0.00825vw/14.4);
-    margin-top: calc(22vw/14.4);
+    margin-top: calc(42vw/14.4);
     display: none;
   }
 
@@ -1065,11 +1050,12 @@
 
   .innovativeService .h1 {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(46vw/14.4);
+    line-height: calc(36vw/14.4);
     margin-top: calc(140vw/14.4);
+    ;
   }
 
   .innovativeService .p1 {
@@ -1077,11 +1063,11 @@
     width: calc(1051vw/14.4);
     height: calc(126vw/14.4);
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(21vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(18vw/14.4);
     font-weight: 400;
-    line-height: calc(42vw/14.4);
-    margin-top: calc(58vw/14.4);
+    line-height: calc(24vw/14.4);
+    margin-top: calc(68vw/14.4);
   }
 
   .innovativeService .bottomBox {
@@ -1150,10 +1136,10 @@
 
   .brand .title {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(46vw/14.4);
+    line-height: calc(35vw/14.4);
   }
 
   .brand .tabH {
@@ -1166,19 +1152,19 @@
 
   .brand .tabH .list-h {
     opacity: 0.4;
-    color: #383a50;
-    font-size: calc(17vw/14.4);
+    color: #717280;
+    font-size: calc(15vw/14.4);
     font-weight: 400;
-    height: calc(25vw/14.4);
+    height: calc(19vw/14.4);
     cursor: pointer;
   }
 
   .brand .tabH .list-h-1 {
-    margin-right: calc(41vw/14.4);
+    margin-right: calc(55vw/14.4);
   }
 
   .brand .tabH .list-h-2 {
-    margin-right: calc(68vw/14.4);
+    margin-right: calc(84vw/14.4);
   }
 
   .brand .tabH .list-h.cur {
@@ -1190,9 +1176,22 @@
     padding-top: calc(110vw/14.4);
   }
 
-  .brand .swiper-slide img{
+  .brand .tabC .list-c {
+    position: relative;
+    width: calc(1280vw/14.4);
+  }
+
+  .brand .swiper-slide{
+    text-align: center;
+  }
+
+  .brand .swiper-slide img {
     width: calc(185vw/14.4);
-    height:calc(143vw/14.4) ;
+    height: calc(143vw/14.4);
+  }
+
+  .brand .swiper-container {
+    margin: 0px calc(140vw/14.4);
   }
 
 
@@ -1201,22 +1200,25 @@
     height: calc(529vw/14.4);
   }
 
+
   .contact .h1 {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(46vw/14.4);
+    line-height: calc(36vw/14.4);
+    min-height: calc(97vw/14.4);
   }
 
   .contact .p1 {
     opacity: 0.6;
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: calc(42vw/14.4);
-    margin-top: calc(42vw/14.4);
+    line-height: calc(32vw/14.4);
+    margin-top: calc(32vw/14.4);
+    min-height: calc(80vw/14.4);
   }
 
   .contact .mailbox {
@@ -1225,12 +1227,11 @@
     font-size: calc(42vw/14.4);
     font-weight: 400;
     height: calc(44vw/14.4);
-    line-height: calc(44vw/14.4);
+    line-height: calc(44.4vw/14.4);
     display: inline-block;
     border-bottom: 2px solid #65ecaa;
-    ;
     text-decoration: none;
-    margin-top: calc(41vw/14.4);
+    margin-top: calc(55vw/14.4);
   }
 </style>
 
@@ -1260,5 +1261,67 @@
 
   .serviceBox .rightBox span.swiper-pagination-bullet-active {
     opacity: 0.7;
+  }
+
+  .serviceBox .item-right .c2 .left_1,
+  .serviceBox .item-right .c2 .right_1 {
+    opacity: 0.6;
+    width: calc(290vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(15vw/14.4);
+    font-weight: 400;
+    line-height: calc(24vw/14.4);
+    float: left;
+  }
+
+  .serviceBox .item-right .c2 .right_1 {
+    font-family: "PingFangSC-Regular";
+    float: right;
+  }
+
+  .serviceBox .item-right .c2 ._box {
+    width: calc(619vw/14.4);
+  }
+
+  .brand .list-c .swiper-button-prev,
+  .brand .list-c .swiper-button-next {
+    width: calc(22vw/14.4);
+    height: calc(40vw/14.4);
+    outline: none;
+  }
+
+  .brand .list-c .swiper-button-prev::after,
+  .brand .list-c .swiper-button-next::after {
+    display: none;
+  }
+
+  .brand .list-c .swiper-button-prev:active,
+  .brand .list-c .swiper-button-next:active {
+    border: 0px;
+  }
+
+
+
+  .brand .list-c .swiper-button-prev {
+    background: url(../assets/brand_left_cur.png) no-repeat;
+    background-size: 100% 100%;
+
+  }
+
+  .brand .list-c .swiper-button-next {
+    background: url(../assets/brand_right_cur.png) no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .brand .list-c .swiper-button-prev.swiper-button-disabled {
+    background: url(../assets/brand_left.png) no-repeat;
+    background-size: 100% 100%;
+    opacity: 1;
+  }
+
+  .brand .list-c .swiper-button-next.swiper-button-disabled {
+    background: url(../assets/brand_right.png) no-repeat;
+    background-size: 100% 100%;
+    opacity: 1;
   }
 </style>

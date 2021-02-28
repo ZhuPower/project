@@ -40,7 +40,11 @@
         </div>
       </div>
     </div>
-    <div class="zp"></div>
+    <div class="zp">
+      <div class="zp-title">
+        Our Positions
+      </div>
+    </div>
     <foot />
   </div>
 </template>
@@ -48,9 +52,8 @@
 <script>
   import { oData } from "@/data/recruitment-data.js";
   import { oData2 } from "@/data/recruitment-data2.js";
-  import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
-  import foot from "../components/foot";
+  import foot from "../components/efoot";
 
   export default {
     components: {
@@ -160,17 +163,18 @@
 
   .bannerVideo .videoTxt .p1 {
     color: #ffffff;
-    font-family: "PingFangSC-Light";
     font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: calc(63vw/14.4);
+    line-height: calc(48vw/14.4);
+    min-height: 165px;
+    font-family: "Faktum-Regular";
   }
 
   .bannerVideo .videoTxt .h1 {
     display: flex;
     align-items: center;
     height: calc(32vw/14.4);
-    margin-top: calc(77vw/14.4);
+    margin-top: calc(80vw/14.4);
   }
 
   .bannerVideo .videoTxt .h1 .icon {
@@ -195,10 +199,10 @@
 
   .bannerVideo .videoTxt .h1 .txt {
     color: #ffffff;
-    font-family: "PingFangSC-Regular";
     font-size: calc(18vw/14.4);
     font-weight: 400;
     line-height: calc(24vw/14.4);
+    font-family: "Faktum-Regular";
   }
 
   .proMain {
@@ -217,17 +221,16 @@
   .proMain .pro-box .left {
     width: calc(441vw/14.4);
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(57vw/14.4);
-    letter-spacing: calc(2.5vw/14.4);
+    line-height: calc(32vw/14.4);
+    font-family: "Faktum-Regular";
   }
 
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: calc(57vw/14.4);
+    height: calc(32vw/14.4);
   }
 
   .proMain .pro-box.cur .left .left-box .title {
@@ -257,11 +260,10 @@
   .proMain .pro-box .right {
     width: calc(919vw/14.4);
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: calc(42vw/14.4);
-    letter-spacing: calc(0.65625vw/14.4);
+    line-height: calc(32vw/14.4);
   }
 
   .proMain .pro-box-1 .right {
@@ -431,10 +433,10 @@
 
   .atGrotech .atList .atInfo .c1 {
     color: rgba(255, 255, 255, 0.91);
-    font-family: "PingFangSC-Bold";
-    font-size: calc(36vw/14.4);
-    font-weight: 400;
-    line-height: calc(62vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(32vw/14.4);
+    font-weight: 500;
+    line-height: calc(40vw/14.4);
     margin-top: calc(102vw/14.4);
   }
 
@@ -460,15 +462,25 @@
 
   .atGrotech .atList .atInfo .p1 {
     color: #ffffff;
-    font-family: "PingFangSC-Semibold";
     font-size: calc(18vw/14.4);
-    font-weight: 400;
-    line-height: calc(26vw/14.4);
-    letter-spacing: calc(0.5625vw/14.4);
-    margin-top: calc(31vw/14.4);
+    font-weight: 500;
+    line-height: calc(24vw/14.4);
+    margin-top: calc(27vw/14.4);
+    font-family: "Faktum-Regular";
   }
 
   .zp {
     height: calc(1606vw/14.4);
+    margin-left: calc(80vw/14.4);
+    overflow: hidden;
+  }
+
+  .zp .zp-title {
+    margin-top: calc(226vw/14.4);
+    color: #383a50;
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
+    font-weight: 400;
+    line-height: calc(36vw/14.4);
   }
 </style>

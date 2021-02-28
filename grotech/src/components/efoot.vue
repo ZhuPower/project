@@ -1,32 +1,33 @@
 <template>
   <div class="footMain">
     <div class="contact">
-      <p class="p1">联系我们</p>
+      <p class="p1">Contact us</p>
       <p class="p2">86-10-8639-8893</p>
     </div>
 
     <div class="address">
       <div class="address-box address-box-1">
-        <div class="address-name">北京</div>
-        <p>朝阳区霄云路35号5层<br />邮编：100000</p>
+        <div class="address-name">Beijing</div>
+        <p>5F 35 Xiaoyun Road<br />Chaoyang District Beijing<br />100028</p>
       </div>
       <div class="address-box address-box-2">
-        <div class="address-name">上海</div>
-        <p>浦东新区晶耀前滩<br />T5办公楼702&703单元<br />邮编：200002</p>
+        <div class="address-name">Shanghai</div>
+        <p>702&703 Block T5, Crystal Plaza <br />Pudong New Area Shanghai<br /> 200002</p>
       </div>
       <div class="address-box address-box-3">
-        <div class="address-name">广州</div>
-        <p>天河区建中路59号天河<br />软件园西座柏朗奴大厦2<br />层 邮编：510665 </p>
+        <div class="address-name">Guangzhou</div>
+        <p>2F Bolangnu Building West<br /> Tower Tianhe Software Park 59<br /> Jianzhong Road Guangzhou <br />510665</p>
       </div>
     </div>
 
     <div class="foot-left">
       <img src="../assets/txt.png" class="mzkj" />
-      <div class="copyright"><span style="font-family:Faktum-Regular;">@ 2020 Grotech </span>版权所有白空间黄河科技 </div>
+      <div class="copyright"><span style="font-family:Faktum-Regular;">@ 2020 Grotech </span>All Rights Reserved.ICP
+      </div>
     </div>
     <div class="foot-right">
       <img src="../assets/ewm.png" class="ewm">
-      <div class="gztxt">关注微信公众号</div>
+      <div class="gztxt">Follow our WeChat</div>
     </div>
   </div>
 </template>
@@ -61,22 +62,24 @@
 
   .footMain .contact {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(55.5vw/14.4);
     width: calc(440vw/14.4);
+    margin-top: calc(3vw/14.4);
   }
 
 
   .footMain .address {
     display: flex;
     width: calc(920vw/14.4);
+    margin-top: calc(10vw/14.4);
   }
 
   .footMain .address .address-name {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(21vw/14.4);
     font-weight: 400;
     line-height: calc(42vw/14.4);
@@ -84,10 +87,10 @@
 
   .footMain .address .address-box p {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(17vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(12vw/14.4);
     font-weight: 400;
-    line-height: calc(27vw/14.4);
+    line-height: calc(16vw/14.4);
   }
 
   .footMain .address .address-box-1,
@@ -133,7 +136,7 @@
   .footMain .foot-right .gztxt {
     color: #383a50;
     font-family: "PingFangSC-Regular";
-    font-size: calc(14vw/14.4);
+    font-size: calc(12vw/14.4);
     font-weight: 400;
     line-height: calc(42vw/14.4);
     margin-top: calc(-2vw/14.4);

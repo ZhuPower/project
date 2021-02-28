@@ -7,7 +7,7 @@
         <video :src="oData.bannerVideo.src" autoplay loop muted id="bannerVideo">您的浏览器不支持 video 标签。</video>
       </keep-alive>
       <div class="videoTxt">
-        <p class="p1">关于美至</p>
+        <p class="p1">About us</p>
       </div>
     </div>
     <!-- 介绍 -->
@@ -33,7 +33,6 @@
         <swiper-slide v-for="(item,index) in oData.visionValue.list">
           <div class="visionBox">
             <div class="h1" v-html="item.h1"></div>
-            <div class="h2" v-html="item.h2"></div>
             <div class="p2" v-html="item.p2"></div>
           </div>
         </swiper-slide>
@@ -44,10 +43,10 @@
 </template>
 
 <script>
-  import { oData } from "@/data/about-data3.js";
+  import { oData } from "@/data/about-data4.js";
   import { isElementNotInViewport } from "@/utils/index.js";
-  import topNav from "../components/topNav2";
-  import foot from "../components/foot2";
+  import topNav from "../components/topNav3";
+  import foot from "../components/efoot2";
   export default {
     components: {
       topNav,
@@ -106,7 +105,7 @@
   .proMain {
     width: calc(328vw/3.75);
     margin: 0px auto;
-    padding-top: calc(25vw/3.75);
+    padding-top: calc(29vw/3.75);
   }
 
   .proMain .pro-box-1 {
@@ -114,30 +113,30 @@
   }
 
   .proMain .pro-box {
-    padding-bottom: calc(23vw/3.75);
+    padding-bottom: calc(37vw/3.75);
   }
 
   .proMain .left {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(24vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(21vw/3.75);
     font-weight: 400;
-    line-height: calc(36vw/3.75);
-    margin-bottom: calc(46vw/3.75);
-    margin-top: calc(18vw/3.75);
+    line-height: calc(24vw/3.75);
+    margin-bottom: calc(29vw/3.75);
+    margin-top: calc(28vw/3.75);
   }
 
   .proMain .right {
     opacity: 0.6;
     color: #33343e;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(13vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(12vw/3.75);
     font-weight: 400;
-    line-height: calc(24vw/3.75);
+    line-height: calc(18vw/3.75);
   }
 
   .team {
-    margin-top: calc(30vw/3.75);
+    margin-top: calc(43vw/3.75);
   }
 
   .team img {
@@ -183,12 +182,11 @@
 
   .VisionValue .visionBox .p2 {
     color: rgba(249, 245, 245, 0.91);
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(10vw/3.75);
     font-weight: 400;
     line-height: calc(14vw/3.75);
-    margin-top: calc(51vw/3.75);
-    width: calc(235vw/3.75);
+    margin-top: calc(73vw/3.75);
   }
 
   .VisionValue .swiper-slide {

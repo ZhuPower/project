@@ -58,11 +58,10 @@
 </template>
 
 <script>
-  import { oData } from "@/data/about-data.js";
   import { oData2 } from "@/data/about-data2.js";
   import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
-  import foot from "../components/foot";
+  import foot from "../components/efoot";
 
   export default {
     components: {
@@ -70,15 +69,11 @@
       foot
     },
     created() {
-      if (this.$route.name.indexOf('en') == 0) {
-        this.oData = oData2
-      } else {
-        this.oData = oData
-      }
+      this.oData = oData2
       this.oData.bannerVideo.src = require('../assets/header2.mp4')
       this.oData.team.src = require('../assets/team.png')
       this.oData.visionValue.src = require('../assets/banner.mp4')
-      console.log(oData)
+      console.log(this.oData)
     },
     computed: {},
     methods: {
@@ -133,19 +128,7 @@
         isTem: false
       }
     },
-    watch: {
-      '$route.name'(val, val2) {
-        let _s1 = val.substring(0, 2)
-        let _s2 = val2.substring(0, 2)
-        if (_s1 != _s2) {
-          if (val.indexOf('en') == 0) {
-            this.oData = oData2
-          } else {
-            this.oData = oData
-          }
-        }
-      }
-    },
+    watch: {},
     mounted() {
       this.w = this.$refs.teamMain.offsetWidth
       document.getElementById('bannerVideo').play()
@@ -165,22 +148,23 @@
     position: relative;
   }
 
-  .bannerVideo video{
+  .bannerVideo video {
     height: calc(737vw/14.4);
   }
 
   .bannerVideo .videoTxt {
     position: absolute;
     left: calc(80vw/14.4);
-    bottom: calc(168vw/14.4);
+    bottom: calc(150vw/14.4);
+    min-height: calc(184vw/14.4);
   }
 
   .bannerVideo .videoTxt .p1 {
     color: #ffffff;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(36vw/14.4);
     font-weight: 400;
-    line-height: calc(54vw/14.4);
+    line-height: calc(48vw/14.4);
   }
 
   .proMain {
@@ -215,17 +199,16 @@
   .proMain .pro-box .left {
     width: calc(440vw/14.4);
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-family: "Faktum-Regular";
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(57vw/14.4);
-    letter-spacing: calc(2.5vw/14.4);
+    line-height: calc(36vw/14.4);
   }
 
   .proMain .left .left-box .title {
     width: 0%;
     overflow: hidden;
-    height: calc(57vw/14.4);
+    height: calc(36vw/14.4);
   }
 
   .proMain .pro-box.cur .left .left-box .title {
@@ -250,11 +233,10 @@
   .proMain .pro-box .right {
     opacity: 0.6;
     color: #383a50;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: calc(42vw/14.4);
-    letter-spacing: calc(0.65625vw/14.4);
+    line-height: calc(32vw/14.4);
   }
 
   .proMain .pro-box-1 .right {
@@ -316,7 +298,7 @@
   }
 
   .VisionValue>div .bottom {
-    width: calc(334vw/14.4);
+    width: calc(398vw/14.4);
     height: calc(262vw/14.4);
     position: absolute;
     left: calc(42vw/14.4);
@@ -340,11 +322,12 @@
   }
 
   .VisionValue>div .h2 {
-    color: rgba(249, 245, 245, 0.91);
-    font-family: "PingFangSC-Regular";
-    font-size: calc(36vw/14.4);
+    font-size: calc(28vw/14.4);
     font-weight: 400;
-    line-height: calc(72vw/14.4);
+    line-height: calc(28vw/14.4);
+    min-height: 65px;
+    color: rgba(249, 245, 245, 0.91);
+    font-family: "Faktum-Regular";
   }
 
   .VisionValue>div .p2 {
@@ -352,8 +335,8 @@
     font-family: "PingFangSC-Regular";
     font-size: calc(21vw/14.4);
     font-weight: 400;
-    line-height: calc(36vw/14.4);
-    margin-top: calc(27vw/14.4);
+    line-height: calc(32vw/14.4);
+    margin-top: calc(48vw/14.4);
   }
 
   .team {

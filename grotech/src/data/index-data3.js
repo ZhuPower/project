@@ -123,11 +123,11 @@ let oData2 = {
     list: [
       {
         h1: 'Data Privacy Is Protected by <br /> Strict Standards',
-        p1: 'Data is encrypted and stored through the irreversible encryption algorithm SHA-512, which is approved by the <br /> National Security Agency, to ensure the privacy of commercial information. Grotech also has partnership with <br /> Chinese SOEs and foreign companies in the Fortune 500. It has undergone strict system safety certification and <br /> passed the EU GDPR regulatory '
+        p1: 'Data is encrypted and stored through the irreversible encryption algorithm SHA-512, which is approved by the National Security Agency, to ensure the privacy of commercial information. Grotech also has partnership with Chinese SOEs and foreign companies in the Fortune 500. It has undergone strict system safety certification and passed the EU GDPR regulatory '
       },
       {
         h1: 'A combination of Innovative Service <br /> and Sector Experts',
-        p1: 'Every customized solution that we offer is based on comprehensive evaluations of many factors such as the <br /> actual status of the industry, the variety of consumers and the amount of resource available. Our service <br /> encompasses the following six steps: In-Depth Research,Data-Driven Insights,Solution Planning,Solution <br /> Execution,Solution Review,Continued Impro-vement.Our team consists of account managers, business analysts,<br /> data scientists and sector experts. We apply a/b tests and strive to provide ongoing growth service to our clients.'
+        p1: 'Every customized solution that we offer is based on comprehensive evaluations of many factors such as the actual status of the industry, the variety of consumers and the amount of resource available. Our service encompasses the following six steps: In-Depth Research,Data-Driven Insights,Solution Planning,Solution Execution,Solution Review,Continued Impro-vement.Our team consists of account managers, business analysts, data scientists and sector experts. We apply a/b tests and strive to provide ongoing growth service to our clients.'
       }
     ],
     show: false

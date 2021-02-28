@@ -7,7 +7,7 @@
         <video :src="oData.bannerVideo.src" autoplay loop muted id="bannerVideo">您的浏览器不支持 video 标签。</video>
       </keep-alive>
       <div class="videoTxt">
-        <p class="p1">加入我们</p>
+        <p class="p1">Careers</p>
       </div>
     </div>
     <!-- 介绍 -->
@@ -22,8 +22,11 @@
           </div>
         </div>
         <div class="right">
-          我们只雇佣、奖励和包容渴望一起成功的伙伴，保证每一位加入的都是高绩效员工。我们希望成就彼此，而不是打一份工。我们并不寻求一直保持我们的文化，我们
-          希望能够改善它。我们每个人的智慧都会进一步塑造和发展这个文化。如果你希望通过简单正确的事情重复做，来提升人的幸福感，也让自己获得巨大成功，欢迎你 加入我们，KEEP GROWING!
+          We only hire, reward and appreciate partners who strive for success to ensure a decent performance for
+          everyone on our team. We see our relationship as a partnership where we improve and achieve with each other;
+          and the knowledge and wisdom of everyone will further shape and develop our culture. If you want to improve
+          people’s happiness and achieve great career success by repeating “simple” and correct things, you are more
+          than welcome<br/> to join us.
         </div>
       </div>
     </div>
@@ -35,7 +38,7 @@
       </swiper>
       <div class="topBox">
         <div class="x1">KEEP GROWING!</div>
-        <div class="c1">在美至，我们特别珍视，<br />雇佣和晋升能够体现如下特质的员工。</div>
+        <div class="c1">We particularly cherish hire and <br /> promote employees with following qualities:</div>
       </div>
       <div class="bottomBox">
         <span v-for="(item,index) in oData.atGrotech.list"
@@ -43,16 +46,16 @@
       </div>
     </div>
     <div class="zpBox">
-      <div class="h1">职位招聘</div>
+      <div class="h1">Our Positions</div>
     </div>
     <foot />
   </div>
 </template>
 
 <script>
-  import { oData } from "@/data/recruitment-data.js";
-  import topNav from "../components/topNav2";
-  import foot from "../components/foot2";
+  import { oData } from "@/data/recruitment-data3.js";
+  import topNav from "../components/topNav3";
+  import foot from "../components/efoot2";
   export default {
     components: {
       topNav,
@@ -61,11 +64,6 @@
     created() {
       this.oData = oData
 
-      this.oData.atGrotech.list.forEach(item => {
-        if (item.p1) {
-          item.p1 = item.p1.replace(/<br \/>/ig, '')
-        }
-      })
       this.oData.atGrotech.list.splice(0, 1)
       this.oData.bannerVideo.src = require('../assets/header33.mp4')
       this.oData.bannerVideo.iconSrc = require('../assets/icon_2.png')
@@ -95,15 +93,19 @@
     position: relative;
   }
 
+  /* .bannerVideo video {
+    height: calc(428vw/3.75);
+  } */
+
   .bannerVideo .videoTxt {
     position: absolute;
     left: calc(24vw/3.75);
-    bottom: calc(54vw/3.75);
+    bottom: calc(50vw/3.75);
   }
 
   .bannerVideo .videoTxt .p1 {
     color: #ffffff;
-    font-family: "PingFangSC-Regular";
+    font-family: "Faktum-Regular";
     font-size: calc(20.3vw/3.75);
     font-weight: 400;
     line-height: calc(29vw/3.75);
@@ -112,30 +114,30 @@
   .proMain {
     width: calc(328vw/3.75);
     margin: 0px auto;
-    padding-top: calc(25vw/3.75);
+    /* padding-top: calc(25vw/3.75); */
   }
 
   .proMain .pro-box {
-    padding-bottom: calc(23vw/3.75);
+    padding-bottom: calc(45vw/3.75);
   }
 
   .proMain .left {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(24vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(21vw/3.75);
     font-weight: 400;
-    line-height: calc(36vw/3.75);
-    margin-bottom: calc(46vw/3.75);
-    margin-top: calc(18vw/3.75);
+    line-height: calc(24vw/3.75);
+    margin-bottom: calc(30vw/3.75);
+    margin-top: calc(57vw/3.75);
   }
 
   .proMain .right {
     opacity: 0.6;
     color: #33343e;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(13vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(12vw/3.75);
     font-weight: 400;
-    line-height: calc(24vw/3.75);
+    line-height: calc(18vw/3.75);
   }
 
   .atGrotech {
@@ -145,7 +147,7 @@
   .topBox {
     position: absolute;
     left: 0;
-    top: calc(15vw/3.75);
+    top: calc(16vw/3.75);
     z-index: 1;
     width: 100%;
     padding-left: calc(24vw/3.75);
@@ -154,20 +156,21 @@
 
   .topBox .x1 {
     color: #ffffff;
-    font-family: "Faktum-Regular";
+    font-family: 'Faktum-Bold';
     font-size: calc(6vw/3.75);
     font-weight: 700;
     line-height: calc(6.658333vw/3.75);
     letter-spacing: calc(0.1875vw/3.75);
+    height: calc(15vw/3.75);
   }
 
   .topBox .c1 {
     color: rgba(255, 255, 255, 0.91);
-    font-family: "PingFangSC-Regular";
-    font-size: calc(18vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(15vw/3.75);
     font-weight: 400;
-    line-height: calc(25.11628vw/3.75);
-    margin-top: calc(13vw/3.75);
+    line-height: calc(18vw/3.75);
+    margin-top: calc(6vw/3.75);
   }
 
   .swiper-slide {
@@ -183,12 +186,12 @@
 
   .atGrotech .p1 {
     color: #ffffff;
-    font-family: "PingFangSC-Bold";
-    font-size: calc(13vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(12vw/3.75);
     font-weight: 400;
-    line-height: calc(20vw/3.75);
+    line-height: calc(15vw/3.75);
     padding-left: calc(24vw/3.75);
-    margin-top: calc(152vw/3.75);
+    margin-top: calc(155vw/3.75);
   }
 
   .atGrotech .bottomBox {
@@ -227,16 +230,16 @@
   }
 
   .zpBox {
-    margin-top: calc(78vw/3.75);
+    margin-top: calc(90vw/3.75);
     min-height: calc(334vw/3.75);
   }
 
   .zpBox .h1 {
     color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(24vw/3.75);
+    font-family: "Faktum-Regular";
+    font-size: calc(21vw/3.75);
     font-weight: 400;
-    line-height: calc(36vw/3.75);
-    padding-left: calc(23vw/3.75);
+    line-height: calc(24vw/3.75);
+    padding-left: calc(24vw/3.75);
   }
 </style>

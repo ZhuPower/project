@@ -13,16 +13,16 @@
         <img src="../assets/mono.png" class="logo" v-if="isMenu">
       </div>
       <div class="nav-list">
-        <div class="nav-box" @click.stop="goMenu('/CN/mobile/home?id=serviceBox')">服务</div>
-        <div class="nav-box" @click.stop="goMenu('/CN/mobile/home?id=productBox')">产品</div>
-        <div class="nav-box" @click.stop="goMenu('/CN/mobile/about')">了解美至</div>
-        <div class="nav-box" @click.stop="goMenu('/CN/mobile/recruitment')">加入我们</div>
+        <div class="nav-box" @click.stop="goMenu('/EN/mobile/home?id=serviceBox')">Service</div>
+        <div class="nav-box" @click.stop="goMenu('/EN/mobile/home?id=productBox')">Product</div>
+        <div class="nav-box" @click.stop="goMenu('/EN/mobile/about')">About us</div>
+        <div class="nav-box" @click.stop="goMenu('/EN/mobile/recruitment')">Careers</div>
       </div>
       <div class="bottom">
         <div class="left">
           <img src="../assets/logotype2.png" class="logotype">
         </div>
-        <div class="right" @click="piakLg('EN')">En</div>
+        <div class="right" @click="piakLg('CN')">中文</div>
       </div>
     </div>
     <div class="menuBox" :class="{'cur':isMenu}" @click="showMenu">

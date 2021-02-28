@@ -195,6 +195,8 @@
         let _fullPath = this.$route.fullPath.substring(3)
         let url = `/${str}${_fullPath}`
         //this.show = false
+        document.body.scrollTop = document.documentElement.scrollTop = 0
+        this.openScroll()
         this.$router.push(url)
       }
     },
