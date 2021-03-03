@@ -52,6 +52,7 @@
 <script>
   import { oData } from "@/data/recruitment-data.js";
   import { oData2 } from "@/data/recruitment-data2.js";
+  import { isElementNotInViewport } from "@/utils/index.js";
   import topNav from "../components/topNav";
   import foot from "../components/efoot";
 

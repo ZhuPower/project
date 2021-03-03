@@ -17,8 +17,10 @@
         :ref="('pro-box-'+(index+1))">
         <div class="left">
           <div class="left-box">
-            <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]"
-              :style="{transitionDelay:index2*0.4+'s'}" v-html="item2">
+            <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]">
+              <div v-for="(item3,index3) in item2"><span
+                  :style="{transitionDelay: index2>0 ? ((item.title[index2-1].length + index3)*0.03+'s') : index3*0.03+'s',fontFamily:/^[(A-Za-z)|-]*$/.test(item3) ? 'Faktum-Regular':'inherit'}">{{item3}}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -223,30 +225,39 @@
   }
 
   .proMain .left .left-box .title {
-    width: 0%;
     overflow: hidden;
     height: calc(57vw/14.4);
+    display: flex;
   }
 
-  .proMain .pro-box.cur .left .left-box .title {
-    transition-property: width;
-    -moz-transition-property: width;
-    /* Firefox 4 */
-    -webkit-transition-property: width;
-    /* Safari 和 Chrome */
-    -o-transition-property: width;
-    /* Opera */
-
-    transition-duration: .6s;
-    -moz-transition-duration: .6s;
-    /* Firefox 4 */
-    -webkit-transition-duration: .6s;
-    /* Safari 和 Chrome */
-    -o-transition-duration: .6s;
-    /* Opera */
-    width: 100%;
+  .proMain .left .left-box .title>div {
+    overflow: hidden;
   }
 
+  .proMain .left .left-box .title>div>span {
+    position: relative;
+    left: -100%;
+  }
+
+  .proMain .pro-box.cur .left .left-box .title>div>span {
+    left: 0px;
+    transition-property: all;
+    -moz-transition-property: all;
+    /* Firefox 4 */
+    -webkit-transition-property: all;
+    /* Safari 和 Chrome */
+    -o-transition-property: all;
+    /* Opera */
+
+    transition-duration: .11s;
+    -moz-transition-duration: .11s;
+    /* Firefox 4 */
+    -webkit-transition-duration: .11s;
+    /* Safari 和 Chrome */
+    -o-transition-duration: .11s;
+    /* Opera */
+    /* width: 100%; */
+  }
   .proMain .pro-box .right {
     opacity: 0.6;
     color: #383a50;
@@ -264,20 +275,20 @@
 
   .proMain .pro-box-1 .right,
   .proMain .pro-box-2 .right {
-    position: absolute;
-    top: 100%;
-    opacity: 0;
     left: calc(440vw/14.4);
+    position: absolute;
+    top: calc(45vw/14.4);
+    opacity: 0;
   }
 
   .proMain .pro-box-1.cur .right,
   .proMain .pro-box-2.cur .right {
     top: 0%;
     opacity: 0.6;
-    transition: all .6s .4s;
-    -moz-transition: all .6s .4s;
-    -webkit-transition: all .6s .4s;
-    -o-transition: all .6s .4s;
+    transition: all .6s .3s;
+    -moz-transition: all .6s .3s;
+    -webkit-transition: all .6s .3s;
+    -o-transition: all .6s .3s;
   }
 
   .VisionValue {

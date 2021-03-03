@@ -22,7 +22,7 @@ let oData = {
       show: false
     },
     {
-      title: ['创新的<span style="font-family:Faktum-Regular;">GaaS</span>', '增长即服务', 'Growth-as-a-Service'],
+      title: ['创新的GaaS', '增长即服务', 'Growth-as-a-Service'],
       content: '<p>我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增<br/>长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给<br/>尽可能多的消费者）的完美结合。美至科技基于领先的<span style="font-family:Faktum-Regular;">Grotech®</span>大数据及<br/>AI技术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，<br/>推动产品创新，落实增长。</p><p style="margin-top:calc(42vw/14.4)">美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜<br/>寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一<br/>起，创造出更多有“幸福力”的产品，并让尽可能多的消费者拥有它们。</p>',
       show: false
     },

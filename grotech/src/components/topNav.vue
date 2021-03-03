@@ -1,9 +1,11 @@
 <template>
   <div class="navMain" :class="{'cur':show}" id="navMain">
     <div class="topNav">
-      <img src="../assets/logo.png" class="logo">
+      <router-link :to="{path:'/CN/home'}"><img src="../assets/logo.png" class="logo"></router-link>
       <div class="menu" @click="showMenu">
-        <img src="../assets/menu.png">
+        <i class="i-1"></i>
+        <i class="i-2"></i>
+        <i class="i-3"></i>
       </div>
     </div>
     <div class="menuBox">
@@ -13,8 +15,12 @@
           <i></i>
           <span @click="piakLg('EN')">EN</span>
         </div>
-        <div class="menu" @click="closeMenu">
-          <img src="../assets/closeMenu.png">
+        <div class="menuMain" @click="closeMenu">
+          <div class="menu menu_0">
+            <i class="i-1"></i>
+            <i class="i-2"></i>
+            <i class="i-3"></i>
+          </div>
         </div>
       </div>
       <div class="logoBox" :class="{'cur':!logonShow}">
@@ -24,7 +30,7 @@
 
       <div class="menuList">
         <ul>
-          <li v-for="(item,index) in menuList" @mouseleave="leave(index)">
+          <li v-for="(item,index) in menuList" :class="['li_'+index]" @mouseleave="leave(index)">
             <div class="menu-box" :class="{'cur':item.show}" @click.stop="showChild(index)">
               <div class="menuTxt" :data-text="item.name">{{item.name}}</div>
             </div>
@@ -256,8 +262,8 @@
 
   .logoBox.cur {
     top: calc(100% - 85vw/14.4);
-    transition: all .6s;
-    -webkit-transition: all .6s;
+    transition: all .5s;
+    -webkit-transition: all .5s;
     left: 0;
     margin-left: calc(80vw/14.4);
     width: calc(221vw/14.4);
@@ -286,8 +292,70 @@
     justify-content: space-between;
   }
 
+  .logo {
+    width: calc(43vw/14.4);
+    height: calc(39.66vw/14.4);
+  }
+
   .menu {
     cursor: pointer;
+    width: calc(27vw/14.4);
+    height: calc(27vw/14.4);
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .menu i {
+    width: 100%;
+    height: calc(3vw/14.4);
+    background: #000;
+    display: block;
+    margin-left: calc(3vw/14.4);
+  }
+
+
+
+  .menu i.i-1,
+  .menu i.i-3 {
+    position: absolute;
+    left: 0;
+    transform-origin: 0% 50%;
+    transition: transform .3s;
+  }
+
+  .menu i.i-1 {
+    top: calc(3vw/14.45);
+  }
+
+  .menu i.i-3 {
+    bottom: calc(3vw/14.4);
+  }
+
+  .navMain .menu i.i-2 {
+    transition: all .3s .3s;
+  }
+
+  .navMain.cur .menu i.i-2 {
+    transform: translateX(calc(-27vw/14.4));
+    transition: all .3s 2.6s;
+  }
+
+  .navMain.cur .menu i.i-1 {
+    transform: rotate(45deg);
+    transition: transform .3s 2.9s;
+    top: calc(1.5vw/14.4);
+    width: calc(30vw/14.4);
+  }
+
+  .navMain.cur .menu i.i-3 {
+    bottom: calc(1.5vw/14.4);
+    transform: rotate(-45deg);
+    transition: transform .3s 2.9s;
+    width: calc(30vw/14.4);
   }
 
   .topLeft {
@@ -338,13 +406,12 @@
     width: 40.972%;
     position: absolute;
     right: 0;
-    top: -100%;
-    transition: all .6s .6s;
-    -webkit-transition: all .6s .6s;
+    top: calc(110vw/14.4);
   }
 
   .menuList li {
     position: relative;
+    overflow: hidden;
   }
 
   .menuList .menu-box {
@@ -353,7 +420,36 @@
     cursor: pointer;
     margin-bottom: calc(24vw/14.4);
     display: inline-block;
+    position: relative;
+    top: calc(-41vw/14.4);
+    opacity: 0;
   }
+
+  .navMain.cur .menuList .menu-box {
+    top: 0px;
+    opacity: 1;
+  }
+
+  .navMain.cur .menuList .li_0 .menu-box {
+    transition: all .11s 2.6s;
+    -webkit-transition: all .11s 2.6s;
+  }
+
+  .navMain.cur .menuList .li_1 .menu-box {
+    transition: all .07s 2.63s;
+    -webkit-transition: all .11s 2.63s;
+  }
+
+  .navMain.cur .menuList .li_2 .menu-box {
+    transition: all .11s 2.66s;
+    -webkit-transition: all .11s 2.66s;
+  }
+
+  .navMain.cur .menuList .li_3 .menu-box {
+    transition: all .11s 2.7s;
+    -webkit-transition: all .11s 2.7s;
+  }
+
 
   .menuList .menu-box>div {
     margin-top: calc(-9vw/14.4);
@@ -380,11 +476,11 @@
     top: 59px;
   }
 
-  .navMain.cur .menuList {
-    top: calc(110vw/14.4);
+  /* .navMain.cur .menuList {
+    
     transition: all .6s 3.1s;
     -webkit-transition: all .6s 3.1s;
-  }
+  } */
 
   .menuList .childList {
     width: 37.288%;
@@ -427,6 +523,7 @@
     position: relative;
     transition: all .6s;
     -webkit-transition: all .6s;
+    cursor: pointer;
   }
 
   .menuList .childList .child-box:hover .menuTxt {

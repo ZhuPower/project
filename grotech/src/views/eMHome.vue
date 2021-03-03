@@ -104,9 +104,12 @@
               </div>
               <div class="li-tab">
                 <div class="li-h">
-                  <div class="li-h-box" @click="pickService('tab1', 0)" :class="{'cur':tab1==0}"><span>Competitive Strategy</span></div>
-                  <div class="li-h-box" @click="pickService('tab1', 1)" :class="{'cur':tab1==1}"><span>Product Innovation</span></div>
-                  <div class="li-h-box" @click="pickService('tab1', 2)" :class="{'cur':tab1==2}">Growth Strategy<br/><span>for All Channels</span></div>
+                  <div class="li-h-box" @click="pickService('tab1', 0)" :class="{'cur':tab1==0}"><span>Competitive
+                      Strategy</span></div>
+                  <div class="li-h-box" @click="pickService('tab1', 1)" :class="{'cur':tab1==1}"><span>Product
+                      Innovation</span></div>
+                  <div class="li-h-box" @click="pickService('tab1', 2)" :class="{'cur':tab1==2}">Growth
+                    Strategy<br /><span>for All Channels</span></div>
                 </div>
                 <div class="li-c">
                   <div class="li-c-box" v-if="tab1==0">
@@ -134,15 +137,21 @@
                   @click="showService(1)" /></div>
               <div class="li-tab">
                 <div class="li-h">
-                  <div class="li-h-box" @click="pickService('tab2', 0)" :class="{'cur':tab2==0}">integratebranding- and<br/><span>sales-oriented marketing</span></div>
-                  <div class="li-h-box" @click="pickService('tab2', 1)" :class="{'cur':tab2==1}"><span>Data-Driven Ads-Delivery</span></div>
+                  <div class="li-h-box" @click="pickService('tab2', 0)" :class="{'cur':tab2==0}">integratebranding-
+                    and<br /><span>sales-oriented marketing</span></div>
+                  <div class="li-h-box" @click="pickService('tab2', 1)" :class="{'cur':tab2==1}"><span>Data-Driven
+                      Ads-Delivery</span></div>
                 </div>
                 <div class="li-c">
                   <div class="li-c-box" v-if="tab2==0">
-                    <p>With Grotech, we can integratebranding- and sales-oriented marketing , and formulate an accurate model that can effectively improve the return of investment (ROI) when working along with customized contents and copies.</p>
+                    <p>With Grotech, we can integratebranding- and sales-oriented marketing , and formulate an accurate
+                      model that can effectively improve the return of investment (ROI) when working along with
+                      customized contents and copies.</p>
                   </div>
                   <div class="li-c-box" v-if="tab2==1">
-                    <p>Data-Driven Ads-Delivery：Combining quantitative models and persona-lized copywriting content, Grotech is able to effectively improve the advertising return on newsfeed platforms (including but not limited to Alibaba, TikTok, Toutiao, Baidu, etc.).</p>
+                    <p>Data-Driven Ads-Delivery：Combining quantitative models and persona-lized copywriting content,
+                      Grotech is able to effectively improve the advertising return on newsfeed platforms (including but
+                      not limited to Alibaba, TikTok, Toutiao, Baidu, etc.).</p>
                   </div>
                 </div>
                 <img src="../assets/service-1-002.gif" />
@@ -155,7 +164,10 @@
               <div class="li-tab">
                 <div class="li-c">
                   <div class="li-c-box">
-                    <p>A-InnovAtion, D-Deep insight, A-All dimensions, P-Partnership, T-Technology. To adapt is to evolve over time. Working with many partners, Grotech integrates its advanced strategies, expertise and marketing practices to incubate consumer goods brands tailor-made to Chinese consumers.</p>
+                    <p>A-InnovAtion, D-Deep insight, A-All dimensions, P-Partnership, T-Technology. To adapt is to
+                      evolve over time. Working with many partners, Grotech integrates its advanced strategies,
+                      expertise and marketing practices to incubate consumer goods brands tailor-made to Chinese
+                      consumers.</p>
                   </div>
                 </div>
                 <img src="../assets/service-1-003.gif" />
@@ -174,14 +186,18 @@
 
               <div class="li-tab">
                 <p class="p2">
-                  Compared to traditional industry research, Grotech’s approach has a more specific focus on applying big data and AI technology to analyzing the history of markets, products, and channels of a certain industry, thereby making qualitative predictions.
+                  Compared to traditional industry research, Grotech’s approach has a more specific focus on applying
+                  big data and AI technology to analyzing the history of markets, products, and channels of a certain
+                  industry, thereby making qualitative predictions.
                 </p>
                 <div class="li-h">
-                  <div class="li-h-box" @click="pickService('tab3', 0)" :class="{'cur':tab3==0}"><span>Grotech Investment Radar</span></div>
+                  <div class="li-h-box" @click="pickService('tab3', 0)" :class="{'cur':tab3==0}"><span>Grotech
+                      Investment Radar</span></div>
                 </div>
                 <div class="li-c">
                   <div class="li-c-box">
-                    <p>Establishing a niche-market model for consu-mer goods, Grotech offers a customized deal sourcing service that not only helps investors zoom in on targets in a timely and accurate manner.</p>
+                    <p>Establishing a niche-market model for consu-mer goods, Grotech offers a customized deal sourcing
+                      service that not only helps investors zoom in on targets in a timely and accurate manner.</p>
                   </div>
                 </div>
                 <img src="../assets/service-2-001.gif" />
@@ -194,7 +210,9 @@
               <div class="li-tab">
                 <div class="li-c">
                   <div class="li-c-box">
-                    <p>Traditionally due diligence tends to be conducted through small-sample interviews and research that lack the support of big data. Utilizing both technology and experiences of sector experts, Grotech provides a more systematic and data-driven access to due diligence.
+                    <p>Traditionally due diligence tends to be conducted through small-sample interviews and research
+                      that lack the support of big data. Utilizing both technology and experiences of sector experts,
+                      Grotech provides a more systematic and data-driven access to due diligence.
                     </p>
                   </div>
                 </div>
@@ -208,7 +226,10 @@
               <div class="li-tab">
                 <div class="li-c">
                   <div class="li-c-box">
-                    <p>We provide data monitoring and automatic analysis service towards the marketing performance of companies that investors have already invested in. This service is in the format of monthly reports, and suitable for investors looking to quickly identify opportunities and risks of their target companies.
+                    <p>We provide data monitoring and automatic analysis service towards the marketing performance of
+                      companies that investors have already invested in. This service is in the format of monthly
+                      reports, and suitable for investors looking to quickly identify opportunities and risks of their
+                      target companies.
                     </p>
                   </div>
                 </div>
@@ -239,18 +260,25 @@
         </div>
         <div class="productCon" :class="{'cur':swiper.activeIndex ==0}">
           <div class="title">A Unique Data Bank by Grotech</div>
-          <div class="p1">Integrating massive data silos with external data from social networks, smartphones, online retail platforms and brick-and-mortar stores, also utilizing our industry research results and AI algo-rithm, we build structured models for various business strategies to drive growth.</div>
+          <div class="p1">Integrating massive data silos with external data from social networks, smartphones, online
+            retail platforms and brick-and-mortar stores, also utilizing our industry research results and AI
+            algo-rithm, we build structured models for various business strategies to drive growth.</div>
         </div>
         <div class="productCon" :class="{'cur':swiper.activeIndex ==1}">
           <div class="title">Crystal Ball: An Innovative and Smart
             Business Decision-Making System</div>
-          <div class="p1">Our proprietary system enables users to gain early and data-based insights that help them make timely decisions on the strategies for industries, categories, channels, and competition.</div>
+          <div class="p1">Our proprietary system enables users to gain early and data-based insights that help them make
+            timely decisions on the strategies for industries, categories, channels, and competition.</div>
         </div>
         <div class="productCon" :class="{'cur':swiper.activeIndex ==2}">
           <div class="title">A Data- Driven Growth Tool</div>
-          <div class="p1">Lean Consumer Equity Management System Integrating massive external marketing and sales data with business’s internal transaction data, Grotech is able to analyze and transform these data into accurate customer persona for adverti-sements. Subsequently, we are able to build quantitative AdBot models that provide instant feedback as well as continued improvements. 
+          <div class="p1">Lean Consumer Equity Management System Integrating massive external marketing and sales data
+            with business’s internal transaction data, Grotech is able to analyze and transform these data into accurate
+            customer persona for adverti-sements. Subsequently, we are able to build quantitative AdBot models that
+            provide instant feedback as well as continued improvements.
 
-            Quantitative Ads-Delivery System:Grotech integrates tons of consumer behavior data to build quantitative models that can effectively improve the return of ads.</div>
+            Quantitative Ads-Delivery System:Grotech integrates tons of consumer behavior data to build quantitative
+            models that can effectively improve the return of ads.</div>
         </div>
         <div class="fgx"></div>
       </div>
@@ -285,7 +313,8 @@
       <!-- 联系 -->
       <div class="contact">
         <div class="h1" v-html="oData.contact.h1"></div>
-        <div class="p1">Feel free to contact us and we will provide you with an insightful report on your industry. Please either scan the QR code to follow our WeChat official account, or email us at </div>
+        <div class="p1">Feel free to contact us and we will provide you with an insightful report on your industry.
+          Please either scan the QR code to follow our WeChat official account, or email us at </div>
         <a href="javascript:;" class="mailbox" v-html="oData.contact.mail"></a>
       </div>
     </div>
@@ -401,7 +430,8 @@
         nShow: 0,
         nProShow: 0,
         swiperOptions: {
-          slidesPerView: 1.39
+          slidesPerView: 2,
+          centeredSlides: true,
         },
         swiperOptions2: {
           initialSlide: 2,
@@ -795,8 +825,8 @@
     font-size: calc(12vw/3.75);
     font-weight: 400;
     line-height: calc(18vw/3.75);
-    margin-top: calc(-4vw/3.75);
-    margin-bottom: calc(16vw/3.75);
+    margin-top: calc(14vw/3.75);
+    margin-bottom: calc(22vw/3.75);
   }
 
   .serviceBox .list .list-box .li-tab {
@@ -811,6 +841,7 @@
   .serviceBox .list .list-box .li-tab .li-h {
     display: flex;
     justify-content: space-between;
+    margin-top: calc(14vw/3.75);
   }
 
   .serviceBox .list .list-box .li-tab .li-h .li-h-box {
@@ -834,7 +865,7 @@
     font-size: calc(12vw/3.75);
     font-weight: 400;
     line-height: calc(18vw/3.75);
-    margin-top: calc(15vw/3.75);
+    margin-top: calc(9vw/3.75);
   }
 
 
@@ -850,7 +881,8 @@
   .serviceBox .list .list-box .li-tab .li-h .li-h-box.cur {
     opacity: 0.6;
   }
-  .serviceBox .list .list-box .li-tab .li-h .li-h-box.cur span{
+
+  .serviceBox .list .list-box .li-tab .li-h .li-h-box.cur span {
     border-bottom: 1px solid #65ecaa;
   }
 
@@ -860,6 +892,10 @@
 
   .serviceBox .list .list-box .li-box-0 {
     border-top: 1px solid #999aa7;
+  }
+
+  .serviceBox .list .list-box-1 .li-box-0 .li-tab .li-c .li-c-box{
+    margin-top: calc(17vw/3.75);
   }
 
   .productBox {
@@ -935,14 +971,6 @@
   .productBox .swiper-slide {
     width: auto !important;
     margin-right: calc(20vw/3.75);
-  }
-
-  .productBox .swiper-slide:last-child {
-    margin-right: calc(24vw/3.75);
-  }
-
-  .productBox .swiper-slide:first-child {
-    margin-left: calc(94vw/3.75);
   }
 
 

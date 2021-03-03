@@ -21,53 +21,21 @@
       </div>
       <!-- 介绍 -->
       <div class="proMain">
-        <div class="pro-box pro-box-0">
+        <div class="pro-box" :class="{['pro-box-'+index]:true,'cur':item.show}" v-for="(item,index) in oData.proMain">
           <div class="title">
-            如何创造有“幸福力”的消费品，获得持续增长
+            <p v-html="item.title"></p>
+            <p class="p1" v-if="item.p1" v-html="item.p1"></p>
+            <img src="../assets/proMain-icon.png" class="proMain-icon" @click="showPro(index)" v-if="index>0" />
           </div>
-          <div class="list">
-            <div class="listCon">
-              <div class="left">利用大数据规划企业竞争战略</div>
-              <div class="right">01</div>
-            </div>
-            <div class="listCon">
-              <div class="left">以消费者为中心，以产品创新驱动增长</div>
-              <div class="right">02</div>
-            </div>
-            <div class="listCon">
-              <div class="left">整合全渠道竞争策略，广告投放品效合一</div>
-              <div class="right">03</div>
-            </div>
-            <div class="listCon">
-              <div class="left">精细化管理消费者资产，提高客户生命价值</div>
-              <div class="right">04</div>
+          <div class="list" v-if="(item.content instanceof Array)">
+            <div class="listCon" v-for="(item2,index2) in item.content">
+              <div class="left" v-html="item2"></div>
+              <div class="right">0{{index}}</div>
             </div>
           </div>
-        </div>
-        <div class="pro-box pro-box-1" :class="{'cur':proShow[0]}">
-          <div class="title">
-            创新的<span style="font-family:Faktum-Regular;">GaaS</span>增长即服务
-            <p class="p1">Growth-as-a-Service</p>
-            <img src="../assets/proMain-icon.png" class="proMain-icon" @click="showPro(0)" />
-          </div>
-          <div class="bottom">
-            <p>我们始终坚信，结合专业主义的长期主义能带来巨大商业价值。真正的增长动力来自于创新力（提供让消费者感到幸福的产品）与营销力（销售给尽可能多的消费者）的完美结合。美至科技基于领先的<span
-                style="font-family:Faktum-Regular;">Grotech®</span>大数据及AI技<br />术，深入洞察行业与消费者，帮助消费品上下游企业制定竞争战略，推动产品创新，落实增长。
-            </p>
-            <p style="margin-top:calc(23vw/3.75);">
-              美至科技也为一流的消费品基金提供基于大数据的行业研究，投资标的搜寻，以及尽职调查服务。美至科技致力与消费品产业上下游合作伙伴一起，创造出更多有“幸福力”<br />的产品，并让尽可能多的消费者拥有它们。
-            </p>
-          </div>
-        </div>
-        <div class="pro-box pro-box-2" :class="{'cur':proShow[1]}">
-          <div class="title">
-            美至的核心能力
-            <img src="../assets/proMain-icon.png" class="proMain-icon" @click="showPro(1)" />
-          </div>
-          <div class="bottom">
-            <p>自研的增长科技Grotech®系统，拥有亿级消费者及商品交易数据，应用前沿AI算法，制定企业发展策略。</p>
-            <p style="margin-top:calc(11vw/3.75);">来自消费零售+投资银行+互联网科技的跨行业精英团队，从战略到落地，使命必达。</p>
-            <p style="margin-top:calc(11vw/3.75);">拥有全链路品牌成长孵化的实战经验，以生意伙伴的身份真正为商业成功负责。</p>
+          <div class="bottom" :style="{height: item.show ? (item.height ? item.height + 'px' : 'auto' )  : '0px' }"
+            v-else>
+            <div v-html="item.content"></div>
           </div>
         </div>
       </div>
@@ -81,125 +49,31 @@
       <div class="serviceBox" id="serviceBox">
         <div class="name">服务</div>
         <div class="list">
-          <div class="list-box list-box-0">
+          <div class="list-box" :class="{['list-box-'+index]:true}" v-for="(item,index) in oData.serviceList.list">
             <div class="title">
-              聚焦大消费行业的一站式<br />增长服务
-              <p class="p1">
-                Gaas（Growth as a Service）
-              </p>
+              <p v-html="item.p1"></p>
+              <p class="p1" v-if="item.p2" v-html="item.p2"></p>
             </div>
-            <div class="li-box li-box-0" :class="{'cur':aShow[0]}">
+            <div class="li-box" :class="{['li-box-'+index2]:true,'cur':item.nTab == index2}"
+              v-for="(item2,index2) in item.serviceTxt">
               <div class="li-title">
-                基于大数据与AI的策略服务
-                <img src="../assets/service-icon.png" class="service-icon" @click="showService(0)" />
+                <p v-html="item2.title"></p>
+                <img src="../assets/service-icon.png" class="service-icon" @click="showService(index,index2)" />
               </div>
-              <div class="li-tab">
-                <div class="li-h">
-                  <div class="li-h-box" @click="pickService('tab1', 0)" :class="{'cur':tab1==0}">企业竞争战略</div>
-                  <div class="li-h-box" @click="pickService('tab1', 1)" :class="{'cur':tab1==1}">产品创新</div>
-                  <div class="li-h-box" @click="pickService('tab1', 2)" :class="{'cur':tab1==2}">全渠道增长策略</div>
-                </div>
-                <div class="li-c">
-                  <div class="li-c-box" v-if="tab1==0">
-                    <p>由经验丰富的行业专家，利用美至科技大数据库与AI算法模型，从消费者趋势、产品创新、流量获取等多方面深入洞察分析，帮助企业制定精准有效的竞争战略。</p>
+              <div class="li-tab"
+                :style="{height: (item.nTab == index2) ? (item2.height ? item2.height + 'px' : 'auto' )  : '0px' }">
+                <div>
+                  <div class="li-h" v-if="item2.tabH.length>0">
+                    <div class="li-h-box" v-for="(item3,index3) in item2.tabH" :class="{'cur':item2.nTab==index3}"
+                      @click="pickService(index,index2,index3)" v-html="item3"></div>
                   </div>
-                  <div class="li-c-box" v-if="tab1==1">
-                    <p>我们利用大数据与算法洞察消费者行为，综合考虑商业竞争策略以及供应链技术变革，提供从产品概念研究到包装设计的全链路落地服务。</p>
-                  </div>
-                  <div class="li-c-box" v-if="tab1==2">
-                    <p>从线上到线下，从一线城市到下沉市场，从直营到分销，结合人-货-场，我们帮助企业制定科学精准的全渠道增长策略。</p>
+                  <div class="li-c">
+                    <div class="li-c-box" v-for="(item3,index3) in item2.tabC" v-if="item2.nTab==index3" v-html="item3">
+                    </div>
                   </div>
                 </div>
-                <img src="../assets/service-1-001.gif" />
+                <img :src="item2.src" />
               </div>
-            </div>
-            <div class="li-box" :class="{'cur':aShow[1]}">
-              <div class="li-title">精益化营销服务<img src="../assets/service-icon.png" class="service-icon"
-                  @click="showService(1)" /></div>
-              <div class="li-tab">
-                <div class="li-h">
-                  <div class="li-h-box" @click="pickService('tab2', 0)" :class="{'cur':tab2==0}">整合营销服务</div>
-                  <div class="li-h-box" @click="pickService('tab2', 1)" :class="{'cur':tab2==1}">数据科学投放</div>
-                </div>
-                <div class="li-c">
-                  <div class="li-c-box" v-if="tab2==0">
-                    <p>利用美至科技Grotech技术，精确计算品牌推广与效果广告的整合模型，并结合个性化创意与文案提高广告投资回报比（ROI）。</p>
-                  </div>
-                  <div class="li-c-box" v-if="tab2==1">
-                    <p>通过数据科学量化模型，结合千人千面创意文案，大幅提高企业在信息流广告平台上的投放效果（包括但不限于阿里妈妈、抖音头条、百度等等）。</p>
-                  </div>
-                </div>
-                <img src="../assets/service-1-002.gif" />
-              </div>
-
-            </div>
-            <div class="li-box" :class="{'cur':aShow[2]}">
-              <div class="li-title">ADAPT™品牌孵化服务<img src="../assets/service-icon.png" class="service-icon"
-                  @click="showService(2)" /></div>
-              <div class="li-tab">
-                <div class="li-c">
-                  <div class="li-c-box">
-                    <p>A-InnovAtion，D-Deep insight，A-All
-                      dimensions，P-Partnership，T-Technology。ADAPT在英文中代表着进化，与时俱进，美至科技集合先进的策略+技术+营销能力，和合作伙伴一起，孵化属于中国的新消费品牌。
-                    </p>
-                  </div>
-                </div>
-                <img src="../assets/service-1-003.gif" />
-              </div>
-
-            </div>
-          </div>
-          <div class="list-box list-box-1">
-            <div class="title">
-              大数据驱动，为投资机构量身定制专属服务
-            </div>
-            <div class="li-box li-box-0" :class="{'cur':aShow[3]}">
-              <div class="li-title">行业研究<img src="../assets/service-icon.png" class="service-icon"
-                  @click="showService(3)" /></div>
-
-              <div class="li-tab">
-                <p class="p2">
-                  和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。
-                </p>
-                <div class="li-h">
-                  <div class="li-h-box" @click="pickService('tab3', 0)" :class="{'cur':tab3==0}">美至科技投资雷达</div>
-                </div>
-                <div class="li-c">
-                  <div class="li-c-box">
-                    <p>和传统行研相比，美至科技聚焦于使用大数据与AI技术，从消费者、产品、渠道出发研究行业发展历史，并对未来做出定性预测。</p>
-                  </div>
-                </div>
-                <img src="../assets/service-2-001.gif" />
-              </div>
-
-            </div>
-            <div class="li-box" :class="{'cur':aShow[4]}">
-              <div class="li-title">大数据尽职调查<img src="../assets/service-icon.png" class="service-icon"
-                  @click="showService(4)" /></div>
-              <div class="li-tab">
-                <div class="li-c">
-                  <div class="li-c-box">
-                    <p>传统的投资尽职调查偏向于小样本访谈与研究，缺乏大数据支撑。美至科技利用技术能力结合经验丰富的行业专家，提供科学全面的尽职调查服务。
-                    </p>
-                  </div>
-                </div>
-                <img src="../assets/service-2-002.gif" />
-              </div>
-
-            </div>
-            <div class="li-box" :class="{'cur':aShow[5]}">
-              <div class="li-title">投资管理服务<img src="../assets/service-icon.png" class="service-icon"
-                  @click="showService(5)" /></div>
-              <div class="li-tab">
-                <div class="li-c">
-                  <div class="li-c-box">
-                    <p>对被投企业的市场表现进行数据监测，自动化分析并生成每月报告，在节省投后管理大量时间的同时，让投资机构迅速发现被投企业的问题或发展机遇。
-                    </p>
-                  </div>
-                </div>
-                <img src="../assets/service-2-003.gif" />
-              </div>
-
             </div>
           </div>
         </div>
@@ -277,7 +151,7 @@
 </template>
 
 <script>
-  import { oData } from "@/data/index-data.js";
+  import { oData } from "@/data/index-data4.js";
   import topNav from "../components/topNav2";
   import foot from "../components/foot2";
   export default {
@@ -315,6 +189,14 @@
       this.oData.innovativeService.list.reverse()
 
       this.oData.bannerVideo.src = require('../assets/header11.mp4')
+
+      this.oData.serviceList.list[0].serviceTxt[0].src = require('../assets/service-1-001.gif')
+      this.oData.serviceList.list[0].serviceTxt[1].src = require('../assets/service-1-002.gif')
+      this.oData.serviceList.list[0].serviceTxt[2].src = require('../assets/service-1-003.gif')
+      this.oData.serviceList.list[1].serviceTxt[0].src = require('../assets/service-2-001.gif')
+      this.oData.serviceList.list[1].serviceTxt[1].src = require('../assets/service-2-002.gif')
+      this.oData.serviceList.list[1].serviceTxt[2].src = require('../assets/service-2-003.gif')
+
       this.oData.product.list[0].src = require('../assets/GDB.gif')
       this.oData.product.list[1].src = require('../assets/Gropilot-gray.gif')
       this.oData.product.list[2].src = require('../assets/Adbot.gif')
@@ -330,62 +212,58 @@
       pickBrand(n) {
         this.oData.brand.nTab = n
       },
-      pickService(str, n) {
-        this[str] = n
+      pickService(n1, n2, n3) {
+        this.oData.serviceList.list[n1].serviceTxt[n2].nTab = n3
       },
       showPro(n) {
-        let arr = JSON.parse(JSON.stringify(this.proShow))
+
+        let arr = this.oData.proMain
         if (n == this.nProShow) {
-          console.log(arr[n])
-          arr[n] = !arr[n]
+          arr[n].show = !arr[n].show
 
         } else {
           for (let i = 0; i < arr.length; i++) {
-            arr[i] = false
+            arr[i].show = false
           }
-          arr[n] = true
+          arr[n].show = true
         }
 
-        this.$nextTick(() => {
-          this.proShow = []
-          this.proShow = JSON.parse(JSON.stringify(arr))
-          this.nProShow = n
-        })
+        this.nProShow = n
+
       },
-      showService(n) {
-        let arr = JSON.parse(JSON.stringify(this.aShow))
-        if (n == this.nShow) {
-          console.log(arr[n])
-          arr[n] = !arr[n]
+      showService(n1, n2) {
 
-        } else {
-          for (let i = 0; i < arr.length; i++) {
-            arr[i] = false
+        let arr = this.oData.serviceList.list
+        for (let i = 0; i < arr.length; i++) {
+          if (i == n1) {
+            if (arr[i].nTab == n2) {
+              arr[i].nTab = -1
+            } else {
+              arr[i].nTab = n2
+            }
+
+          } else {
+            arr[i].nTab = -1
           }
-          arr[n] = true
         }
-
-        this.$nextTick(() => {
-          this.aShow = []
-          this.aShow = JSON.parse(JSON.stringify(arr))
-          this.nShow = n
-        })
       }
     },
     data() {
       let vm = this;
       return {
         oData: null,
-        tab1: 0,
-        tab2: 0,
-        tab3: 0,
-        tab4: 0,
-        aShow: [true, false, false, false, false, false],
-        proShow: [true, false],
-        nShow: 0,
-        nProShow: 0,
+        nProShow: 1,
         swiperOptions: {
-          slidesPerView: 1.39
+          // effect: 'coverflow',
+          slidesPerView: 2,
+          centeredSlides: true,
+          // coverflowEffect: {
+          //   rotate: 10,
+          //   stretch: 20,
+          //   depth: 10,
+          //   // modifier: 2,
+          //   slideShadows: false
+          // },
         },
         swiperOptions2: {
           initialSlide: 2,
@@ -406,6 +284,41 @@
     mounted() {
       this.swiper = this.$refs.mySwiper.swiper
       this.swiper2 = this.$refs.mySwiper2.swiper
+
+      setTimeout(() => {
+        let proBox = document.getElementsByClassName('pro-box')
+        proBox.forEach((item, index) => {
+          if (index > 0) {
+
+            let h = item.children[1].offsetHeight + (document.body.clientWidth * 30 / 375)
+            this.oData.proMain[index].height = h
+
+            if (this.nProShow != index) {
+              this.oData.proMain[index].show = false
+            }
+          }
+        })
+
+        let listBox = document.getElementsByClassName('list-box')
+
+        listBox.forEach((item, index) => {
+
+          let liBox = item.getElementsByClassName('li-box')
+
+          liBox.forEach((item2, index2) => {
+
+            let h = item2.children[1].children[0].offsetHeight + (document.body.clientWidth * 319 / 375)
+
+            this.oData.serviceList.list[index].serviceTxt[index2].height = h
+
+            if (this.oData.serviceList.list[index].nTab != index2) {
+              this.oData.serviceList.list[index].serviceTxt[index2].show = false
+            }
+          })
+        })
+
+      }, 100);
+
       document.getElementById('bannerVideo').play()
       if (this.$route.query.id) {
         document.getElementById(this.$route.query.id).scrollIntoView({
@@ -526,14 +439,15 @@
 
   .proMain .pro-box-1 .bottom,
   .proMain .pro-box-2 .bottom {
-    height: 0px;
     overflow: hidden;
+    transition: height .2s;
+    -webkit-transition: height .2s;
   }
 
   .proMain .pro-box-1.cur .bottom,
   .proMain .pro-box-2.cur .bottom {
-    height: auto;
-    padding-bottom: calc(30vw/3.75);
+    transition: height .2s;
+    -webkit-transition: height .2s;
   }
 
   .proMain .pro-box .title {
@@ -740,10 +654,13 @@
   .serviceBox .list .list-box .li-tab {
     height: 0px;
     overflow: hidden;
+    transition: height .2s;
+    -webkit-transition: height .2s;
   }
 
   .serviceBox .list .list-box .li-box.cur .li-tab {
-    height: auto;
+    transition: height .2s;
+    -webkit-transition: height .2s;
   }
 
   .serviceBox .list .list-box .li-tab .li-h {
@@ -870,14 +787,6 @@
   .productBox .swiper-slide {
     width: auto !important;
     margin-right: calc(20vw/3.75);
-  }
-
-  .productBox .swiper-slide:last-child {
-    margin-right: calc(24vw/3.75);
-  }
-
-  .productBox .swiper-slide:first-child {
-    margin-left: calc(94vw/3.75);
   }
 
 

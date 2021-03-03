@@ -12,16 +12,59 @@
 <script>
   export default {
     components: {},
-    created() { },
-    computed: {},
-    methods: {
+    created() {
+      this.isMobile()
     },
-    data() {
-      return {
-
+    mounted() {
+      window.onresize = () => {
+        setTimeout(() => {
+          this.versionSwitch(this.$route.fullPath)
+        }, 20)
       }
     },
-    watch: {}
+    computed: {},
+    methods: {
+      isMobile() {
+        var u = navigator.userAgent
+        var b = !!u.match(/AppleWebKit.*Mobile.*/)
+        return b;
+      },
+      openScroll() {
+        var mo = function (e) { passive: false };
+        document.body.style.overflow = '';//出现滚动条
+        document.removeEventListener("touchmove", mo, false);
+      },
+      versionSwitch(str) {
+
+        let b1 = this.isMobile()
+        let b2 = str.indexOf('/mobile/') > -1 ? true : false
+
+        if (b1 != b2) {
+          let url = ''
+          let url1 = str.substring(0, 3)
+          let url2 = ''
+
+          if (b1) {
+            url2 = '/mobile' + str.substring(3)
+          } else {
+            url2 = str.substring(10)
+          }
+
+          url = `${url1}${url2}`
+          document.body.scrollTop = document.documentElement.scrollTop = 0
+          this.openScroll()
+          this.$router.push(url)
+        }
+      }
+    },
+    data() {
+      return {}
+    },
+    watch: {
+      '$route.fullPath'(val) {
+        this.versionSwitch(val)
+      }
+    }
   }
 </script>
 <style>

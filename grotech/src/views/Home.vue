@@ -30,8 +30,10 @@
           :class="{'cur':item.show,['pro-box-'+(index+1)]:true}" :ref="('pro-box-'+(index+1))">
           <div class="left">
             <div class="left-box">
-              <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]"
-                :style="{transitionDelay:index2*0.4+'s'}" v-html="item2">
+              <div v-for="(item2,index2) in item.title" class="title" :class="['title_'+index2]">
+                <div v-for="(item3,index3) in item2"><span
+                    :style="{transitionDelay: index2>0 ? ((item.title[index2-1].length + index3)*0.05+'s') : index3*0.05+'s',fontFamily:/^[(A-Za-z)|-]*$/.test(item3) ? 'Faktum-Regular':'inherit'}">{{item3}}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -268,9 +270,9 @@
 
           }
 
-          if (_dom && isElementNotInViewport(_dom)) {
-            endFn2 && endFn2()
-          }
+          // if (_dom && isElementNotInViewport(_dom)) {
+          //   endFn2 && endFn2()
+          // }
         }
       }
     },
@@ -291,7 +293,7 @@
           },
           // loop: true,
           onSlideChangeStart: function (swiper) {
-            console.log(vm)
+
           }
         },
         swiper2: {
@@ -310,7 +312,21 @@
           mousewheel: {
             releaseOnEdges: true,
             eventsTarged: '.serviceBox1',
-          }
+          },
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true,
+          },
+          on: {
+            slideChangeTransitionEnd: function () {
+              if (this.activeIndex == vm.oData.serviceList.list[0].serviceTxt.length - 1) {
+                document.getElementById('serviceBox2').scrollIntoView({
+                  block: 'start',
+                  behavior: 'smooth'
+                });
+              }
+            }
+          },
         },
         serviceOptions2: {
           pagination: {
@@ -319,6 +335,10 @@
           mousewheel: {
             releaseOnEdges: true,
             eventsTarged: '.serviceBox2'
+          },
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true,
           }
         }
       }
@@ -415,7 +435,8 @@
     overflow: hidden;
     position: relative;
   }
-  .bannerVideo video{
+
+  .bannerVideo video {
     height: calc(817vw/14.4);
   }
 
@@ -475,17 +496,31 @@
     padding-top: calc(79vw/14.4);
   }
 
+
+  .proMain .pro-box .right {
+    opacity: 0.6;
+    color: #383a50;
+    font-family: "PingFangSC-Regular";
+    font-size: calc(21vw/14.4);
+    font-weight: 400;
+    line-height: calc(42vw/14.4);
+    width: calc(735vw/14.4);
+  }
+
   .proMain .pro-box-2 .right,
   .proMain .pro-box-3 .right {
-    position: absolute;
-    top: 100%;
     opacity: 0;
-    left: calc(550vw/14.4);
+    -webkit-transform: translate3d(0, 100px, 0);
+    transform: translate3d(0, 100px, 0);
+    -webkit-transition: opacity 1s ease, -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, transform 1s cubic-bezier(.1, .6, .4, 1), -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
   }
 
   .proMain .pro-box-2.cur .right,
   .proMain .pro-box-3.cur .right {
-    top: calc(72vw/14.4);
+    transform: translateZ(0);
     opacity: 0.6;
     transition: all .6s .4s;
     -moz-transition: all .6s .4s;
@@ -505,6 +540,7 @@
 
   .proMain .pro-box-1 .right {
     overflow: hidden;
+    opacity: 1;
   }
 
   .proMain .pro-box-1 .right .list-1,
@@ -534,16 +570,6 @@
     letter-spacing: normal;
   }
 
-  .proMain .pro-box .right {
-    opacity: 0.6;
-    color: #383a50;
-    font-family: "PingFangSC-Regular";
-    font-size: calc(21vw/14.4);
-    font-weight: 400;
-    line-height: calc(42vw/14.4);
-    width: calc(735vw/14.4);
-  }
-
   .proMain .pro-box-1 .right h6 {
     color: #d6d6f4;
     font-family: "Faktum-Regular";
@@ -552,21 +578,34 @@
     line-height: calc(23vw/14.4);
   }
 
-  .proMain .pro-box-1 .right .list p {}
-
-  .proMain .left .left-box .title {
-    width: 0%;
-    overflow: hidden;
-    height: calc(57vw/14.4);
+  .proMain .pro-box-1 .right .list p {
+    opacity: 0;
   }
 
-  .proMain .pro-box.cur .left .left-box .title {
-    transition-property: width;
-    -moz-transition-property: width;
+  .proMain .left .left-box .title {
+    overflow: hidden;
+    height: calc(57vw/14.4);
+    display: flex;
+  }
+
+  .proMain .left .left-box .title>div {
+    overflow: hidden;
+  }
+
+  .proMain .left .left-box .title>div>span {
+    position: relative;
+    left: -100%;
+  }
+
+
+  .proMain .pro-box.cur .left .left-box .title>div>span {
+    left: 0px;
+    transition-property: all;
+    -moz-transition-property: all;
     /* Firefox 4 */
-    -webkit-transition-property: width;
+    -webkit-transition-property: all;
     /* Safari 和 Chrome */
-    -o-transition-property: width;
+    -o-transition-property: all;
     /* Opera */
 
     transition-duration: .6s;
@@ -576,7 +615,7 @@
     /* Safari 和 Chrome */
     -o-transition-duration: .6s;
     /* Opera */
-    width: 100%;
+    /* width: 100%; */
   }
 
   .proMain .pro-box-1 .list {
@@ -585,9 +624,7 @@
     float: left;
   }
 
-  .proMain .pro-box-1 .list h6 {
-    opacity: 0;
-  }
+  .proMain .pro-box-1 .list h6 {}
 
   .proMain .pro-box-1.cur .list h6 {
     transition-property: opacity;
@@ -610,9 +647,13 @@
   }
 
   .proMain .pro-box-1 .list p {
-    position: absolute;
-    top: 100%;
     opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+    transform: translate3d(0, 100px, 0);
+    -webkit-transition: opacity 1s ease, -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, transform 1s cubic-bezier(.1, .6, .4, 1), -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
   }
 
   .proMain .pro-box-1.cur .list p {
@@ -624,14 +665,14 @@
     -o-transition-property: all;
     /* Opera */
 
-    transition-duration: .6s;
-    -moz-transition-duration: .6s;
+    transition-duration: 1s;
+    -moz-transition-duration: 1s;
     /* Firefox 4 */
-    -webkit-transition-duration: .6s;
+    -webkit-transition-duration: 1s;
     /* Safari 和 Chrome */
-    -o-transition-duration: .6s;
+    -o-transition-duration: 1s;
     /* Opera */
-    top: calc(46vw/14.4);
+    transform: translateZ(0);
     opacity: 0.6;
   }
 
@@ -653,7 +694,7 @@
     /* Firefox 4 */
     -webkit-transition-delay: .4s;
     /* Safari 和 Chrome */
-    -o-transition-delay: .4;
+    -o-transition-delay: .4s;
     /* Opera */
   }
 
@@ -769,7 +810,7 @@
     width: calc(522vw/14.4);
     text-align: right;
     float: right;
-    padding-top: calc(166vw/14.4);
+    padding-top: calc(35vw/14.4);
     box-sizing: border-box;
   }
 
@@ -778,7 +819,7 @@
   }
 
   .serviceBox1 .swiper-container {
-    min-height: calc(527vw/14.4)
+    min-height: calc(527vw/14.4);
   }
 
 
@@ -821,21 +862,41 @@
   .serviceBox .item-left,
   .serviceBox .item-right .con,
   .serviceBox .rightBox {
-    opacity: 1;
-    transition: all .6s .4s;
-    -moz-transition: all .6s .4s;
-    -webkit-transition: all .6s .4s;
-    -o-transition: all .6s .4s;
+    opacity: 0;
   }
 
   .serviceBox.cur .item-left,
   .serviceBox.cur .item-right .con,
   .serviceBox.cur .rightBox {
-    opacity: 1;
+    /* opacity: 1;
     transition: all .6s .4s;
     -moz-transition: all .6s .4s;
     -webkit-transition: all .6s .4s;
-    -o-transition: all .6s .4s;
+    -o-transition: all .6s .4s; */
+  }
+
+  .serviceBox.cur .item-left {
+    opacity: 1;
+    transition: all .8s .4s;
+    -moz-transition: all .8s .4s;
+    -webkit-transition: all .8s .4s;
+    -o-transition: all .8s .4s;
+  }
+
+  .serviceBox.cur .item-right .con {
+    opacity: 1;
+    transition: all .8s .6s;
+    -moz-transition: all .8s .6s;
+    -webkit-transition: all .6s .6s;
+    -o-transition: all .8s .6s;
+  }
+
+  .serviceBox.cur .rightBox {
+    opacity: 1;
+    transition: all .13s .43s;
+    -moz-transition: all .13s .43s;
+    -webkit-transition: all .13s .43s;
+    -o-transition: all .13s .43s;
   }
 
 
@@ -847,18 +908,22 @@
     line-height: calc(46vw/14.4);
     box-sizing: border-box;
     overflow: hidden;
-    transition: all .6s;
-    -moz-transition: all .6s;
-    -webkit-transition: all .6s;
-    -o-transition: all .6s;
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+    transform: translate3d(0, 100px, 0);
+    -webkit-transition: opacity 1s ease, -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, transform 1s cubic-bezier(.1, .6, .4, 1);
+    transition: opacity 1s ease, transform 1s cubic-bezier(.1, .6, .4, 1), -webkit-transform 1s cubic-bezier(.1, .6, .4, 1);
   }
 
   .serviceBox.cur .item-right .h2 {
-    padding-top: 0px;
-    transition: all .6s;
-    -moz-transition: all .6s;
-    -webkit-transition: all .6s;
-    -o-transition: all .6s;
+    transform: translateZ(0);
+    opacity: 0.6;
+    transition: all .8s;
+    -moz-transition: all .8s;
+    -webkit-transition: all .8s;
+    -o-transition: all .8s;
   }
 
   .serviceBox .item-right .h2 .p2 {
@@ -870,6 +935,14 @@
     line-height: calc(14.4vw/14.4);
     margin-top: calc(17vw/14.4);
   }
+
+  /* .serviceBox.cur .item-right {
+    opacity: 1;
+    transition: all .08s;
+    -moz-transition: all .08s;
+    -webkit-transition: all .08s;
+    -o-transition: all .08s;
+  } */
 
 
   .serviceBox .item-right .c1 {
@@ -1190,9 +1263,9 @@
     padding-top: calc(110vw/14.4);
   }
 
-  .brand .swiper-slide img{
+  .brand .swiper-slide img {
     width: calc(185vw/14.4);
-    height:calc(143vw/14.4) ;
+    height: calc(143vw/14.4);
   }
 
 
